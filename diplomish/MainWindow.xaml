@@ -5,8 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:diplomish"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+         Title="Напоминатель" WindowState="Maximized" ResizeMode="NoResize" Height="768" Width="1865.5">
+    <Grid Background="#9ceaef">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" ></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="#07beb8" Grid.Row="0" >
+            <StackPanel Orientation="Horizontal">
+                <Button HorizontalAlignment="Left" Width="160" Height="50" BorderThickness="3" BorderBrush="Black" Content="Создать задачу" Margin="10,0,0,0" FontSize="20">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+
+                        </Style>
+
+                    </Button.Resources>
+
+                </Button>
+                <Button HorizontalAlignment="Left" Width="160" Height="50" BorderThickness="3" BorderBrush="Black" Content="Задачи от меня" Margin="10,0,0,0" FontSize="20">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+          
+
+            <StackPanel Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Right">
+                <Border CornerRadius="20" BorderThickness="3" Background="#68d8d6">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
+                            <Label FontSize="20" FontWeight="Bold" Content="{Binding name}" FontFamily="/kursach;component/resoursess/#Edo SZ" ></Label>
+                            <Label FontSize="20" FontWeight="Bold" Content="{Binding surname}" FontFamily="/kursach;component/resoursess/#Edo SZ"></Label>
+                        </StackPanel>
+
+                        <Ellipse Width="80" Height="80">
+                            <Ellipse.Fill>
+                                <ImageBrush  />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            
+
+            
+
+        </Grid>
+        <Frame Grid.Row="1" x:Name="mainFrame"></Frame>
     </Grid>
 </Window>

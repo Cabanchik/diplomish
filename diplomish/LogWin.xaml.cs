@@ -10,21 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace diplomish
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для LogWin.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LogWin : Window
     {
-        public MainWindow()
+        public LogWin()
         {
             InitializeComponent();
-            mainFrame.NavigationService.Navigate(new mineTasks());
-
+            mainFrame.NavigationService.Navigate(new SelectionPage());
         }
     }
 }

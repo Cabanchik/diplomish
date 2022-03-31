@@ -16,15 +16,21 @@ using System.Windows.Shapes;
 namespace diplomish
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для SelectionPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SelectionPage : Page
     {
-        public MainWindow()
+        public SelectionPage()
         {
             InitializeComponent();
-            mainFrame.NavigationService.Navigate(new mineTasks());
+            
+        }
 
+        private void entry_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            
         }
     }
 }
