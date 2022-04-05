@@ -120,5 +120,15 @@
   <ItemGroup>
     <Folder Include="NewFolder1\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="rez\ico.png" />
+    <Resource Include="rez\ico2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="rez\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="rez\settings.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

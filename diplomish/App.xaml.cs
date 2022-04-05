@@ -13,5 +13,6 @@ namespace diplomish
     /// </summary>
     public partial class App : Application
     {
+        public static readonly Duration openCloseDuraion = new Duration(TimeSpan.FromSeconds(0.5));
     }
 }
