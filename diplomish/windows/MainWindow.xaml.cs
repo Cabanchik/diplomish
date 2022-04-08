@@ -31,6 +31,7 @@ namespace diplomish
             nOurTaskLbl.Opacity = 0;
             settings.Opacity = 0;
             back.Opacity = 0;
+            shd.Opacity = 0;
 
         }
 
@@ -47,6 +48,7 @@ namespace diplomish
                 nOurTaskLbl.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 back.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 settings.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
+                shd.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 animLbl.Content = "<";
                
                 a = 1;
@@ -61,11 +63,40 @@ namespace diplomish
                 nOurTaskLbl.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 back.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 settings.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
+                shd.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 animLbl.Content = ">";
                 
                 a = 0;
             }
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            taskCreate taskCreate = new taskCreate();
+            taskCreate.ShowDialog();
+        }
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var message = MessageBox.Show("Вы точно хотите выйти?", "аЛерт", MessageBoxButton.OKCancel);
+            if (message == MessageBoxResult.OK)
+            {
+                this.Close();                
+            }
+        }
+
+        private void backClick(object sender, MouseButtonEventArgs e)
+        {
+            if (mainFrame.CanGoBack == true)
+            {
+                mainFrame.GoBack();
+            }
+        }
+        private void tasksOnMePage(object sender, MouseButtonEventArgs e)
+        {
+            SelectionPage selectionPage = new SelectionPage();
+            mainFrame.NavigationService.Navigate(selectionPage);
         }
     }
 }

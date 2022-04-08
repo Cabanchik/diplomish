@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="220c106ccb994839be591f7326543ca2" Name="Diagram1">
+        <EntityTypeShape EntityType="diplomModel.branch" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.company" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.file" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.gender" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.role" Width="1.5" PointX="3.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.status" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.task" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="diplomModel.user" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="diplomModel.FK_task_branch" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_user_company" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_user_gender" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_user_role" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_task_status" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.FK_task_user" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.file_in_task" ManuallyRouted="false" />
+        <AssociationConnector Association="diplomModel.users_in_branches" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

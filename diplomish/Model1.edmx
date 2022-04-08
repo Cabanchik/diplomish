@@ -1,0 +1,650 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище diplomModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="branch">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="file" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="file_in_task">
+          <Key>
+            <PropertyRef Name="task_id" />
+            <PropertyRef Name="file_id" />
+          </Key>
+          <Property Name="task_id" Type="int" Nullable="false" />
+          <Property Name="file_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="task">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="purpose_time" Type="datetime" />
+          <Property Name="start_time" Type="datetime" />
+          <Property Name="annotation" Type="nvarchar" MaxLength="500" />
+          <Property Name="end_time" Type="nvarchar" MaxLength="500" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="status_id" Type="int" />
+          <Property Name="brach_id" Type="int" />
+          <Property Name="file_id" Type="int" />
+          <Property Name="initiator_id" Type="int" />
+          <Property Name="is_deleted" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="birth_date" Type="datetime" />
+          <Property Name="user_pic" Type="varbinary(max)" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender_id" Type="int" />
+          <Property Name="role_id" Type="int" />
+          <Property Name="branch_id" Type="int" />
+          <Property Name="company_id" Type="int" />
+        </EntityType>
+        <EntityType Name="users_in_branches">
+          <Key>
+            <PropertyRef Name="branch_id" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="branch_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_file_in_task_file">
+          <End Role="file" Type="Self.file" Multiplicity="1" />
+          <End Role="file_in_task" Type="Self.file_in_task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="file">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="file_in_task">
+              <PropertyRef Name="file_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_file_in_task_task">
+          <End Role="task" Type="Self.task" Multiplicity="1" />
+          <End Role="file_in_task" Type="Self.file_in_task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="task">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="file_in_task">
+              <PropertyRef Name="task_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_task_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="brach_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_task_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_task_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_company">
+          <End Role="company" Type="Self.company" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_gender">
+          <End Role="gender" Type="Self.gender" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="gender_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_role">
+          <End Role="role" Type="Self.role" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_in_branches_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="1" />
+          <End Role="users_in_branches" Type="Self.users_in_branches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users_in_branches">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_in_branches_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="users_in_branches" Type="Self.users_in_branches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users_in_branches">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище diplomModelContainer">
+          <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="file" EntityType="Self.file" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="file_in_task" EntityType="Self.file_in_task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gender" EntityType="Self.gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="task" EntityType="Self.task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users_in_branches" EntityType="Self.users_in_branches" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_file_in_task_file" Association="Self.FK_file_in_task_file">
+            <End Role="file" EntitySet="file" />
+            <End Role="file_in_task" EntitySet="file_in_task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_file_in_task_task" Association="Self.FK_file_in_task_task">
+            <End Role="task" EntitySet="task" />
+            <End Role="file_in_task" EntitySet="file_in_task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_task_branch" Association="Self.FK_task_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_task_status" Association="Self.FK_task_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_task_user" Association="Self.FK_task_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_company" Association="Self.FK_user_company">
+            <End Role="company" EntitySet="company" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_gender" Association="Self.FK_user_gender">
+            <End Role="gender" EntitySet="gender" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_role" Association="Self.FK_user_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_in_branches_branch" Association="Self.FK_users_in_branches_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="users_in_branches" EntitySet="users_in_branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_in_branches_user" Association="Self.FK_users_in_branches_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="users_in_branches" EntitySet="users_in_branches" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="diplomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="branch">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="task" Relationship="Self.FK_task_branch" FromRole="branch" ToRole="task" />
+          <NavigationProperty Name="user" Relationship="Self.users_in_branches" FromRole="branch" ToRole="user" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_company" FromRole="company" ToRole="user" />
+        </EntityType>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="file1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="task" Relationship="Self.file_in_task" FromRole="file" ToRole="task" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_gender" FromRole="gender" ToRole="user" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_role" FromRole="role" ToRole="user" />
+        </EntityType>
+        <EntityType Name="status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="task" Relationship="Self.FK_task_status" FromRole="status" ToRole="task" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="task">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="purpose_time" Type="DateTime" Precision="3" />
+          <Property Name="start_time" Type="DateTime" Precision="3" />
+          <Property Name="annotation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="end_time" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="status_id" Type="Int32" />
+          <Property Name="brach_id" Type="Int32" />
+          <Property Name="file_id" Type="Int32" />
+          <Property Name="initiator_id" Type="Int32" />
+          <Property Name="is_deleted" Type="Byte" />
+          <NavigationProperty Name="branch" Relationship="Self.FK_task_branch" FromRole="task" ToRole="branch" />
+          <NavigationProperty Name="status" Relationship="Self.FK_task_status" FromRole="task" ToRole="status" />
+          <NavigationProperty Name="user" Relationship="Self.FK_task_user" FromRole="task" ToRole="user" />
+          <NavigationProperty Name="file" Relationship="Self.file_in_task" FromRole="task" ToRole="file" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="birth_date" Type="DateTime" Precision="3" />
+          <Property Name="user_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender_id" Type="Int32" />
+          <Property Name="role_id" Type="Int32" />
+          <Property Name="branch_id" Type="Int32" />
+          <Property Name="company_id" Type="Int32" />
+          <NavigationProperty Name="company" Relationship="Self.FK_user_company" FromRole="user" ToRole="company" />
+          <NavigationProperty Name="gender" Relationship="Self.FK_user_gender" FromRole="user" ToRole="gender" />
+          <NavigationProperty Name="role" Relationship="Self.FK_user_role" FromRole="user" ToRole="role" />
+          <NavigationProperty Name="task" Relationship="Self.FK_task_user" FromRole="user" ToRole="task" />
+          <NavigationProperty Name="branch" Relationship="Self.users_in_branches" FromRole="user" ToRole="branch" />
+        </EntityType>
+        <Association Name="FK_task_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="brach_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_company">
+          <End Role="company" Type="Self.company" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="company_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_gender">
+          <End Role="gender" Type="Self.gender" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="gender_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_role">
+          <End Role="role" Type="Self.role" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_task_status">
+          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_task_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="file_in_task">
+          <End Role="file" Type="Self.file" Multiplicity="*" />
+          <End Role="task" Type="Self.task" Multiplicity="*" />
+        </Association>
+        <Association Name="users_in_branches">
+          <End Role="branch" Type="Self.branch" Multiplicity="*" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="diplomEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="branch" EntityType="Self.branch" />
+          <EntitySet Name="company" EntityType="Self.company" />
+          <EntitySet Name="file" EntityType="Self.file" />
+          <EntitySet Name="gender" EntityType="Self.gender" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="status" EntityType="Self.status" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="task" EntityType="Self.task" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <AssociationSet Name="FK_task_branch" Association="Self.FK_task_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_company" Association="Self.FK_user_company">
+            <End Role="company" EntitySet="company" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_gender" Association="Self.FK_user_gender">
+            <End Role="gender" EntitySet="gender" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_role" Association="Self.FK_user_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_task_status" Association="Self.FK_task_status">
+            <End Role="status" EntitySet="status" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_task_user" Association="Self.FK_task_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="file_in_task" Association="Self.file_in_task">
+            <End Role="file" EntitySet="file" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="users_in_branches" Association="Self.users_in_branches">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище diplomModelContainer" CdmEntityContainer="diplomEntities">
+          <EntitySetMapping Name="branch">
+            <EntityTypeMapping TypeName="diplomModel.branch">
+              <MappingFragment StoreEntitySet="branch">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="company">
+            <EntityTypeMapping TypeName="diplomModel.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="file">
+            <EntityTypeMapping TypeName="diplomModel.file">
+              <MappingFragment StoreEntitySet="file">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="file1" ColumnName="file" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gender">
+            <EntityTypeMapping TypeName="diplomModel.gender">
+              <MappingFragment StoreEntitySet="gender">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="diplomModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status">
+            <EntityTypeMapping TypeName="diplomModel.status">
+              <MappingFragment StoreEntitySet="status">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="diplomModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="task">
+            <EntityTypeMapping TypeName="diplomModel.task">
+              <MappingFragment StoreEntitySet="task">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="purpose_time" ColumnName="purpose_time" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="annotation" ColumnName="annotation" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="brach_id" ColumnName="brach_id" />
+                <ScalarProperty Name="file_id" ColumnName="file_id" />
+                <ScalarProperty Name="initiator_id" ColumnName="initiator_id" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="diplomModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="user_pic" ColumnName="user_pic" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="gender_id" ColumnName="gender_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="company_id" ColumnName="company_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="file_in_task" TypeName="diplomModel.file_in_task" StoreEntitySet="file_in_task">
+            <EndProperty Name="file">
+              <ScalarProperty Name="id" ColumnName="file_id" />
+            </EndProperty>
+            <EndProperty Name="task">
+              <ScalarProperty Name="id" ColumnName="task_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="users_in_branches" TypeName="diplomModel.users_in_branches" StoreEntitySet="users_in_branches">
+            <EndProperty Name="branch">
+              <ScalarProperty Name="id" ColumnName="branch_id" />
+            </EndProperty>
+            <EndProperty Name="user">
+              <ScalarProperty Name="id" ColumnName="user_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
