@@ -9,13 +9,29 @@
       Title="myTasks">
 
     <Grid Background="#9ceaef">
-        <!--<WrapPanel Orientation="Horizontal">-->
-        <ListView Height="150" Width="150">
+        <WrapPanel Orientation="Horizontal">
+        <ListView x:Name="brancch">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
             <ListView.ItemTemplate>
+                
                 <DataTemplate>
                     <StackPanel>
-                        <Label Content="PIZDA"></Label>
-                        <ListView Background="Wheat" Height="90" Width="90" x:Name="list1111">
+                        <Border CornerRadius="10" BorderBrush="Black">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF7E5D4E" Offset="0"/>
+                                    <GradientStop Color="#FF4A4027" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding title}"/>
+
+
+                        </Border>
+                        <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111">
                             <ListView.Resources>
                                 <Style TargetType="{x:Type Border}">
                                     <Setter Property="CornerRadius" Value="10"/>
@@ -23,29 +39,67 @@
                                 </Style>
 
                             </ListView.Resources>
-                            <StackPanel Orientation="Vertical">
-                                <Label Content="sasun" Width="82" FontSize="12" Margin="0,0,0,0">
-                                    <Label.Resources>
-                                        <Style TargetType="{x:Type Border}">
-                                            <Setter Property="CornerRadius" Value="10"/>
-                                            <Setter Property="BorderThickness" Value="3"/>
-                                        </Style>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical" >
+                                        <Label Content="{Binding title}" FontSize="12" Margin="0,0,0,0"/>
 
-                                    </Label.Resources>
-                                    <Label.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF7E5D4E" Offset="0"/>
-                                            <GradientStop Color="#FF4A4027" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Label.Background>
-                                </Label>
-                            </StackPanel>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                           
                         </ListView>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
            
         </ListView>
-        <!--</WrapPanel>-->
+        <ListView x:Name="brancch2">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+                    <StackPanel>
+                        <Border CornerRadius="10" BorderBrush="Black">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF7E5D4E" Offset="0"/>
+                                    <GradientStop Color="#FF4A4027" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding StringFormat= {0} {1}, path= name, surname }"/>
+
+
+                        </Border>
+                        <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111">
+                            <ListView.Resources>
+                                <Style TargetType="{x:Type Border}">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                    <Setter Property="BorderThickness" Value="3"/>
+                                </Style>
+
+                            </ListView.Resources>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical" >
+                                        <Label Content="{Binding title}" FontSize="12" Margin="0,0,0,0"/>
+
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+        </WrapPanel>
     </Grid>
 </Page>
