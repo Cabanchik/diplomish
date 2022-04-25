@@ -7,10 +7,20 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="myTasks">
-
+    
     <Grid Background="#9ceaef">
-        <WrapPanel Orientation="Horizontal">
-        <ListView x:Name="brancch" VerticalAlignment="Top" VerticalContentAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0"  BorderThickness="3" BorderBrush="Black">
+            <StackPanel Grid.Row="0">
+                <Label Background="#3dccc7" Content="Мои Задачи"></Label>
+            </StackPanel>
+        </Border>
+        <WrapPanel Orientation="Horizontal" Grid.Row="1">
+            <ListView x:Name="brancch" VerticalAlignment="Top" VerticalContentAlignment="Top" Background="#9ceaef">
+                
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"></WrapPanel>
@@ -38,8 +48,11 @@
                                     </ListView.Resources>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Vertical" >
-                                                <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
+                                            <StackPanel>
+                                                <StackPanel Orientation="Vertical" >
+                                                    <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
+                                                
+                                                </StackPanel>
                                                 <Border BorderBrush="#87b8a2" BorderThickness="1"></Border>
                                             </StackPanel>
                                         </DataTemplate>
@@ -51,7 +64,7 @@
             </ListView.ItemTemplate>
            
         </ListView>
-        <ListView x:Name="brancch2">
+            <ListView x:Name="brancch2" Background="#9ceaef">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"></WrapPanel>
@@ -88,9 +101,12 @@
                                 </ListView.Resources>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <StackPanel Orientation="Vertical" >
-                                            <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
-                                            <Border BorderBrush="#87b8a2"  BorderThickness="1"></Border>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Vertical" >
+                                                <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
+
+                                            </StackPanel>
+                                            <Border BorderBrush="#87b8a2" BorderThickness="1"></Border>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>

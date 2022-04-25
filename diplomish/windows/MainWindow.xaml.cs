@@ -95,8 +95,16 @@ namespace diplomish
         }
         private void tasksOnMePage(object sender, MouseButtonEventArgs e)
         {
-            SelectionPage selectionPage = new SelectionPage();
+            mineTasks selectionPage = new mineTasks();
             mainFrame.NavigationService.Navigate(selectionPage);
+            navLbl.Content = "Задачи на мне";
+        }
+
+        private void StackPanel_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            myTasks mineTasks = new myTasks();
+            mainFrame.NavigationService.Navigate(mineTasks);
+            navLbl.Content = "Задачи от меня";
         }
     }
 }

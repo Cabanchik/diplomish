@@ -17,26 +17,24 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="0"  BorderThickness="3" BorderBrush="Black" >
             <Grid Background="#07beb8">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" >
+                        <Button Click="Button_Click" HorizontalAlignment="Left" Width="160" Height="50" BorderThickness="3" BorderBrush="Black" Content="Создать задачу" Margin="10,0,0,0" FontSize="20">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"></Setter>
+
+                                </Style>
+
+                            </Button.Resources>
+
+                        </Button>
+                        <Label x:Name="navLbl" Content="Задачи на мне" Margin="20,0,0,0"></Label>
+                       
+                    </StackPanel>
+                </StackPanel>
             
-                <StackPanel Orientation="Horizontal" Grid.Row="0" >
-                    <Button Click="Button_Click" HorizontalAlignment="Left" Width="160" Height="50" BorderThickness="3" BorderBrush="Black" Content="Создать задачу" Margin="10,0,0,0" FontSize="20">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="10"></Setter>
-
-                            </Style>
-
-                        </Button.Resources>
-
-                    </Button>
-                    <!--<Button HorizontalAlignment="Left" Width="160" Height="50" BorderThickness="3" BorderBrush="Black" Content="Задачи от меня" Margin="10,0,0,0" FontSize="20">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="10"></Setter>
-                            </Style>
-                        </Button.Resources>
-                    </Button>-->
-                </StackPanel>         
+                         
                 <StackPanel Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Right">
                     <Border CornerRadius="20" BorderThickness="3" Background="#68d8d6">
                         <StackPanel Orientation="Horizontal">
@@ -64,7 +62,7 @@
             <StackPanel Background="#07beb8" x:Name="navStack" Width="70">
             
                 <Label x:Name="animLbl" Content=">" Margin="10" HorizontalAlignment="Center" MouseDown="Label_MouseDown"></Label>
-                <StackPanel Orientation="Horizontal" Background="#07beb8">
+                <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="StackPanel_MouseDown_1">
                     <StackPanel.Resources>
                         <Style TargetType="StackPanel">
                             <Style.Triggers>
@@ -87,7 +85,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="rez/ico.png" Margin="-10,0,0,0" Width="70"></Image>
+                    <Image Source="ico.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="ourTaskLbl" Content="Задачи от меня"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="tasksOnMePage">
@@ -113,7 +111,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="rez/ico2.png" Margin="-10,0,0,0" Width="70"></Image>
+                    <Image Source="ico2.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="nOurTaskLbl" Content="Задачи на мне"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#07beb8">
@@ -139,7 +137,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="rez/settings.png" Margin="-10,0,0,0" Width="70"></Image>
+                    <Image Source="settings.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="settings" Content="Настройки"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#07beb8" ToolTipService.ToolTip="Back" MouseDown="backClick">
@@ -165,7 +163,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="rez/back.png" Margin="5,0,0,0" Width="55"></Image>
+                    <Image Source="back.png" Margin="5,0,0,0" Width="55"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="back" Content="Назад"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="StackPanel_MouseDown">
@@ -191,7 +189,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="rez/shd.png" Margin="-3,0,0,0" Width="70"></Image>
+                    <Image Source="shd.png" Margin="-3,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" Margin="-7,0,0,0" HorizontalContentAlignment="Center" x:Name="shd" Content="Выход"></Label>
                 </StackPanel>
                 
