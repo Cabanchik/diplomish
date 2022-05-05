@@ -85,7 +85,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="ico.png" Margin="-10,0,0,0" Width="70"></Image>
+                    <Image Source="/rez/ico.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="ourTaskLbl" Content="Задачи от меня"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="tasksOnMePage">
@@ -111,7 +111,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="ico2.png" Margin="-10,0,0,0" Width="70"></Image>
+                    <Image Source="/rez/ico2.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="nOurTaskLbl" Content="Задачи на мне"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#07beb8">
@@ -137,7 +137,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="settings.png" Margin="-10,0,0,0" Width="70"></Image>
+                    <Image Source="/rez/settings.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="settings" Content="Настройки"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#07beb8" ToolTipService.ToolTip="Back" MouseDown="backClick">
@@ -163,7 +163,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="back.png" Margin="5,0,0,0" Width="55"></Image>
+                    <Image Source="/rez/back.png" Margin="5,0,0,0" Width="55"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="back" Content="Назад"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="StackPanel_MouseDown">
@@ -189,7 +189,7 @@
                             </Style.Triggers>
                         </Style>
                     </StackPanel.Resources>
-                    <Image Source="shd.png" Margin="-3,0,0,0" Width="70"></Image>
+                    <Image Source="/rez/shd.png" Margin="-3,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" Margin="-7,0,0,0" HorizontalContentAlignment="Center" x:Name="shd" Content="Выход"></Label>
                 </StackPanel>
                 

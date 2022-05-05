@@ -22,7 +22,7 @@ namespace diplomish
         public LogWin()
         {
             InitializeComponent();
-            mainFrame.NavigationService.Navigate(new SelectionPage());
+            //mainFrame.NavigationService.Navigate(new SelectionPage());
         }
     }
 }

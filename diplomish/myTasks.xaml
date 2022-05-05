@@ -39,7 +39,7 @@
                                 <TextBlock HorizontalAlignment="Center" Foreground="#E1BB80" FontSize="25" TextWrapping="Wrap" Text="{Binding title}"/>
                             </Border>
                             <StackPanel>                            
-                                <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" >
+                                <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
                                     <ListView.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10"/>
@@ -49,11 +49,16 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel>
-                                                <StackPanel Orientation="Vertical" >
+                                                <StackPanel Orientation="Vertical">
                                                     <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
                                                 
                                                 </StackPanel>
-                                                <Border BorderBrush="#87b8a2" BorderThickness="1"></Border>
+                                                <Rectangle Fill="#FFBF927E" 
+                                                           HorizontalAlignment="Stretch"
+                                                           VerticalAlignment="Bottom"
+                                                           Height="2"                                             
+                                                           />
+                                                
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
@@ -92,7 +97,7 @@
 
 
                         </Border>
-                        <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" >
+                        <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch" >
                                 <ListView.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -102,11 +107,16 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <StackPanel Orientation="Vertical" >
+                                            <StackPanel Orientation="Vertical">
                                                 <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
 
                                             </StackPanel>
-                                            <Border BorderBrush="#87b8a2" BorderThickness="1"></Border>
+                                            <Rectangle Fill="#FFBF927E" 
+                                                           HorizontalAlignment="Stretch"
+                                                           VerticalAlignment="Bottom"
+                                                           Height="2"                                             
+                                                           />
+
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
