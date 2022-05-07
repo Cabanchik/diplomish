@@ -19,8 +19,8 @@
 
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#94dee3" Offset="0"/>
-                        <GradientStop Color="#9ceaef" Offset="1"/>
+                        <GradientStop Color="#FF8ED2D6" Offset="0"/>
+                        <GradientStop Color="#FF99E1E6" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
 
@@ -46,9 +46,7 @@
 
                         
 
-                        <TextBlock Text="Авторизация"
-                                   FontFamily="Comic Sans MS"
-                                   FontSize="40" FontWeight="Bold"/>
+                        <Label Content="Авторизация" FontSize="40" FontWeight="Bold"/>
 
                     </StackPanel>
 
@@ -75,18 +73,20 @@
                                 Grid.Row="1"
                                 VerticalAlignment="Center">
 
-                        <TextBlock Text="Логин"
-                                   FontFamily="Comic Sans MS"
-                                   HorizontalAlignment="Center"
-                                   FontSize="30"/>
-                        <TextBox x:Name="login"
-                                 
+                        <Label Content="Логин" HorizontalAlignment="Center" FontSize="30"/>
+                        <TextBox x:Name="login"                               
                                  
                                  HorizontalAlignment="Center"
                                  MaxLength="20"
                                  Width="300"
                                  Margin="0, 5"
-                                 FontSize="30"/>
+                                 FontSize="30">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"></Setter>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
 
                     </StackPanel>
 
@@ -95,10 +95,7 @@
                                 Grid.Row="2"
                                 VerticalAlignment="Center">
 
-                        <TextBlock Text="Пароль"
-                                   FontFamily="Comic Sans MS"
-                                   HorizontalAlignment="Center"
-                                   FontSize="30"/>
+                        <Label Content="Пароль" HorizontalAlignment="Center" FontSize="30"/>
 
                         <Grid Width="300"
                               HorizontalAlignment="Center">
@@ -112,7 +109,13 @@
                                      FontFamily="Comic Sans MS"
                                      
                                      FontSize="30"
-                                     />
+                                     >
+                                <TextBox.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"></Setter>
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
                         </Grid>
 
                         <!-- Accept Toggle Button -->
@@ -129,28 +132,19 @@
                     </StackPanel>
 
                     <!-- Login Button -->
-                    <Button Grid.Row="3"
-                           
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Width="250" Height="70" >
-
-                        <TextBlock Text="Войти"
-                                   FontSize="25"/>
+                    <Button Grid.Row="3" FontSize="25" HorizontalAlignment="Center" BorderThickness="3" BorderBrush="Black" VerticalAlignment="Center" Width="250" Height="70" Content="Войти">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+                            </Style>
+                        </Button.Resources>
                     </Button>
 
                 </Grid>
             </Border>
+            <Calendar x:Name="calen"></Calendar>
 
             <!-- Register Page Button -->
-            <Button HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    
-                    Margin="0, 0, 0, 90"
-                    FontSize="20"
-                    >
-                Или вы хотите зарегистрироваться...
-            </Button>
 
         </StackPanel>
     </Grid>

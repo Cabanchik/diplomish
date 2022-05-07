@@ -30,6 +30,7 @@
 
                         </Button>
                         <Label x:Name="navLbl" Content="Задачи на мне" Margin="20,0,0,0"></Label>
+                        
                        
                     </StackPanel>
                 </StackPanel>

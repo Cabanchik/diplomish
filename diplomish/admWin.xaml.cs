@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace diplomish
 {
     /// <summary>
-    /// Логика взаимодействия для LogWin.xaml
+    /// Логика взаимодействия для admWin.xaml
     /// </summary>
-    public partial class LogWin : Window
+    public partial class admWin : Window
     {
-        public LogWin()
+        public admWin()
         {
             InitializeComponent();
-            //mainFrame.NavigationService.Navigate(new SelectionPage());
-            foreach (var item in App.diplomchikEntities.task.Select(t=>t.end_time).ToList())
-            {
-                calen.DisplayDate.Add(TimeSpan.Parse(item));
-            }
         }
     }
 }

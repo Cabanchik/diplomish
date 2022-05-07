@@ -2,16 +2,18 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:diplomish"
-             StartupUri="windows/MainWindow.xaml">
+             StartupUri="LogWin.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <BitmapImage x:Key="nigger" UriSource="../resoursess/anon.jpg"></BitmapImage>
             <FontFamily x:Key="yakuza" >resoursess/edosz.ttf</FontFamily>
             <Style TargetType="Button">
                 <Setter Property="Background" Value="#3dccc7"></Setter>
+                <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
             </Style>
             <Style TargetType="TextBox">
                 <Setter Property="Background" Value="#3dccc7"></Setter>
+                <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
             </Style>
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
