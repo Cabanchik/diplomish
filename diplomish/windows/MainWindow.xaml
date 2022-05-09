@@ -221,7 +221,8 @@
                     <Label HorizontalAlignment="Center" Margin="-7,0,0,0" HorizontalContentAlignment="Center" x:Name="call" Content="Календарь:"></Label>
 
                 </StackPanel>
-                <Frame x:Name="sss" Margin="5" MinWidth="420"></Frame>
+                <Frame x:Name="sss" Margin="5" MinWidth="420" MouseDoubleClick="sss_MouseDoubleClick"></Frame>
+                <Label>sasun</Label>
 
             </StackPanel>
         </Border>

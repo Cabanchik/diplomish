@@ -40,6 +40,7 @@ namespace diplomish
             sss.Opacity = 0;
 
             sss.Visibility = Visibility.Collapsed;
+
         }
 
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
@@ -80,15 +81,26 @@ namespace diplomish
 
                 DoubleAnimation opacityAnim1 = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(1)));
                 sss.BeginAnimation(UIElement.OpacityProperty, opacityAnim1);
-                a = 0;                           
-
+                a = 0;
                 sss.Visibility = Visibility.Collapsed;
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(2);
+                timer.Tick += timer_Tick;
+                timer.Start();
+                if (sss.Visibility == Visibility.Collapsed)
+                {
+                    timer.Stop();
+                }
+
+
+
             }
 
         }
 
-        public static void timeCycle(object sender, EventArgs e)
+        void timer_Tick(object sender, EventArgs e)
         {
+            sss.Visibility = Visibility.Collapsed;
 
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -125,6 +137,12 @@ namespace diplomish
             myTasks mineTasks = new myTasks();
             mainFrame.NavigationService.Navigate(mineTasks);
             navLbl.Content = "Задачи от меня";
+        }
+
+        
+        private void sss_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("sss");
         }
     }
 }
