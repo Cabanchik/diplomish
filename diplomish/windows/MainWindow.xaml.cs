@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace diplomish
 {
@@ -21,10 +23,11 @@ namespace diplomish
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static System.Windows.Threading.DispatcherTimer readDataTimer = new System.Windows.Threading.DispatcherTimer();
         public int a = 0;
         public MainWindow()
         {
-            
+
             InitializeComponent();
             mainFrame.NavigationService.Navigate(new mineTasks());
             ourTaskLbl.Opacity = 0;
@@ -32,12 +35,16 @@ namespace diplomish
             settings.Opacity = 0;
             back.Opacity = 0;
             shd.Opacity = 0;
+            calendar calendar = new calendar();
+            sss.Content = calendar;
+            sss.Opacity = 0;
 
+            sss.Visibility = Visibility.Collapsed;
         }
 
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+
             if (a == 0)
             {
                 DoubleAnimation checkBoxAnim = new DoubleAnimation(420, App.openCloseDuraion);
@@ -49,8 +56,12 @@ namespace diplomish
                 back.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 settings.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 shd.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
+                call.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 animLbl.Content = "<";
-               
+                DoubleAnimation opacityAnim1 = new DoubleAnimation(1, new Duration(TimeSpan.FromSeconds(1)));
+                sss.BeginAnimation(UIElement.OpacityProperty, opacityAnim1);
+                sss.Visibility = Visibility.Visible;
+
                 a = 1;
             }
             else if (a == 1)
@@ -64,13 +75,22 @@ namespace diplomish
                 back.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 settings.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 shd.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
+                call.BeginAnimation(UIElement.OpacityProperty, opacityAnim);
                 animLbl.Content = ">";
-                
-                a = 0;
+
+                DoubleAnimation opacityAnim1 = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(1)));
+                sss.BeginAnimation(UIElement.OpacityProperty, opacityAnim1);
+                a = 0;                           
+
+                sss.Visibility = Visibility.Collapsed;
             }
-            
+
         }
 
+        public static void timeCycle(object sender, EventArgs e)
+        {
+
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             taskCreate taskCreate = new taskCreate();
@@ -82,7 +102,7 @@ namespace diplomish
             var message = MessageBox.Show("Вы точно хотите выйти?", "аЛерт", MessageBoxButton.OKCancel);
             if (message == MessageBoxResult.OK)
             {
-                this.Close();                
+                this.Close();
             }
         }
 

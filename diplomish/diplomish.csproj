@@ -106,6 +106,9 @@
     <Compile Include="branch.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="calendar.xaml.cs">
+      <DependentUpon>calendar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="company.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <DependentUpon>taskCreate.xaml</DependentUpon>
     </Compile>
     <Page Include="admWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="calendar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,6 +267,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="rez\cal.png" />
     <Resource Include="rez\lock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

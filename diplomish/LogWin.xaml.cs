@@ -23,10 +23,7 @@ namespace diplomish
         {
             InitializeComponent();
             //mainFrame.NavigationService.Navigate(new SelectionPage());
-            foreach (var item in App.diplomchikEntities.task.Select(t=>t.end_time).ToList())
-            {
-                calen.DisplayDate.Add(TimeSpan.Parse(item));
-            }
+            
         }
     }
 }

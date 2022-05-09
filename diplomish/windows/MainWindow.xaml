@@ -192,8 +192,36 @@
                     </StackPanel.Resources>
                     <Image Source="/rez/shd.png" Margin="-3,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" Margin="-7,0,0,0" HorizontalContentAlignment="Center" x:Name="shd" Content="Выход"></Label>
+                    
                 </StackPanel>
-                
+                <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="StackPanel_MouseDown">
+                    <StackPanel.Resources>
+                        <Style TargetType="StackPanel">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" To="#FF058B87" Duration="0:0:0:0.5"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="Background.Color" To="Transparent" Duration="0:0:0:0.5"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="/rez/cal.png" Margin="-3,0,0,0" Width="70"></Image>
+                    <Label HorizontalAlignment="Center" Margin="-7,0,0,0" HorizontalContentAlignment="Center" x:Name="call" Content="Календарь:"></Label>
+
+                </StackPanel>
+                <Frame x:Name="sss" Margin="5" MinWidth="420"></Frame>
 
             </StackPanel>
         </Border>
