@@ -21,7 +21,8 @@ namespace diplomish
         }
     
         public int id { get; set; }
-        public byte[] file1 { get; set; }
+        public string file1 { get; set; }
+        public string old_extention { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<task> task { get; set; }

@@ -9,107 +9,115 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+using System.IO;
+using System.Windows;
+using Microsoft.Win32;
 
 namespace diplomish
 {
     /// <summary>
-    /// Логика взаимодействия для taskCreate.xaml
+    /// Логика взаимодействия для taskAdd.xaml
     /// </summary>
     public partial class taskCreate : Window
     {
-        //public User user3 { get; set; }
+        public string kall { get; set; }
         public taskCreate()
         {
             InitializeComponent();
-            //user3 = user2;
-        }
-
-        private void pas_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged1(object sender, TextChangedEventArgs e)
-        {
-
+            string a = App.diplomchikEntities.file.Where(s => s.id == 1).Select(s => s.file1).ToString();
+            kall = a;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int stat = 0;
-            if (Convert.ToDateTime(start.Text) > DateTime.Now)
-            {
-                stat = 1;
-            }
-            else if (Convert.ToDateTime(start.Text) <= DateTime.Now)
-            {
-                stat = 2;
-            }
-            DateTime now = DateTime.Now;
-            //task task = new task()
-            //{
-            //    title = tas.Text.ToString(),
-            //    start_time = Convert.ToDateTime(start.Text),
-            //    end_time = Convert.ToDateTime(end.Text),
-            //    annotation = annotation.Text.ToString(),
-            //    purpose_time = now,
-            //    user_id = user3.user_id,
-            //    status_id = stat
-
-
-            //};
-            //Connection.Connect1on.task.Add(task);
-            //Connection.Connect1on.SaveChanges();
-            MessageBox.Show("Задача успешно создана");
             this.Close();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void start_LostFocus(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (System.FormatException)
-            {
-
-                MessageBox.Show("Дата должна быть заполнена в формате \"ГГГГ-ММ-ДД ЧЧ:мм:CC\"");
-            }
-
-        }
-
-        private void end_LostFocus(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (Convert.ToDateTime(end.Text) <= Convert.ToDateTime(start.Text))
-                {
-                    MessageBox.Show("Дата конца должна быть позже даты начала");
-                }
-            }
-            catch (System.FormatException)
-            {
-                MessageBox.Show("Дата должна быть заполнена в формате \"ГГГГ-ММ-ДД ЧЧ:мм:CC\"");
-            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "TXT(*.txt)|*.txt|DOCX (.docx)|*.docx*";
+            openFileDialog.Multiselect = true;
+
+            string filedata;
+            if (openFileDialog.ShowDialog() == true)
+            {
+
+                //foreach (string filename in openFileDialog.FileNames)
+                //    filess.Items.Add(Path.GetFileName(filename));
+                filedata = File.ReadAllText(openFileDialog.FileName);
+
+                file file = new file()
+                {
+                    file1 = "негры",
+                    old_extention = ".txt"
+                };
+                App.diplomchikEntities.file.Add(file);
+                App.diplomchikEntities.SaveChanges();
+                this.Close();
+                //byte[] dataArray = new byte[];
+                //using (FileStream
+                //fileStream = new FileStream(openFileDialog.FileName, FileMode.Open))
+                //{
+                //    // Write the data to the file, byte by byte.
+                //    for (int i = 0; i < dataArray.Length; i++)
+                //    {
+                //        fileStream.WriteByte(dataArray[i]);
+
+                //    }
+
+                //    file file = new file()
+                //    {
+                //        file1 = dataArray
+                //    };
+                //    App.diplomchikEntities.file.Add(file);
+                //    //App.diplomchikEntities.SaveChanges();
+
+                //// Set the stream position to the beginning of the file.
+                //    fileStream.Seek(0, SeekOrigin.Begin);
+
+                //    // Read and verify the data.
+                //    for (int i = 0; i < fileStream.Length; i++)
+                //    {
+                //        if (dataArray[i] != fileStream.ReadByte())
+                //        {
+                //            Console.WriteLine("Error writing data.");
+                //            return;
+                //        }
+                //    }
+                //    Console.WriteLine("The data was written to {0} " +
+                //        "and verified.", fileStream.Name);
+                //}
+                //byte[] buffer = File.ReadAllBytes(openFileDialog.FileName);
+                //using (MemoryStream reader = new MemoryStream(fileStream))
+                //{
+                //    reader.BaseStream.CopyTo(bytes);
+
+                //    file file = new file()
+                //    {
+                //        file1 = (reader)
+                //    };
+                //    App.diplomchikEntities.file.Add(reader);
+                //}
+
+            }
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            string path = @"C:\Users\123\Documents\av\MyTest.txt";
+            using (FileStream fs = File.Create(path))
+            {
+                StreamWriter output = new StreamWriter(fs);               
+                string info = App.diplomchikEntities.file.Where(s=>s.id == 31).Select(s => s.file1).FirstOrDefault().ToString();
+                output.Write(info);
+                output.Close();
+                
+            }
+
         }
     }
 }

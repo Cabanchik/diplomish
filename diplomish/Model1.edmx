@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище heroku_ef62046f120538cModel" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище heroku_ef62046f120538cModel" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="branch">
           <Key>
             <PropertyRef Name="id" />
@@ -27,7 +27,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="file" Type="blob" />
+          <Property Name="file" Type="longtext" />
+          <Property Name="old_extention" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="files_int_tasks">
           <Key>
@@ -262,8 +263,7 @@
             <End Role="user" EntitySet="user" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="heroku_ef62046f120538cModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -292,8 +292,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="file1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="file1" Type="String" />
           <NavigationProperty Name="task" Relationship="Self.files_int_tasks" FromRole="file" ToRole="task" />
+          <Property Name="old_extention" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="gender">
           <Key>
@@ -537,6 +538,7 @@
           <EntitySetMapping Name="file">
             <EntityTypeMapping TypeName="heroku_ef62046f120538cModel.file">
               <MappingFragment StoreEntitySet="file">
+                <ScalarProperty Name="old_extention" ColumnName="old_extention" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="file1" ColumnName="file" />
               </MappingFragment>
