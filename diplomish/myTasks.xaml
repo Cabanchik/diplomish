@@ -13,7 +13,7 @@
             <RowDefinition Height="80"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0"  BorderThickness="3" BorderBrush="Black">
+        <Border Grid.Row="0"  BorderThickness="1" BorderBrush="Black" Margin="0,0,0,5">
             <StackPanel Grid.Row="0">
                 <Label Background="#3dccc7" Content="Мои Задачи"></Label>
             </StackPanel>

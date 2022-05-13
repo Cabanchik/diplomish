@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="admWin" Height="450" Width="800" Background="#9ceaef">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-        <Button Content="Добавить сотрудника" BorderThickness="3" BorderBrush="Black">
+        <Button Content="Добавить сотрудника" BorderThickness="3" BorderBrush="Black" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="3"></Setter>
