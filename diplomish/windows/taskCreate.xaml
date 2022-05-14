@@ -24,6 +24,7 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label FontWeight="Bold" FontSize="20" Grid.Row="0" Grid.Column="0" Content="Создание задачи" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" ></Label>
                     <Label FontSize="20" Grid.Row="1" Grid.Column="0" Content="Задача" Margin="0,0,26,0"></Label>
@@ -47,7 +48,8 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                     </TextBox>
 
                     <xctk:DateTimePicker Height="35" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" x:Name="start" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" />
-                    <Label Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Grid.Row="5" Grid.Column="0" Content="Отдел" Margin="0,0,13,0"></Label>
+                    <Label x:Name="labl" Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Grid.Row="5" Grid.Column="0" Content="Отдел" Margin="0,0,13,0"></Label>
+
                     <ComboBox Height="35" x:Name="branch" Grid.Row="5" VerticalContentAlignment="Center" FontSize="15" Grid.Column="1" Background="#3dccc7" BorderBrush="Black" BorderThickness="2">
                         <ComboBox.Resources>
                             <Style TargetType="Border">
@@ -55,8 +57,34 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                             </Style>
                         </ComboBox.Resources>
                     </ComboBox>
-                    <Label Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Grid.Row="6" Grid.Column="0" Content="файл( может быть_" Margin="0,0,13,0"></Label>
-                    <Button BorderThickness="3" Grid.Row="6" Grid.Column="1" BorderBrush="Black" Content="Обзор" Margin="0,5" FontSize="20" Click="Button_Click_1">
+                    <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <CheckBox Content="" FontSize="20" x:Name="branchs" Grid.Row="3" Grid.Column="1" Background="#3dccc7" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2" Checked="branchs_Checked">
+                            <CheckBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"></Setter>
+                                </Style>
+                            </CheckBox.Resources>
+                        </CheckBox>
+                        <Label FontSize="20" Content="Задача для отдела"></Label>
+                        <CheckBox FontSize="20" x:Name="employee"  VerticalContentAlignment="Center" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Checked="employee_Checked" RenderTransformOrigin="0.5,0.5" Height="37" VerticalAlignment="Top">
+                            <CheckBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"></Setter>
+                                </Style>
+                            </CheckBox.Resources>
+                            <CheckBox.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0.749"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </CheckBox.RenderTransform>
+                        </CheckBox>
+                        <Label Content="Задача для сотрудника" FontSize="20"></Label>
+                    </StackPanel>
+                    <Label Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Grid.Row="7" Grid.Column="0" Content="файл( может быть_" Margin="0,0,13,0"></Label>
+                    <Button BorderThickness="3" Grid.Row="7" Grid.Column="1" BorderBrush="Black" Content="Обзор" Margin="0,5" FontSize="20" Click="Button_Click_1">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>
@@ -64,14 +92,8 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <ListBox x:Name="filess" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Background="#3dccc7" BorderBrush="Black" BorderThickness="2">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Label Content="{Binding file1}"></Label>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                    <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Center" >
+
+                    <StackPanel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Center" >
                         <Button BorderThickness="3" BorderBrush="Black" Content="Создать" Margin="0,5" FontSize="20" Click="Button_Click_2">
                             <Button.Resources>
                                 <Style TargetType="Border">
@@ -97,6 +119,16 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                     </Style>
                 </Button.Resources>
             </Button>
+            <ListView x:Name="filess" Grid.Column="0" HorizontalAlignment="Center" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Margin="615,243,44,99" Width="135">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Label FontSize="15" ></Label>
+                            <Label FontSize="15" Content="×"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </Border>
 </Window>

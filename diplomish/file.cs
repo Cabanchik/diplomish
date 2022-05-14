@@ -21,10 +21,14 @@ namespace diplomish
         }
     
         public int id { get; set; }
-        public string file1 { get; set; }
-        public string old_extention { get; set; }
+        public byte[] file1 { get; set; }
+        public string extention { get; set; }
+        public string filename { get; set; }
+        public Nullable<System.DateTime> upload_date { get; set; }
+        public Nullable<int> uploader_id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<task> task { get; set; }
+        public virtual user user { get; set; }
     }
 }
