@@ -160,6 +160,9 @@
     <Compile Include="user.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="windows\editEmployee.xaml.cs">
+      <DependentUpon>editEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\taskCreate.xaml.cs">
       <DependentUpon>taskCreate.xaml</DependentUpon>
     </Compile>
@@ -182,6 +185,10 @@
     <Page Include="myTasks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\editEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

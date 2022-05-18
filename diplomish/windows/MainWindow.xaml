@@ -36,7 +36,7 @@
                 </StackPanel>
             
                          
-                <StackPanel Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Right" MouseDown="StackPanel_MouseDown_2">
                     <Border CornerRadius="20" BorderThickness="3" Background="#68d8d6">
                         <StackPanel Orientation="Horizontal">
                             <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
@@ -46,7 +46,7 @@
 
                             <Ellipse Width="80" Height="80">
                                 <Ellipse.Fill>
-                                    <ImageBrush  />
+                                    <ImageBrush ImageSource="{Binding}" />
                                 </Ellipse.Fill>
                             </Ellipse>
                         </StackPanel>

@@ -25,6 +25,7 @@ namespace diplomish
     {
         private static System.Windows.Threading.DispatcherTimer readDataTimer = new System.Windows.Threading.DispatcherTimer();
         public int a = 0;
+        public user chel { get; set; }
         public MainWindow()
         {
 
@@ -143,6 +144,13 @@ namespace diplomish
         private void sss_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("sss");
+        }
+
+        private void StackPanel_MouseDown_2(object sender, MouseButtonEventArgs e)
+        {
+
+            editEmployee addEmployee = new editEmployee(chel);
+            addEmployee.ShowDialog();
         }
     }
 }

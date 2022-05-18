@@ -27,8 +27,8 @@ namespace diplomish
         public taskCreate()
         {
             InitializeComponent();
-            var br = App.diplomchikEntities.branch.Select(s => s.title).ToList();
-            branch.ItemsSource = br;
+            //var br = App.diplomchikEntities.branch.Select(s => s.title).ToList();
+            //branch.ItemsSource = br;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,10 +41,11 @@ namespace diplomish
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt*;*.docx;*.pptx;*.csv;*.xlsx*";
             openFileDialog.Multiselect = true;
-
+            List<string> s = new List<string>();
             string filedata;
             if (openFileDialog.ShowDialog() == true)
             {
+
                 try
                 {
                     //foreach (string filename in openFileDialog.FileNames)
@@ -53,7 +54,7 @@ namespace diplomish
                     foreach (var item in openFileDialog.FileNames)
                     {
                         FileStream fs = new FileStream(item, FileMode.Open, FileAccess.Read);
-                      
+                        s.Add(Path.GetFileNameWithoutExtension(item));
                         // Create a byte array of file stream length
                         byte[] bytes = System.IO.File.ReadAllBytes(item);
                         var ex = Path.GetExtension(item);
@@ -74,10 +75,11 @@ namespace diplomish
                             
                         };
                         App.diplomchikEntities.file.Add(file);
-                        filess.ItemsSource = item;
+                        
                     }
-                    
-                    
+                    filess.ItemsSource = s;
+
+
                 }
                 catch (Exception)
                 {

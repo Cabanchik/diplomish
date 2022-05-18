@@ -119,16 +119,17 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                     </Style>
                 </Button.Resources>
             </Button>
-            <ListView x:Name="filess" Grid.Column="0" HorizontalAlignment="Center" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Margin="615,243,44,99" Width="135">
-                <ListView.ItemTemplate>
+            <ItemsControl x:Name="filess" Grid.Column="0" HorizontalAlignment="Center" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Margin="138,345,153,-3" Width="503">
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <Label FontSize="15" ></Label>
-                            <Label FontSize="15" Content="×"></Label>
+                        <StackPanel Orientation="Horizontal">
+                            
+                            <Label FontSize="15" Content="{Binding .}"></Label>
+                            <!--<Label FontSize="15" Content="×"></Label>-->
                         </StackPanel>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Grid>
     </Border>
 </Window>

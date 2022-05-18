@@ -286,14 +286,64 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="heroku_ef62046f120538cModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="diplomchikEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="branch" EntityType="heroku_ef62046f120538cModel.branch" />
+          <EntitySet Name="company" EntityType="heroku_ef62046f120538cModel.company" />
+          <EntitySet Name="file" EntityType="heroku_ef62046f120538cModel.file" />
+          <EntitySet Name="gender" EntityType="heroku_ef62046f120538cModel.gender" />
+          <EntitySet Name="role" EntityType="heroku_ef62046f120538cModel.role" />
+          <EntitySet Name="status" EntityType="heroku_ef62046f120538cModel.status" />
+          <EntitySet Name="task" EntityType="heroku_ef62046f120538cModel.task" />
+          <EntitySet Name="user" EntityType="heroku_ef62046f120538cModel.user" />
+          <AssociationSet Name="AFSSFA" Association="heroku_ef62046f120538cModel.AFSSFA">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="pfd" Association="heroku_ef62046f120538cModel.pfd">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="ssss" Association="heroku_ef62046f120538cModel.ssss">
+            <End Role="company" EntitySet="company" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="fffff" Association="heroku_ef62046f120538cModel.fffff">
+            <End Role="user" EntitySet="user" />
+            <End Role="file" EntitySet="file" />
+          </AssociationSet>
+          <AssociationSet Name="sad" Association="heroku_ef62046f120538cModel.sad">
+            <End Role="gender" EntitySet="gender" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="vcx" Association="heroku_ef62046f120538cModel.vcx">
+            <End Role="role" EntitySet="role" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FGD" Association="heroku_ef62046f120538cModel.FGD">
+            <End Role="status" EntitySet="status" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="f2" Association="heroku_ef62046f120538cModel.f2">
+            <End Role="user" EntitySet="user" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="QDSAD" Association="heroku_ef62046f120538cModel.QDSAD">
+            <End Role="user" EntitySet="user" />
+            <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="files_int_tasks" Association="heroku_ef62046f120538cModel.files_int_tasks">
+            <End Role="task" EntitySet="task" />
+            <End Role="file" EntitySet="file" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="branch">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="task" Relationship="Self.AFSSFA" FromRole="branch" ToRole="task" />
-          <NavigationProperty Name="user" Relationship="Self.pfd" FromRole="branch" ToRole="user" />
+          <NavigationProperty Name="task" Relationship="heroku_ef62046f120538cModel.AFSSFA" FromRole="branch" ToRole="task" />
+          <NavigationProperty Name="user" Relationship="heroku_ef62046f120538cModel.pfd" FromRole="branch" ToRole="user" />
         </EntityType>
         <EntityType Name="company">
           <Key>
@@ -304,20 +354,20 @@
           <Property Name="country" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="inn" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="contact_info" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="user" Relationship="Self.ssss" FromRole="company" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="heroku_ef62046f120538cModel.ssss" FromRole="company" ToRole="user" />
         </EntityType>
         <EntityType Name="file">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="file1" Type="Binary" />
-          <NavigationProperty Name="task" Relationship="Self.files_int_tasks" FromRole="file" ToRole="task" />
+          <Property Name="file1" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="extention" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="filename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="upload_date" Type="DateTime" />
           <Property Name="uploader_id" Type="Int32" />
           <NavigationProperty Name="user" Relationship="heroku_ef62046f120538cModel.fffff" FromRole="file" ToRole="user" />
+          <NavigationProperty Name="task" Relationship="heroku_ef62046f120538cModel.files_int_tasks" FromRole="file" ToRole="task" />
         </EntityType>
         <EntityType Name="gender">
           <Key>
@@ -325,7 +375,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="user" Relationship="Self.sad" FromRole="gender" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="heroku_ef62046f120538cModel.sad" FromRole="gender" ToRole="user" />
         </EntityType>
         <EntityType Name="role">
           <Key>
@@ -333,7 +383,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="user" Relationship="Self.vcx" FromRole="role" ToRole="user" />
+          <NavigationProperty Name="user" Relationship="heroku_ef62046f120538cModel.vcx" FromRole="role" ToRole="user" />
         </EntityType>
         <EntityType Name="status">
           <Key>
@@ -341,7 +391,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="task" Relationship="Self.FGD" FromRole="status" ToRole="task" />
+          <NavigationProperty Name="task" Relationship="heroku_ef62046f120538cModel.FGD" FromRole="status" ToRole="task" />
         </EntityType>
         <EntityType Name="task">
           <Key>
@@ -359,11 +409,11 @@
           <Property Name="brach_id" Type="Int32" />
           <Property Name="file_id" Type="Int32" />
           <Property Name="initiator_id" Type="Int32" />
-          <NavigationProperty Name="branch" Relationship="Self.AFSSFA" FromRole="task" ToRole="branch" />
-          <NavigationProperty Name="status" Relationship="Self.FGD" FromRole="task" ToRole="status" />
-          <NavigationProperty Name="user" Relationship="Self.f2" FromRole="task" ToRole="user" />
-          <NavigationProperty Name="user1" Relationship="Self.QDSAD" FromRole="task" ToRole="user" />
-          <NavigationProperty Name="file" Relationship="Self.files_int_tasks" FromRole="task" ToRole="file" />
+          <NavigationProperty Name="branch" Relationship="heroku_ef62046f120538cModel.AFSSFA" FromRole="task" ToRole="branch" />
+          <NavigationProperty Name="status" Relationship="heroku_ef62046f120538cModel.FGD" FromRole="task" ToRole="status" />
+          <NavigationProperty Name="user" Relationship="heroku_ef62046f120538cModel.f2" FromRole="task" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="heroku_ef62046f120538cModel.QDSAD" FromRole="task" ToRole="user" />
+          <NavigationProperty Name="file" Relationship="heroku_ef62046f120538cModel.files_int_tasks" FromRole="task" ToRole="file" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -380,17 +430,17 @@
           <Property Name="role_id" Type="Int32" />
           <Property Name="branch_id" Type="Int32" />
           <Property Name="company_id" Type="Int32" />
-          <NavigationProperty Name="branch" Relationship="Self.pfd" FromRole="user" ToRole="branch" />
-          <NavigationProperty Name="company" Relationship="Self.ssss" FromRole="user" ToRole="company" />
-          <NavigationProperty Name="gender" Relationship="Self.sad" FromRole="user" ToRole="gender" />
-          <NavigationProperty Name="role" Relationship="Self.vcx" FromRole="user" ToRole="role" />
-          <NavigationProperty Name="task" Relationship="Self.f2" FromRole="user" ToRole="task" />
-          <NavigationProperty Name="task1" Relationship="Self.QDSAD" FromRole="user" ToRole="task" />
+          <NavigationProperty Name="branch" Relationship="heroku_ef62046f120538cModel.pfd" FromRole="user" ToRole="branch" />
+          <NavigationProperty Name="company" Relationship="heroku_ef62046f120538cModel.ssss" FromRole="user" ToRole="company" />
           <NavigationProperty Name="file" Relationship="heroku_ef62046f120538cModel.fffff" FromRole="user" ToRole="file" />
+          <NavigationProperty Name="gender" Relationship="heroku_ef62046f120538cModel.sad" FromRole="user" ToRole="gender" />
+          <NavigationProperty Name="role" Relationship="heroku_ef62046f120538cModel.vcx" FromRole="user" ToRole="role" />
+          <NavigationProperty Name="task" Relationship="heroku_ef62046f120538cModel.f2" FromRole="user" ToRole="task" />
+          <NavigationProperty Name="task1" Relationship="heroku_ef62046f120538cModel.QDSAD" FromRole="user" ToRole="task" />
         </EntityType>
         <Association Name="AFSSFA">
-          <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
-          <End Role="task" Type="Self.task" Multiplicity="*" />
+          <End Type="heroku_ef62046f120538cModel.branch" Role="branch" Multiplicity="0..1" />
+          <End Type="heroku_ef62046f120538cModel.task" Role="task" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="branch">
               <PropertyRef Name="id" />
@@ -401,8 +451,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="pfd">
-          <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
-          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <End Type="heroku_ef62046f120538cModel.branch" Role="branch" Multiplicity="0..1" />
+          <End Type="heroku_ef62046f120538cModel.user" Role="user" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="branch">
               <PropertyRef Name="id" />
@@ -413,8 +463,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ssss">
-          <End Role="company" Type="Self.company" Multiplicity="0..1" />
-          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <End Type="heroku_ef62046f120538cModel.company" Role="company" Multiplicity="0..1" />
+          <End Type="heroku_ef62046f120538cModel.user" Role="user" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="company">
               <PropertyRef Name="id" />
@@ -424,120 +474,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="sad">
-          <End Role="gender" Type="Self.gender" Multiplicity="0..1" />
-          <End Role="user" Type="Self.user" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="gender">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="user">
-              <PropertyRef Name="gender_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="vcx">
-          <End Role="role" Type="Self.role" Multiplicity="0..1" />
-          <End Role="user" Type="Self.user" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="role">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="user">
-              <PropertyRef Name="role_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FGD">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
-          <End Role="task" Type="Self.task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="status">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="task">
-              <PropertyRef Name="status_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="f2">
-          <End Role="user" Type="Self.user" Multiplicity="0..1" />
-          <End Role="task" Type="Self.task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="task">
-              <PropertyRef Name="user_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="QDSAD">
-          <End Role="user" Type="Self.user" Multiplicity="0..1" />
-          <End Role="task" Type="Self.task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="task">
-              <PropertyRef Name="initiator_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="files_int_tasks">
-          <End Role="task" Type="Self.task" Multiplicity="*" />
-          <End Role="file" Type="Self.file" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="diplomchikEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="branch" EntityType="Self.branch" />
-          <EntitySet Name="company" EntityType="Self.company" />
-          <EntitySet Name="file" EntityType="Self.file" />
-          <EntitySet Name="gender" EntityType="Self.gender" />
-          <EntitySet Name="role" EntityType="Self.role" />
-          <EntitySet Name="status" EntityType="Self.status" />
-          <EntitySet Name="task" EntityType="Self.task" />
-          <EntitySet Name="user" EntityType="Self.user" />
-          <AssociationSet Name="AFSSFA" Association="Self.AFSSFA">
-            <End Role="branch" EntitySet="branch" />
-            <End Role="task" EntitySet="task" />
-          </AssociationSet>
-          <AssociationSet Name="pfd" Association="Self.pfd">
-            <End Role="branch" EntitySet="branch" />
-            <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <AssociationSet Name="ssss" Association="Self.ssss">
-            <End Role="company" EntitySet="company" />
-            <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <AssociationSet Name="sad" Association="Self.sad">
-            <End Role="gender" EntitySet="gender" />
-            <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <AssociationSet Name="vcx" Association="Self.vcx">
-            <End Role="role" EntitySet="role" />
-            <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <AssociationSet Name="FGD" Association="Self.FGD">
-            <End Role="status" EntitySet="status" />
-            <End Role="task" EntitySet="task" />
-          </AssociationSet>
-          <AssociationSet Name="f2" Association="Self.f2">
-            <End Role="user" EntitySet="user" />
-            <End Role="task" EntitySet="task" />
-          </AssociationSet>
-          <AssociationSet Name="QDSAD" Association="Self.QDSAD">
-            <End Role="user" EntitySet="user" />
-            <End Role="task" EntitySet="task" />
-          </AssociationSet>
-          <AssociationSet Name="files_int_tasks" Association="Self.files_int_tasks">
-            <End Role="task" EntitySet="task" />
-            <End Role="file" EntitySet="file" />
-          </AssociationSet>
-          <AssociationSet Name="fffff" Association="heroku_ef62046f120538cModel.fffff">
-            <End Role="user" EntitySet="user" />
-            <End Role="file" EntitySet="file" />
-          </AssociationSet>
-        </EntityContainer>
         <Association Name="fffff">
           <End Type="heroku_ef62046f120538cModel.user" Role="user" Multiplicity="0..1" />
           <End Type="heroku_ef62046f120538cModel.file" Role="file" Multiplicity="*" />
@@ -550,6 +486,70 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="sad">
+          <End Type="heroku_ef62046f120538cModel.gender" Role="gender" Multiplicity="0..1" />
+          <End Type="heroku_ef62046f120538cModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="gender_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vcx">
+          <End Type="heroku_ef62046f120538cModel.role" Role="role" Multiplicity="0..1" />
+          <End Type="heroku_ef62046f120538cModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FGD">
+          <End Type="heroku_ef62046f120538cModel.status" Role="status" Multiplicity="0..1" />
+          <End Type="heroku_ef62046f120538cModel.task" Role="task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="f2">
+          <End Type="heroku_ef62046f120538cModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="heroku_ef62046f120538cModel.task" Role="task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QDSAD">
+          <End Type="heroku_ef62046f120538cModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="heroku_ef62046f120538cModel.task" Role="task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="task">
+              <PropertyRef Name="initiator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="files_int_tasks">
+          <End Type="heroku_ef62046f120538cModel.task" Role="task" Multiplicity="*" />
+          <End Type="heroku_ef62046f120538cModel.file" Role="file" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -559,19 +559,19 @@
           <EntitySetMapping Name="branch">
             <EntityTypeMapping TypeName="heroku_ef62046f120538cModel.branch">
               <MappingFragment StoreEntitySet="branch">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="company">
             <EntityTypeMapping TypeName="heroku_ef62046f120538cModel.company">
               <MappingFragment StoreEntitySet="company">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="inn" ColumnName="inn" />
                 <ScalarProperty Name="contact_info" ColumnName="contact_info" />
+                <ScalarProperty Name="inn" ColumnName="inn" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -582,76 +582,76 @@
                 <ScalarProperty Name="upload_date" ColumnName="upload_date" />
                 <ScalarProperty Name="filename" ColumnName="filename" />
                 <ScalarProperty Name="extention" ColumnName="extention" />
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="file1" ColumnName="file" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="gender">
             <EntityTypeMapping TypeName="heroku_ef62046f120538cModel.gender">
               <MappingFragment StoreEntitySet="gender">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="role">
             <EntityTypeMapping TypeName="heroku_ef62046f120538cModel.role">
               <MappingFragment StoreEntitySet="role">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="status">
             <EntityTypeMapping TypeName="heroku_ef62046f120538cModel.status">
               <MappingFragment StoreEntitySet="status">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="task">
             <EntityTypeMapping TypeName="heroku_ef62046f120538cModel.task">
               <MappingFragment StoreEntitySet="task">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="purpose_time" ColumnName="purpose_time" />
-                <ScalarProperty Name="start_time" ColumnName="start_time" />
-                <ScalarProperty Name="annotation" ColumnName="annotation" />
-                <ScalarProperty Name="end_time" ColumnName="end_time" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
-                <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="brach_id" ColumnName="brach_id" />
-                <ScalarProperty Name="file_id" ColumnName="file_id" />
                 <ScalarProperty Name="initiator_id" ColumnName="initiator_id" />
+                <ScalarProperty Name="file_id" ColumnName="file_id" />
+                <ScalarProperty Name="brach_id" ColumnName="brach_id" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="annotation" ColumnName="annotation" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="purpose_time" ColumnName="purpose_time" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="user">
             <EntityTypeMapping TypeName="heroku_ef62046f120538cModel.user">
               <MappingFragment StoreEntitySet="user">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
-                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
-                <ScalarProperty Name="user_pic" ColumnName="user_pic" />
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="gender_id" ColumnName="gender_id" />
-                <ScalarProperty Name="role_id" ColumnName="role_id" />
-                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
                 <ScalarProperty Name="company_id" ColumnName="company_id" />
+                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="gender_id" ColumnName="gender_id" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="user_pic" ColumnName="user_pic" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="files_int_tasks" TypeName="heroku_ef62046f120538cModel.files_int_tasks" StoreEntitySet="files_int_tasks">
-            <EndProperty Name="task">
-              <ScalarProperty Name="id" ColumnName="task_id" />
-            </EndProperty>
             <EndProperty Name="file">
               <ScalarProperty Name="id" ColumnName="file_id" />
+            </EndProperty>
+            <EndProperty Name="task">
+              <ScalarProperty Name="id" ColumnName="task_id" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
