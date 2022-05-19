@@ -40,7 +40,7 @@ namespace diplomish
             {
                 errorMes.Text = "Все поля должны быть заполнены!";
             }
-            else if (App.diplomchikEntities.user.Where(u => u.login == login.ToString()).FirstOrDefault() != null)
+            else if (App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString()).FirstOrDefault() != null)
             {
                 MessageBox.Show("Неверный пароль!");
 
