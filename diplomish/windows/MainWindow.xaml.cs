@@ -26,7 +26,7 @@ namespace diplomish
         private static System.Windows.Threading.DispatcherTimer readDataTimer = new System.Windows.Threading.DispatcherTimer();
         public int a = 0;
         public user chel { get; set; }
-        public MainWindow()
+        public MainWindow(user user)
         {
 
             InitializeComponent();

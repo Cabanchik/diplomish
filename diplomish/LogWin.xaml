@@ -132,7 +132,7 @@
                     </StackPanel>
 
                     <!-- Login Button -->
-                    <Button Grid.Row="3" FontSize="25" HorizontalAlignment="Center" BorderThickness="3" BorderBrush="Black" VerticalAlignment="Center" Width="250" Height="70" Content="Войти">
+                    <Button Grid.Row="3" FontSize="25" HorizontalAlignment="Center" BorderThickness="3" BorderBrush="Black" VerticalAlignment="Center" Width="250" Height="70" Content="Войти" Click="LoginClick">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>
@@ -142,7 +142,7 @@
 
                 </Grid>
             </Border>
-            <Calendar x:Name="calen"></Calendar>
+            
 
             <!-- Register Page Button -->
 
