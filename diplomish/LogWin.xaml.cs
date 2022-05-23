@@ -34,6 +34,7 @@ namespace diplomish
             {
                 MainWindow mainWindow = new MainWindow(CurrentUser);
                 mainWindow.Show();
+                App.company = CurrentUser.company_id;
                 this.Close();
             }
             else if (login.Text == "" || pas.Text == "")

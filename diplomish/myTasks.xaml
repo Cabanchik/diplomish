@@ -7,28 +7,28 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="myTasks">
-    
+
     <Grid Background="#9ceaef">
-        <Grid.RowDefinitions>
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Border Grid.Row="0"  BorderThickness="1" BorderBrush="Black" Margin="0,0,0,5">
+        </Grid.RowDefinitions>-->
+        <!--<Border Grid.Row="0"  BorderThickness="1" BorderBrush="Black" Margin="0,0,0,5">
             <StackPanel Grid.Row="0">
                 <Label Background="#3dccc7" Content="Мои Задачи"></Label>
             </StackPanel>
-        </Border>
-        <WrapPanel Orientation="Horizontal" Grid.Row="1">
-            <ListView x:Name="brancch" VerticalAlignment="Top" VerticalContentAlignment="Top" Background="#9ceaef">
-                
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"></WrapPanel>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>                
-                <DataTemplate>
-                    <StackPanel VerticalAlignment="Top">
+        </Border>-->
+        <WrapPanel Orientation="Horizontal" Grid.Row="1" Margin="5">
+            <ItemsControl x:Name="brancch" VerticalAlignment="Top" VerticalContentAlignment="Top" Background="#9ceaef">
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel VerticalAlignment="Top" Margin="5,0">
                             <Border CornerRadius="10" BorderBrush="Black" Margin="0,0,0,-15" VerticalAlignment="Top" Panel.ZIndex="2">
                                 <Border.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -38,7 +38,7 @@
                                 </Border.Background>
                                 <TextBlock HorizontalAlignment="Center" Foreground="#E1BB80" FontSize="25" TextWrapping="Wrap" Text="{Binding title}"/>
                             </Border>
-                            <StackPanel>                            
+                            <StackPanel>
                                 <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
                                     <ListView.Resources>
                                         <Style TargetType="{x:Type Border}">
@@ -51,35 +51,35 @@
                                             <StackPanel>
                                                 <StackPanel Orientation="Vertical">
                                                     <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
-                                                
+
                                                 </StackPanel>
                                                 <Rectangle Fill="#FFBF927E" 
                                                            HorizontalAlignment="Stretch"
                                                            VerticalAlignment="Bottom"
                                                            Height="2"                                             
                                                            />
-                                                
+
                                             </StackPanel>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-           
-        </ListView>
-            <ListView x:Name="brancch2" Background="#9ceaef">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"></WrapPanel>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
 
-                <DataTemplate>
-                    <StackPanel>
-                        <Border CornerRadius="10" BorderBrush="Black" Margin="0,0,0,-15" VerticalAlignment="Top" Panel.ZIndex="2">
+            </ItemsControl>
+            <ItemsControl x:Name="brancch2" Background="#9ceaef">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+
+                    <DataTemplate>
+                        <StackPanel Margin="5,0">
+                            <Border CornerRadius="10" BorderBrush="Black" Margin="0,0,0,-15" VerticalAlignment="Top" Panel.ZIndex="2">
                                 <Border.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="#FF7E5D4E" Offset="0"/>
@@ -96,8 +96,8 @@
                                 </TextBlock>
 
 
-                        </Border>
-                        <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch" >
+                            </Border>
+                            <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch" >
                                 <ListView.Resources>
                                     <Style TargetType="{x:Type Border}">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -122,10 +122,10 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
 
-        </ListView>
+            </ItemsControl>
         </WrapPanel>
     </Grid>
 </Page>

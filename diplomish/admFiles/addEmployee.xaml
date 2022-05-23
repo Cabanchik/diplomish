@@ -1,0 +1,130 @@
+﻿<Page x:Class="diplomish.addEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:diplomish"
+        mc:Ignorable="d"
+        Title="addEmployee" Height="406.56" Width="538.369" Background="#9ceaef" >
+
+    <Grid Background="#9ceaef" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,10,0">
+                <TextBlock x:Name="lbl" HorizontalAlignment="Center" Text="Перенесите желаемую картинку"></TextBlock>
+                <Ellipse x:Name="pic" Width="200" Height="200" AllowDrop="true" Drop="Ellipse_Drop" >
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="dicpic" ImageSource="{Binding user_pic, TargetNullValue={StaticResource nullablePic}}" />
+                    </Ellipse.Fill>
+                </Ellipse>
+
+            </StackPanel>
+
+            <Grid Width="302" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+
+
+                </Grid.RowDefinitions>
+                <Label FontSize="20" Grid.Row="0" Grid.Column="0" Content="Регистрация" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" ></Label>
+                <Label FontSize="20" Grid.Row="1" Grid.Column="0" Content="Имя"></Label>
+                <Label FontSize="20" Grid.Row="2" Grid.Column="0" Content="Фамилия"></Label>
+                <Label FontSize="20" Grid.Row="3" Grid.Column="0" Content="Пол"></Label>
+                <Label FontSize="20" Grid.Row="4" Grid.Column="0" Content="Дата рождения"></Label>
+
+                <Label FontSize="20" Grid.Row="5" Grid.Column="0" Content="Логин"></Label>
+                <Label FontSize="20" Grid.Row="6" Grid.Column="0" Content="Пароль"></Label>
+                <Label FontSize="20" Grid.Row="7" Grid.Column="0" Content="Отдел"></Label>
+                <ComboBox Grid.Row="7" Grid.Column="1" x:Name="brnch"></ComboBox>
+                <TextBox Text="{Binding surname}" x:Name="surname" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                    <CheckBox Content="М" FontSize="20" x:Name="sex" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2" Checked="sex_Checked" Background="#3dccc7">
+                        <CheckBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+                            </Style>
+                        </CheckBox.Resources>
+                    </CheckBox>
+                    <CheckBox Background="#3dccc7" Content="Ж" FontSize="20" x:Name="sex2"  VerticalContentAlignment="Center"  BorderBrush="Black" BorderThickness="2" Checked="sex2_Checked" RenderTransformOrigin="0.5,0.5" Height="37" VerticalAlignment="Top">
+                        <CheckBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+                            </Style>
+                        </CheckBox.Resources>
+                        <CheckBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.749"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </CheckBox.RenderTransform>
+                    </CheckBox>
+                </StackPanel>
+
+                <TextBox Text="{Binding login}" x:Name="log" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <DatePicker Text="{Binding birth_date, ConverterCulture=en-GB}" x:Name="dr" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Text="***" x:Name="pas" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <TextBox Text="{Binding name}" x:Name="name"  Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2" >
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+                <Button Background="Transparent" BorderThickness="2" BorderBrush="Black" Click="sussy_Click" Visibility="Collapsed" x:Name="sussy" Width="100" Grid.ColumnSpan="2" Content="Сохранить" Grid.Row="8" Grid.Column="0" Height="40" Margin="0,5,0,0">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button BorderThickness="2" BorderBrush="Black" Visibility="Visible" x:Name="edit1" Width="100" Grid.ColumnSpan="2" Content="Сохранить" Grid.Row="8" Grid.Column="0" Height="40" Margin="0,5,0,0" Click="saveClick">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+
+</Page>

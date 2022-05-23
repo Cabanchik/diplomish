@@ -40,13 +40,13 @@
                     <Border CornerRadius="20" BorderThickness="3" Background="#68d8d6">
                         <StackPanel Orientation="Horizontal">
                             <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
-                                <Label FontSize="20" FontWeight="Bold" Content="{Binding name}" FontFamily="/kursach;component/resoursess/#Edo SZ" ></Label>
-                                <Label FontSize="20" FontWeight="Bold" Content="{Binding surname}" FontFamily="/kursach;component/resoursess/#Edo SZ"></Label>
+                                <Label FontSize="20" FontWeight="Bold" Content="{Binding name}"></Label>
+                                <Label FontSize="20" FontWeight="Bold" Content="{Binding surname}"></Label>
                             </StackPanel>
 
                             <Ellipse Width="80" Height="80">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding}" />
+                                    <ImageBrush ImageSource="{Binding user_pic, TargetNullValue={StaticResource nullablePic}}" />
                                 </Ellipse.Fill>
                             </Ellipse>
                         </StackPanel>
@@ -115,7 +115,7 @@
                     <Image Source="/rez/ico2.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="nOurTaskLbl" Content="Задачи на мне"></Label>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Background="#07beb8">
+                <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="StackPanel_MouseDown_3">
                     <StackPanel.Resources>
                         <Style TargetType="StackPanel">
                             <Style.Triggers>
@@ -222,7 +222,7 @@
 
                 </StackPanel>
                 <Frame x:Name="sss" Margin="5" MinWidth="420" MouseDoubleClick="sss_MouseDoubleClick"></Frame>
-                <Label>sasun</Label>
+                
 
             </StackPanel>
         </Border>

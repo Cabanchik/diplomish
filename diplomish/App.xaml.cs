@@ -15,5 +15,6 @@ namespace diplomish
     {
         public static readonly Duration openCloseDuraion = new Duration(TimeSpan.FromSeconds(0.5));
         public static diplomchikEntities diplomchikEntities = new diplomchikEntities();
+        public static int? company;
     }
 }

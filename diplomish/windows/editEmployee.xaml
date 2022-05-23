@@ -19,7 +19,7 @@
                     <TextBlock x:Name="lbl" Visibility="Collapsed" HorizontalAlignment="Center" Text="Перенесите желаемую картинку"></TextBlock>
                     <Ellipse x:Name="pic" Width="200" Height="200" AllowDrop="False" Drop="Ellipse_Drop">
                         <Ellipse.Fill>
-                            <ImageBrush x:Name="dicpic" ImageSource="{Binding user_pic, TargetNullValue={StaticResource nigger}}" />
+                            <ImageBrush x:Name="dicpic" ImageSource="{Binding user_pic, TargetNullValue={StaticResource nullablePic}}" />
                         </Ellipse.Fill>
                     </Ellipse>
 
@@ -51,6 +51,8 @@
 
                     <Label FontSize="20" Grid.Row="5" Grid.Column="0" Content="Логин"></Label>
                     <Label FontSize="20" Grid.Row="6" Grid.Column="0" Content="Пароль"></Label>
+                    <Label FontSize="20" Grid.Row="7" Grid.Column="0" Content="Отдел"></Label>
+                    <ComboBox Grid.Row="7" Grid.Column="1" x:Name="brnch"></ComboBox>
 
                     <TextBox Text="{Binding surname}" IsReadOnly="True" x:Name="surname" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2">
                         <TextBox.Resources>
@@ -92,7 +94,7 @@
                         </TextBox.Resources>
                     </TextBox>
                     <DatePicker Text="{Binding birth_date, ConverterCulture=en-GB}" IsEnabled="False" x:Name="dr" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBox Text="***" IsReadOnly="True" x:Name="pas" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
+                    <TextBox  Text="***" IsReadOnly="True" x:Name="pas" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>

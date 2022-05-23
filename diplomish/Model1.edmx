@@ -228,15 +228,15 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище heroku_ef62046f120538cModelContainer">
-          <EntitySet Name="branch" EntityType="Self.branch" Schema="heroku_ef62046f120538c" store:Type="Tables" />
-          <EntitySet Name="company" EntityType="Self.company" Schema="heroku_ef62046f120538c" store:Type="Tables" />
-          <EntitySet Name="file" EntityType="Self.file" Schema="heroku_ef62046f120538c" store:Type="Tables" />
-          <EntitySet Name="files_int_tasks" EntityType="Self.files_int_tasks" Schema="heroku_ef62046f120538c" store:Type="Tables" />
-          <EntitySet Name="gender" EntityType="Self.gender" Schema="heroku_ef62046f120538c" store:Type="Tables" />
-          <EntitySet Name="role" EntityType="Self.role" Schema="heroku_ef62046f120538c" store:Type="Tables" />
-          <EntitySet Name="status" EntityType="Self.status" Schema="heroku_ef62046f120538c" store:Type="Tables" />
-          <EntitySet Name="task" EntityType="Self.task" Schema="heroku_ef62046f120538c" store:Type="Tables" />
-          <EntitySet Name="user" EntityType="Self.user" Schema="heroku_ef62046f120538c" store:Type="Tables" />
+          <EntitySet Name="branch" EntityType="Self.branch" Schema="" store:Type="Tables" />
+          <EntitySet Name="company" EntityType="Self.company" Schema="" store:Type="Tables" />
+          <EntitySet Name="file" EntityType="Self.file" Schema="" store:Type="Tables" />
+          <EntitySet Name="files_int_tasks" EntityType="Self.files_int_tasks" Schema="" store:Type="Tables" />
+          <EntitySet Name="gender" EntityType="Self.gender" Schema="" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="" store:Type="Tables" />
+          <EntitySet Name="status" EntityType="Self.status" Schema="" store:Type="Tables" />
+          <EntitySet Name="task" EntityType="Self.task" Schema="" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="" store:Type="Tables" />
           <AssociationSet Name="AFSSFA" Association="Self.AFSSFA">
             <End Role="branch" EntitySet="branch" />
             <End Role="task" EntitySet="task" />

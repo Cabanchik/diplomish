@@ -22,11 +22,27 @@ namespace diplomish
         public admWin()
         {
             InitializeComponent();
+            admFiles.admPage addEmployee = new admFiles.admPage();
+            sa.Content = addEmployee;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            if (sa.CanGoBack == true)
+            {
+                sa.GoBack();
+
+            }
         }
     }
 }

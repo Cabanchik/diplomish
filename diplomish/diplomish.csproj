@@ -103,10 +103,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="addEmployee.xaml.cs">
+    <Compile Include="admFiles\addEmployee.xaml.cs">
       <DependentUpon>addEmployee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="admWin.xaml.cs">
+    <Compile Include="admFiles\admPage.xaml.cs">
+      <DependentUpon>admPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admFiles\admWin.xaml.cs">
       <DependentUpon>admWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="branch.cs">
@@ -166,11 +169,15 @@
     <Compile Include="windows\taskCreate.xaml.cs">
       <DependentUpon>taskCreate.xaml</DependentUpon>
     </Compile>
-    <Page Include="addEmployee.xaml">
+    <Page Include="admFiles\addEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="admWin.xaml">
+    <Page Include="admFiles\admPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="admFiles\admWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,9 +261,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="rez\ico.png" />
     <Resource Include="rez\ico2.png" />
@@ -284,6 +289,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="rez\cross.png" />
+    <Resource Include="rez\1.jpg" />
     <Resource Include="rez\cal.png" />
     <Resource Include="rez\lock.png" />
   </ItemGroup>

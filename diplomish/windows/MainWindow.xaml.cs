@@ -29,6 +29,8 @@ namespace diplomish
         public MainWindow(user user)
         {
 
+            chel = user;
+            this.DataContext = chel;
             InitializeComponent();
             mainFrame.NavigationService.Navigate(new mineTasks());
             ourTaskLbl.Opacity = 0;
@@ -151,6 +153,12 @@ namespace diplomish
 
             editEmployee addEmployee = new editEmployee(chel);
             addEmployee.ShowDialog();
+        }
+
+        private void StackPanel_MouseDown_3(object sender, MouseButtonEventArgs e)
+        {
+            admWin admWin = new admWin();
+            admWin.ShowDialog();
         }
     }
 }

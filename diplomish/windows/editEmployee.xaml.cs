@@ -28,7 +28,7 @@ namespace diplomish
             InitializeComponent();
             user1 = user;
             this.DataContext = user1;
-            if (user1.gender_id == 1)
+            if (user.gender_id == 1)
             {
                 sex.IsChecked = true;
                 sex2.IsChecked = false;
@@ -39,7 +39,8 @@ namespace diplomish
                 sex2.IsChecked = true;
             }
 
-
+            brnch.ItemsSource = App.diplomchikEntities.branch.Select(s => s.title).ToList();
+            brnch.Text = user1.branch.title;
         }
 
         private void surname_TextChanged(object sender, TextChangedEventArgs e)
@@ -96,6 +97,8 @@ namespace diplomish
             pas.IsReadOnly = false;
             lbl.Visibility = Visibility.Visible;
             pas.Text = Convert.ToString(user1.password);
+            brnch.IsReadOnly = false;
+            
         }
         private void sex2_Checked(object sender, RoutedEventArgs e)
         {
@@ -124,11 +127,12 @@ namespace diplomish
             dr.IsEnabled = false;
             log.IsReadOnly = true;
             pas.IsReadOnly = true;
+            brnch.IsReadOnly = true;
             lbl.Visibility = Visibility.Collapsed;
 
             if (sex2.IsChecked == true)
             {
-                user1.gender_id = 2;
+                user1.gender_id = 11;
             }
             else if (sex.IsChecked == true)
             {
@@ -140,6 +144,8 @@ namespace diplomish
             user1.birth_date = Convert.ToDateTime(dr.Text);
             user1.login = log.Text.ToString();
             user1.password = pas.Text.ToString();
+            var br = App.diplomchikEntities.branch.Where(s => s.title == brnch.SelectedItem.ToString()).Select(s => s.id).FirstOrDefault().ToString();
+            user1.branch_id = Convert.ToInt32(br);
             App.diplomchikEntities.SaveChanges();
             pas.Text = "***";
         }

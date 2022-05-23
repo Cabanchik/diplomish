@@ -5,7 +5,7 @@
              StartupUri="LogWin.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <BitmapImage x:Key="nigger" UriSource="../resoursess/anon.jpg"></BitmapImage>
+            <BitmapImage x:Key="nullablePic" UriSource="../rez/1.jpg"></BitmapImage>
             <FontFamily x:Key="yakuza" >resoursess/edosz.ttf</FontFamily>
             <Style TargetType="Button">
                 <Setter Property="Background" Value="#3dccc7"></Setter>
