@@ -108,7 +108,7 @@ namespace diplomish
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            taskCreate taskCreate = new taskCreate();
+            taskCreate taskCreate = new taskCreate(chel);
             taskCreate.ShowDialog();
         }
 

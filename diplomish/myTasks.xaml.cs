@@ -25,7 +25,7 @@ namespace diplomish
             InitializeComponent();
             //var p = App.diplomchikEntities.branch.Where(s=> s.task !=null).ToList();
             
-                       
+                      
             brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0).ToList();
             brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0).ToList();
         }

@@ -5,7 +5,7 @@ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:local="clr-namespace:diplomish" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 mc:Ignorable="d"
-Title="Добавление задачи" Height="450" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+Title="Добавление задачи" Height="600" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Border CornerRadius="50" BorderThickness="3" BorderBrush="#3dccc7" Background="#9ceaef">
         <Grid>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
@@ -17,6 +17,7 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="40" ></RowDefinition>
+                        <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -48,7 +49,7 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                     </TextBox>
 
                     <xctk:DateTimePicker Height="35" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" x:Name="start" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" />
-                    <Label x:Name="labl" Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Grid.Row="5" Grid.Column="0" Content="Отдел" Margin="0,0,13,0"></Label>
+                    <Label x:Name="labl" Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Grid.Row="5" Grid.Column="0" Content="Сотрудник" Margin="0,0,13,0"></Label>
 
                     <ComboBox Height="35" x:Name="branch" Grid.Row="5" VerticalContentAlignment="Center" FontSize="15" Grid.Column="1" Background="#3dccc7" BorderBrush="Black" BorderThickness="2">
                         <ComboBox.Resources>
@@ -66,7 +67,7 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                             </CheckBox.Resources>
                         </CheckBox>
                         <Label FontSize="20" Content="Задача для отдела"></Label>
-                        <CheckBox FontSize="20" x:Name="employee"  VerticalContentAlignment="Center" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Checked="employee_Checked" RenderTransformOrigin="0.5,0.5" Height="37" VerticalAlignment="Top">
+                        <CheckBox IsChecked="True" FontSize="20" x:Name="employee"  VerticalContentAlignment="Center" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Checked="employee_Checked" RenderTransformOrigin="0.5,0.5" Height="37" VerticalAlignment="Top">
                             <CheckBox.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="10"></Setter>
@@ -92,8 +93,43 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                             </Style>
                         </Button.Resources>
                     </Button>
+                   
+                    <ItemsControl Grid.Column="0" Grid.Row="9" x:Name="filess" Visibility="Collapsed" HorizontalAlignment="Center" Background="#3dccc7" Height="100" Width="350" BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="2">
+                            <ItemsControl.Template>
+                                <ControlTemplate>
+                                <Border BorderThickness="2" BorderBrush="Black">
+                                    <ScrollViewer Background="#3dccc7" x:Name="ScrollViewer" VerticalScrollBarVisibility="Hidden" Padding="{TemplateBinding Padding}">
+                                            <ItemsPresenter />
+                                    </ScrollViewer>
+                                </Border>
+                            </ControlTemplate>
+                            </ItemsControl.Template>
+                            <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                
+                                <StackPanel Orientation="Vertical" Margin="5">
+                                    <StackPanel Orientation="Horizontal">
 
-                    <StackPanel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Center" >
+                                        <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{Binding filename}" TextWrapping="Wrap" Width="280" Background="red"></TextBlock>
+                                        <Button HorizontalAlignment="Right" Background="#FF8080" Content="Удалить" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00" Click="Button_Click_3" BorderBrush="#A80A00" VerticalAlignment="Center" Margin="5,0,0,0">
+                                            <Button.Resources>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="CornerRadius" Value="10"></Setter>
+
+                                                </Style>
+                                            </Button.Resources>
+                                        </Button>
+                                    </StackPanel>
+                                    <Rectangle Margin="0,5,0,0" Fill="#FF023C5D" 
+                                                           HorizontalAlignment="Stretch"
+                                                           VerticalAlignment="Bottom"
+                                                           Height="2"                                             
+                                                           />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>                 
+                    <StackPanel Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Center" >
                         <Button BorderThickness="3" BorderBrush="Black" Content="Создать" Margin="0,5" FontSize="20" Click="Button_Click_2">
                             <Button.Resources>
                                 <Style TargetType="Border">
@@ -119,17 +155,7 @@ Title="Добавление задачи" Height="450" Width="800" WindowStyle="
                     </Style>
                 </Button.Resources>
             </Button>
-            <ItemsControl x:Name="filess" Grid.Column="0" HorizontalAlignment="Center" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Margin="138,345,153,-3" Width="503">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            
-                            <Label FontSize="15" Content="{Binding .}"></Label>
-                            <!--<Label FontSize="15" Content="×"></Label>-->
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            
         </Grid>
     </Border>
 </Window>

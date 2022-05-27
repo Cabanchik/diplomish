@@ -23,12 +23,15 @@ namespace diplomish
     public partial class taskCreate : Window
     {
         public byte[] kall { get; set; }
-        
-        public taskCreate()
+        public user user1 { get; set; }
+        List<file> files { get; set; }
+        public taskCreate(user user)
         {
             InitializeComponent();
             //var br = App.diplomchikEntities.branch.Select(s => s.title).ToList();
             //branch.ItemsSource = br;
+            user1 = user;
+            branch.ItemsSource = App.diplomchikEntities.user.Select(s => s.surname + " " + s.name).ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -45,46 +48,54 @@ namespace diplomish
             string filedata;
             if (openFileDialog.ShowDialog() == true)
             {
-
-                try
+                if (openFileDialog.FileNames != null)
                 {
-                    //foreach (string filename in openFileDialog.FileNames)
-                        //filess.Items.Add(Path.GetFileName(filename));
-                    filedata = File.ReadAllText(openFileDialog.FileName);
-                    foreach (var item in openFileDialog.FileNames)
+                    filess.Visibility = Visibility.Visible;
+
+                    try
                     {
-                        FileStream fs = new FileStream(item, FileMode.Open, FileAccess.Read);
-                        s.Add(Path.GetFileNameWithoutExtension(item));
-                        // Create a byte array of file stream length
-                        byte[] bytes = System.IO.File.ReadAllBytes(item);
-                        var ex = Path.GetExtension(item);
-                        var name = Path.GetFileNameWithoutExtension(item);
-                        //Read block of bytes from stream into the byte array
-                        fs.Read(bytes, 0, System.Convert.ToInt32(fs.Length));
-                        kall = bytes;
-
-                        //Close the File Stream
-                        fs.Close();
-                        file file = new file()
+                        files = new List<file>();
+                        //foreach (string filename in openFileDialog.FileNames)
+                        //filess.Items.Add(Path.GetFileName(filename));
+                        filedata = File.ReadAllText(openFileDialog.FileName);
+                        foreach (var item in openFileDialog.FileNames)
                         {
-                            file1 = bytes,
-                            extention = ex,
-                            upload_date = DateTime.Now,
-                            filename = name,
-                            //uploader_id =,
                             
-                        };
-                        App.diplomchikEntities.file.Add(file);
-                        
+                            FileStream fs = new FileStream(item, FileMode.Open, FileAccess.Read);
+                            //s.Add(Path.GetFileNameWithoutExtension(item));
+                            // Create a byte array of file stream length
+                            byte[] bytes = System.IO.File.ReadAllBytes(item);
+                            var ex = Path.GetExtension(item);
+                            var name = Path.GetFileNameWithoutExtension(item);
+                            //Read block of bytes from stream into the byte array
+                            fs.Read(bytes, 0, System.Convert.ToInt32(fs.Length));
+                            kall = bytes;
+
+                            //Close the File Stream
+                            fs.Close();
+                            file file = new file()
+                            {
+                                file1 = bytes,
+                                extention = ex,
+                                upload_date = DateTime.Now,
+                                filename = name,
+                                uploader_id = user1.id,
+
+                            };
+                            files.Add(file);
+                            App.diplomchikEntities.file.Add(file);
+                            //App.diplomchikEntities.SaveChanges();
+
+                        }
+                        filess.ItemsSource = files;
+
+
                     }
-                    filess.ItemsSource = s;
+                    catch (Exception)
+                    {
 
-
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("Произошла ошибка");
+                        MessageBox.Show("Произошла ошибка");
+                    }
                 }
                 
             }
@@ -105,7 +116,7 @@ namespace diplomish
                 start_time = Convert.ToDateTime(start.Text),
                 end_time = Convert.ToDateTime(end.Text),
                 brach_id = Convert.ToInt32(bran),
-
+                initiator_id = user1.id 
 
             };
             try
@@ -146,6 +157,25 @@ namespace diplomish
             labl.Content = "Отдел";
             var em = App.diplomchikEntities.branch.Select(s => s.title).ToList();
             branch.ItemsSource = em;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            
+            var message = MessageBox.Show("Вы точно хотите удалить фаил?", "аЛерт", MessageBoxButton.OKCancel);
+            if (message == MessageBoxResult.OK)
+            {
+                Button delete = sender as Button;
+                file delfile = delete.DataContext as file;
+                files.Remove(delfile);
+                filess.ItemsSource = null;
+                filess.ItemsSource = files;
+                filess.UpdateLayout();
+            }
+            if (files.Count == 0)
+            {
+                filess.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

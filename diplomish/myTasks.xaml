@@ -36,7 +36,11 @@
                                         <GradientStop Color="#FF4A4027" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Border.Background>
-                                <TextBlock HorizontalAlignment="Center" Foreground="#E1BB80" FontSize="25" TextWrapping="Wrap" Text="{Binding title}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock  Margin="5,0,0,0" HorizontalAlignment="left" VerticalAlignment="Center" Foreground="#E1BB80" FontSize="40" TextWrapping="Wrap" Text="{Binding title}"/>
+                                    <Label x:Name="countLbl" Content="{Binding ., Converter={StaticResource countConverter}}" HorizontalAlignment="left" Foreground="#E1BB80" FontSize="40"></Label>
+                                </StackPanel>
+                                
                             </Border>
                             <StackPanel>
                                 <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
@@ -49,8 +53,9 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel>
-                                                <StackPanel Orientation="Vertical">
+                                                <StackPanel Orientation="Horizontal">
                                                     <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
+                                                    <Label Content="{Binding status.title}" Foreground="{Binding status, Converter={StaticResource statusConverter}}" FontSize="30"></Label>
 
                                                 </StackPanel>
                                                 <Rectangle Fill="#FFBF927E" 
