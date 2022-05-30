@@ -113,63 +113,63 @@
       <DependentUpon>admWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="branch.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="calendar.xaml.cs">
       <DependentUpon>calendar.xaml</DependentUpon>
     </Compile>
     <Compile Include="company.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="countConverter.cs" />
+    <Compile Include="diplomchikModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>diplomchikModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="diplomchikModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="diplomchikModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>diplomchikModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="file.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="filesWindow.xaml.cs">
       <DependentUpon>filesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="gender.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="mineTasks.xaml.cs">
       <DependentUpon>mineTasks.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="myTasks.xaml.cs">
       <DependentUpon>myTasks.xaml</DependentUpon>
     </Compile>
     <Compile Include="role.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectionPage.xaml.cs">
       <DependentUpon>SelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="status.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="statusConverter.cs" />
     <Compile Include="task.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="taskEdit.xaml.cs">
       <DependentUpon>taskEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="user.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="windows\editEmployee.xaml.cs">
       <DependentUpon>editEmployee.xaml</DependentUpon>
@@ -259,12 +259,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model1.edmx">
+    <EntityDeploy Include="diplomchikModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>diplomchikModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="diplomchikModel.edmx.diagram">
+      <DependentUpon>diplomchikModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -295,15 +295,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model1.Context.tt">
+    <Content Include="diplomchikModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <LastGenOutput>diplomchikModel.Context.cs</LastGenOutput>
+      <DependentUpon>diplomchikModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Model1.tt">
+    <Content Include="diplomchikModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>diplomchikModel.edmx</DependentUpon>
+      <LastGenOutput>diplomchikModel.cs</LastGenOutput>
     </Content>
     <Resource Include="rez\download.png" />
     <Resource Include="rez\cross.png" />

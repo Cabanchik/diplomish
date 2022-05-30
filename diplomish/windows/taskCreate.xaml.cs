@@ -69,7 +69,7 @@ namespace diplomish
                             var name = Path.GetFileNameWithoutExtension(item);
                             //Read block of bytes from stream into the byte array
                             fs.Read(bytes, 0, System.Convert.ToInt32(fs.Length));
-                            kall = bytes;
+                            
 
                             //Close the File Stream
                             fs.Close();

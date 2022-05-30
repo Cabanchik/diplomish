@@ -10,18 +10,7 @@
 
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <Grid HorizontalAlignment="Left" Width="400" Background="#9ceaef">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Content="Пизда"/>
-                    <Button x:Name="entry" Click="entry_Click" Content="Войти"></Button>
-                </StackPanel>
-            </Grid>
-            <Grid HorizontalAlignment="Left" Width="400" Background="#FFF1BD">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Content="NIGger"></Label>
-                    <Button Content="Войти"></Button>
-                </StackPanel>
-            </Grid>
+            `
         </StackPanel>
     </Grid>
     

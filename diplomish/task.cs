@@ -27,11 +27,10 @@ namespace diplomish
         public string annotation { get; set; }
         public Nullable<System.DateTime> end_time { get; set; }
         public Nullable<int> user_id { get; set; }
-        public Nullable<sbyte> is_deleted { get; set; }
         public Nullable<int> status_id { get; set; }
         public Nullable<int> brach_id { get; set; }
-        public Nullable<int> file_id { get; set; }
         public Nullable<int> initiator_id { get; set; }
+        public Nullable<byte> is_deleted { get; set; }
     
         public virtual branch branch { get; set; }
         public virtual status status { get; set; }

@@ -14,7 +14,7 @@ namespace diplomish
     public partial class App : Application
     {
         public static readonly Duration openCloseDuraion = new Duration(TimeSpan.FromSeconds(0.5));
-        public static diplomchikEntities diplomchikEntities = new diplomchikEntities();
+        public static diplomkchikEntities diplomchikEntities = new diplomkchikEntities();
         public static int? company;
     }
 }

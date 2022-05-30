@@ -27,7 +27,7 @@ namespace diplomish
         public filesWindow(task task)
         {
             InitializeComponent();
-            
+
             files = new List<file>();
             task1 = task;
             this.DataContext = task1;
@@ -47,7 +47,7 @@ namespace diplomish
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt*;*.docx;*.pptx;*.csv;*.xlsx*";
+            //openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt*;*.docx;*.pptx;*.csv;*.xlsx*";
             openFileDialog.Multiselect = true;
             List<string> s = new List<string>();
             string filedata;
@@ -58,8 +58,8 @@ namespace diplomish
                     filess.Visibility = Visibility.Visible;
 
                     try
-                    {
-                        
+                    { 
+
                         //foreach (string filename in openFileDialog.FileNames)
                         //filess.Items.Add(Path.GetFileName(filename));
                         filedata = File.ReadAllText(openFileDialog.FileName);
@@ -74,7 +74,15 @@ namespace diplomish
                             var name = Path.GetFileNameWithoutExtension(item);
                             //Read block of bytes from stream into the byte array
                             fs.Read(bytes, 0, System.Convert.ToInt32(fs.Length));
-                            
+                            string path = @"C:\Users\123\Documents\av\MyTest.png";
+                            using (FileStream fstream = new FileStream(path, FileMode.CreateNew))
+                            {
+
+                                byte[] info = bytes;
+                                // запись массива байт++ов в файл
+                                fstream.Write(info, 0, info.Length);
+                                fstream.Close();
+                            }
                             //Close the File Stream
                             fs.Close();
                             file file = new file()
@@ -84,14 +92,14 @@ namespace diplomish
                                 upload_date = DateTime.Now,
                                 filename = name,
                                 uploader_id = task1.initiator_id,
-                                
+
 
                             };
-                            task1.file.Add(file);                           
+                            task1.file.Add(file);
                             files.Add(file);
                             App.diplomchikEntities.file.Add(file);
-                            
-                            
+
+
 
                         }
                         filess.ItemsSource = null;
@@ -148,15 +156,26 @@ namespace diplomish
 
                 MessageBox.Show("Фаил не был удален");
             }
-            
+
         }
+
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
         }
         private void Image1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
+
+            string path = @"C:\Users\123\Documents\av\MyTest.png";            
+            using (FileStream fstream = new FileStream(path, FileMode.CreateNew))
+            {
+
+                byte[] info = App.diplomchikEntities.file.Where(s => s.id == 711).Select(s => s.file1).FirstOrDefault().ToArray();
+                // запись массива байт++ов в файл
+                fstream.Write(info, 0, info.Length);
+                fstream.Close();
+            }
+
         }
     }
 }

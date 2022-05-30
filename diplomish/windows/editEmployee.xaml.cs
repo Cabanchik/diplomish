@@ -40,7 +40,7 @@ namespace diplomish
             }
 
             brnch.ItemsSource = App.diplomchikEntities.branch.Select(s => s.title).ToList();
-            brnch.Text = user1.branch.title;
+            
         }
 
         private void surname_TextChanged(object sender, TextChangedEventArgs e)

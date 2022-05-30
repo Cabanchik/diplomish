@@ -13,10 +13,10 @@ namespace diplomish
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class diplomchikEntities : DbContext
+    public partial class diplomkchikEntities : DbContext
     {
-        public diplomchikEntities()
-            : base("name=diplomchikEntities")
+        public diplomkchikEntities()
+            : base("name=diplomkchikEntities")
         {
         }
     
