@@ -43,7 +43,7 @@
                                 
                             </Border>
                             <StackPanel>
-                                <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
+                                <ListView Background="Wheat" SelectionChanged="listx1111_SelectionChanged" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
                                     <ListView.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10"/>

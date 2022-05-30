@@ -29,5 +29,14 @@ namespace diplomish
             brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0).ToList();
             brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0).ToList();
         }
+
+        private void listx1111_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var task123 = (sender as ListView).SelectedItem as task;
+
+            taskEdit editTask = new taskEdit(task123);
+            editTask.Show();
+
+        }
     }
 }
