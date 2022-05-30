@@ -125,13 +125,6 @@
                     </Button>
                 </Grid>
             </StackPanel>
-            <Button Click="Button_Click" Content="X" HorizontalAlignment="Left" Margin="484,-71,0,0" VerticalAlignment="Top" Width="16" Height="21">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="2"></Setter>
-                    </Style>
-                </Button.Resources>
-            </Button>
 
         </Grid>
     </Border>

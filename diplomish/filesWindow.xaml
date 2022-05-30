@@ -8,7 +8,8 @@ mc:Ignorable="d"
 Title="Добавление задачи" Height="300" Width="500" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Border CornerRadius="50" BorderThickness="3" BorderBrush="#3dccc7" Background="#9ceaef">
         <Grid>
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0,25,0,0">
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="title" FontSize="15"></Label>
                 <ItemsControl x:Name="filess" Visibility="Visible" HorizontalAlignment="Center" Background="#3dccc7" Height="200" Width="450" BorderBrush="Black" BorderThickness="2" Grid.ColumnSpan="2">
                     <ItemsControl.Template>
                         <ControlTemplate>
@@ -25,8 +26,9 @@ Title="Добавление задачи" Height="300" Width="500" WindowStyle="
                             <StackPanel Orientation="Vertical" Margin="5">
                                 <StackPanel Orientation="Horizontal">
 
-                                    <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{Binding filename}" TextWrapping="Wrap" Width="280" Background="red"></TextBlock>
-                                    <Button HorizontalAlignment="Right" Background="#FF8080" Content="Удалить" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00" BorderBrush="#A80A00" VerticalAlignment="Center" Margin="5,0,0,0">
+                                    <TextBlock HorizontalAlignment="Left" FontSize="15" Text="{Binding filename}" TextWrapping="Wrap" Width="350"></TextBlock>
+                                    <Image Source="rez/download.png" Width="25" Height="25" MouseDown="Image1_MouseDown"></Image>
+                                    <Button HorizontalAlignment="Right" Click="Button_Click_1" Background="#FF8080" Content="Удалить" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00" BorderBrush="#A80A00" VerticalAlignment="Center" Margin="5,0,0,0">
                                         <Button.Resources>
                                             <Style TargetType="Border">
                                                 <Setter Property="CornerRadius" Value="10"></Setter>
@@ -44,15 +46,19 @@ Title="Добавление задачи" Height="300" Width="500" WindowStyle="
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+                <Button Content="Добавить" Margin="5" Height="30" Width="100" BorderThickness="2" BorderBrush="Black" Click="Button_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+
+                        </Style>
+
+                    </Button.Resources>
+                </Button>
+                
 
             </StackPanel>
-            <Button Background="#3dccc7" Content="X" HorizontalAlignment="Left" Margin="441,14,0,0" VerticalAlignment="Top" Width="17" Height="28">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="2"></Setter>
-                    </Style>
-                </Button.Resources>
-            </Button>
+            <Image Source="/rez/cross.png"  Width="25" Height="25" MouseDown="Image_MouseDown" RenderTransformOrigin="0.481,0.539" Margin="446,9,23,260"></Image>
 
         </Grid>
     </Border>

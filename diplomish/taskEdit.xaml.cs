@@ -43,14 +43,16 @@ namespace diplomish
             statusBox.ItemsSource = App.diplomchikEntities.status.Select(s => s.title).ToList();
             statusBox.SelectedItem = App.diplomchikEntities.status.Where(s => s.id == task1.status_id).Select(s => s.title).FirstOrDefault().ToString();
 
-
-
         }
 
         private void filesBtn_Click(object sender, RoutedEventArgs e)
         {
             filesWindow filesWindow = new filesWindow(task1);
             filesWindow.ShowDialog();
+        }
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
         }
     }
 }

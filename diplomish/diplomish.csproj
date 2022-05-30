@@ -305,6 +305,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="rez\download.png" />
     <Resource Include="rez\cross.png" />
     <Resource Include="rez\1.jpg" />
     <Resource Include="rez\cal.png" />

@@ -177,6 +177,10 @@ namespace diplomish
                 filess.Visibility = Visibility.Collapsed;
             }
         }
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 
