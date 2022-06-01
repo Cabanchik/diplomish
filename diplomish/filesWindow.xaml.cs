@@ -16,6 +16,7 @@ using System.Windows;
 using Microsoft.Win32;
 using System.Diagnostics;
 using System.Windows.Threading;
+using System.Windows.Media.Animation;
 
 namespace diplomish
 {
@@ -24,7 +25,7 @@ namespace diplomish
     /// </summary>
     public partial class filesWindow : Window
     {
-        DispatcherTimer timer { get; set; }
+        file timer { get; set; }
         public bool ass { get; set; }
         List<file> files { get; set; }
         public task task1 { get; set; }
@@ -50,7 +51,7 @@ namespace diplomish
             files.AddRange(task1.file.ToList());
 
         }
-        int cal = 0;
+        
         //private void Timer_Tick(object sender, EventArgs e)
         //{
         //    loadingWin loadingWin = new loadingWin();
@@ -76,11 +77,11 @@ namespace diplomish
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            ass = false;
+          
             OpenFileDialog openFileDialog = new OpenFileDialog();
             //openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt*;*.docx;*.pptx;*.csv;*.xlsx*";
             openFileDialog.Multiselect = true;
-            List<string> s = new List<string>();
+            
             string filedata;
             if (openFileDialog.ShowDialog() == true)
             {
@@ -118,6 +119,8 @@ namespace diplomish
 
 
                             };
+                            
+                            timer = file;
                             task1.file.Add(file);
                             files.Add(file);
                             App.diplomchikEntities.file.Add(file);
@@ -131,13 +134,14 @@ namespace diplomish
                         //timer.Interval = TimeSpan.FromSeconds(1);
                         //timer.Tick += Timer_Tick;
                         //timer.Start();
-                        int? a = await App.diplomchikEntities.SaveChangesAsync();
-                        if (a != null)
-                        {
-                            ass = true;
+                        //int? a = await 
+                        App.diplomchikEntities.SaveChanges();
+                        //if (a != null)
+                        //{
+                        //    ass = true;
 
-                        }
-                        timer.Stop();
+                        //}
+                        //timer.Stop();
                         int x = task1.file.Count();
                         if (filess.ItemsSource == null)
                         {
@@ -151,7 +155,7 @@ namespace diplomish
                     catch (Exception ex)
                     {
 
-                        MessageBox.Show(ex.ToString());
+                        throw;
                     }
                 }
 
@@ -200,14 +204,28 @@ namespace diplomish
 
         private async void Image1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
-            string path = @"C:\Users\123\Documents\av\MyTest.zip";
-            using (FileStream fstream = new FileStream(path, FileMode.CreateNew))
+            
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            var s = userName.Split('\\');
+            Image image = sender as Image;
+            file file = image.DataContext as file;
+            //load.Visibility = Visibility.Collapsed;
+            var s1 = Directory.Exists($@"C:\Users\{s[1]}\Downloads\Everydaynik dowloads");
+            if (s1 == false)
             {
-                byte[] info = App.diplomchikEntities.file.Where(s => s.id == 5).Select(s => s.file1).FirstOrDefault().ToArray();
+                string path1 = $@"C:\Users\{s[1]}\Downloads";
+                string path2 = System.IO.Path.Combine(path1, "Everydaynik dowloads");
+                Directory.CreateDirectory(path2);
+            }
+            string path3 = $@"C:\Users\{s[1]}\Downloads\Everydaynik dowloads\{file.filename}.{file.extention}";            
+            using (FileStream fstream = new FileStream(path3, FileMode.CreateNew))
+            {
+                byte[] info = App.diplomchikEntities.file.Where(sm => sm.id == file.id).Select(sm => sm.file1).FirstOrDefault().ToArray();
                 fstream.Write(info, 0, info.Length);
                 fstream.Close();
             }
+            
+            
 
         }
 

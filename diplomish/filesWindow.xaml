@@ -58,7 +58,7 @@ Title="Добавление задачи" Height="300" Width="500" WindowStyle="
                 
 
             </StackPanel>
-            <Image Source="/rez/cross.png"  Width="25" Height="25" MouseDown="Image_MouseDown" RenderTransformOrigin="0.481,0.539" Margin="446,9,23,260"></Image>
+            <Image x:Name="dwnld" Source="/rez/cross.png"  Width="25" Height="25" MouseDown="Image_MouseDown" RenderTransformOrigin="0.481,0.539" Margin="446,9,23,260"></Image>
 
         </Grid>
     </Border>

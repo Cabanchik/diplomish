@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3E6AD86A-094D-4C09-BC1B-5902362BFBE2}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>diplomish</RootNamespace>
     <AssemblyName>diplomish</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -180,6 +180,8 @@
     <Compile Include="user.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="userCountConverter.cs" />
+    <Compile Include="userStatusConverter.cs" />
     <Compile Include="windows\editEmployee.xaml.cs">
       <DependentUpon>editEmployee.xaml</DependentUpon>
     </Compile>

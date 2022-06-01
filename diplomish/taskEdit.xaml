@@ -64,9 +64,26 @@
                 <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Ответственный:" Grid.Column="0" Grid.Row="4"></Label>
                 <ComboBox x:Name="performer" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="4"></ComboBox>
                 <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Статус:" Grid.Column="0" Grid.Row="5"></Label>
-                <ComboBox x:Name="statusBox" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="5"></ComboBox>
+                <Label x:Name="statusBox" BorderBrush="Black" BorderThickness="2" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="5">
+                    <Label.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+
+                        </Style>
+
+                    </Label.Resources>
+                </Label>
 
                 <Button VerticalAlignment="Center" Click="filesBtn_Click" x:Name="filesBtn" Content="Прикрепленные файлы" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="200" Grid.Column="0" Grid.Row="6">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+
+                        </Style>
+
+                    </Button.Resources>
+                </Button>
+                <Button VerticalAlignment="Center" x:Name="taskEditBtn" Click="taskEditBtn_Click" Content="Изменить" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="100" Grid.Column="0" Grid.Row="7">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>

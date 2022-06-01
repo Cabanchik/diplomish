@@ -84,8 +84,8 @@ Title="Добавление задачи" Height="600" Width="800" WindowStyle="
                         </CheckBox>
                         <Label Content="Задача для сотрудника" FontSize="20"></Label>
                     </StackPanel>
-                    <Label Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Grid.Row="7" Grid.Column="0" Content="файл( может быть_" Margin="0,0,13,0"></Label>
-                    <Button BorderThickness="3" Grid.Row="7" Grid.Column="1" BorderBrush="Black" Content="Обзор" Margin="0,5" FontSize="20" Click="Button_Click_1">
+                    
+                    <Button BorderThickness="3" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Width="200" BorderBrush="Black" Content="Прикрепить фаил" Margin="0,5" FontSize="20" Click="Button_Click_1">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>

@@ -74,16 +74,16 @@
                 </ItemsControl.ItemTemplate>
 
             </ItemsControl>
-            <ItemsControl x:Name="brancch2" Background="#9ceaef">
+            <ItemsControl x:Name="brancch2" VerticalAlignment="Top" VerticalContentAlignment="Top" Background="#9ceaef">
+
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Horizontal"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
-
                     <DataTemplate>
-                        <StackPanel Margin="5,0">
+                        <StackPanel VerticalAlignment="Top" Margin="5,0">
                             <Border CornerRadius="10" BorderBrush="Black" Margin="0,0,0,-15" VerticalAlignment="Top" Panel.ZIndex="2">
                                 <Border.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -91,41 +91,47 @@
                                         <GradientStop Color="#FF4A4027" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Border.Background>
-                                <TextBlock Foreground="#E1BB80" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="25">
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} {1}">
-                                            <Binding Path="name"/>
-                                            <Binding Path="surname"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock  Margin="5,0,0,0" HorizontalAlignment="left" VerticalAlignment="Center" Foreground="#E1BB80" FontSize="40" TextWrapping="Wrap">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding Path="name"></Binding>
+                                                <Binding Path="surname"></Binding>
+                                            
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <Label x:Name="countLbl" Content="{Binding ., Converter={StaticResource userCountConverter}}" HorizontalAlignment="left" Foreground="#E1BB80" FontSize="40"></Label>
+                                </StackPanel>
 
                             </Border>
-                            <ListView Background="Wheat" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch" >
-                                <ListView.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="10"/>
-                                        <Setter Property="BorderThickness" Value="3"/>
-                                    </Style>
-                                </ListView.Resources>
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <StackPanel Orientation="Vertical">
-                                                <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
+                            <StackPanel>
+                                <ListView Background="Wheat" SelectionChanged="listx1111_SelectionChanged" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
+                                    <ListView.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                            <Setter Property="BorderThickness" Value="3"/>
+                                        </Style>
+                                    </ListView.Resources>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
+                                                    <Label Content="{Binding status.title}" Foreground="{Binding status, Converter={StaticResource userStatusConverter}}" FontSize="30"></Label>
 
-                                            </StackPanel>
-                                            <Rectangle Fill="#FFBF927E" 
+                                                </StackPanel>
+                                                <Rectangle Fill="#FFBF927E" 
                                                            HorizontalAlignment="Stretch"
                                                            VerticalAlignment="Bottom"
                                                            Height="2"                                             
                                                            />
 
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

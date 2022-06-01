@@ -14,11 +14,12 @@
             <Style TargetType="TextBox">
                 <Setter Property="Background" Value="#3dccc7"></Setter>
                 <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
-                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
             </Style>
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
                 <Setter Property="FontSize" Value="50"></Setter>
+                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
             </Style>
             <!--<Style TargetType="TextBlock">
                 <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
@@ -28,6 +29,8 @@
                 
             </local:statusConverter>
             <local:countConverter x:Key="countConverter"></local:countConverter>
+            <local:userCountConverter x:Key="userCountConverter"></local:userCountConverter>
+            <local:userStatusConverter x:Key="userStatusConverter"></local:userStatusConverter>
         </ResourceDictionary>
         
 

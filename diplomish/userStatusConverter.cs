@@ -8,25 +8,30 @@ using System.Windows.Data;
 
 namespace diplomish
 {
-    class countConverter : IValueConverter
+    class userStatusConverter : IValueConverter
     {
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value != null)
             {
-                var item = value as branch;
+                var item = value as user;
                 if (item != null)
                 {
                     return $"- всего задач {item.task.Count()}";
                 }
-                return 0;
+                
             }
             return 0;
         }
+
+        
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }

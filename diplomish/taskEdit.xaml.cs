@@ -19,20 +19,24 @@ namespace diplomish
     /// </summary>
     public partial class taskEdit : Window
     {
+        List<string> performers {get;set;}
         public task task1 { get; set; }
         public taskEdit(task task)
         {
-            
+            performers = new List<string>();
             InitializeComponent();
             task1 = task;
+            performers.AddRange(App.diplomchikEntities.branch.Select(s => s.title).ToList());
+            performers.AddRange(App.diplomchikEntities.user.Select(s => s.surname + " " + s.name).ToList());
+            performer.ItemsSource = performers;
             if (task1.user_id == null)
             {
-                performer.ItemsSource = App.diplomchikEntities.branch.Select(s => s.title).ToList();
+                
                 performer.SelectedItem = task1.branch.title;
             }
             else
             {
-                performer.ItemsSource = App.diplomchikEntities.user.Select(s => s.surname + " " + s.name).ToList();
+                
                 performer.SelectedItem = App.diplomchikEntities.user.Where(s => s.id == task1.user_id).Select(s => s.surname + " " + s.name).FirstOrDefault().ToString();
             }
             
@@ -40,8 +44,7 @@ namespace diplomish
             anno.Text = task1.annotation;
             start_time.Text = task1.start_time.ToString();
             end_time.Text = task1.end_time.ToString();
-            statusBox.ItemsSource = App.diplomchikEntities.status.Select(s => s.title).ToList();
-            statusBox.SelectedItem = App.diplomchikEntities.status.Where(s => s.id == task1.status_id).Select(s => s.title).FirstOrDefault().ToString();
+            statusBox.Content = task1.status.title;
 
         }
 
@@ -53,6 +56,54 @@ namespace diplomish
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void taskEditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                task1.title = title.Text.ToString();
+                task1.annotation = anno.Text.ToString();
+                try
+                {
+                    task1.start_time = Convert.ToDateTime(start_time.Text);
+
+                }
+                catch (Exception)
+                {
+                    task1.start_time = null;
+                }
+                try
+                {
+                    task1.end_time = Convert.ToDateTime(end_time.Text);
+                }
+                catch (Exception)
+                {
+                    task1.end_time = null;
+                }
+                var pr = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == performer.SelectedItem).Select(s => s.id).FirstOrDefault();
+                if (pr == 0)
+                {
+                    task1.brach_id = App.diplomchikEntities.branch.Where(s => s.title == performer.SelectedItem).Select(s => s.id).FirstOrDefault();
+                    task1.user_id = null;
+                }
+                else
+                {
+                    task1.user_id = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == performer.SelectedItem).Select(s => s.id).FirstOrDefault();
+                    task1.brach_id = null;
+                }
+
+
+                App.diplomchikEntities.SaveChanges();
+                MessageBox.Show("Изменения внесены успешно");
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Изменения не были внесены");
+            }
+            
+
         }
     }
 }

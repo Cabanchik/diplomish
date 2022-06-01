@@ -141,7 +141,7 @@
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <fa:ImageAwesome x:Name="load" Icon="CircleOutlineNotch" Spin="true" Height="100" Width="100" Margin="146,93,154,107" Grid.Row="1" Grid.RowSpan="2"/>
+                    <!--<fa:ImageAwesome x:Name="load" Icon="CircleOutlineNotch" Spin="true" Height="100" Width="100" Margin="146,93,154,107" Grid.Row="1" Grid.RowSpan="2"/>-->
                 </Grid>
                 
             </Border>

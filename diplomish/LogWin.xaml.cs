@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -29,13 +30,31 @@ namespace diplomish
         {
 
             InitializeComponent();
-            load.Visibility = Visibility.Collapsed;
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            var s = userName.Split('\\');
+            //load.Visibility = Visibility.Collapsed;
+            var s1 = Directory.Exists($@"C:\Users\{s[1]}\Downloads\Everydaynik dowloads");
+            if (s1 == false)
+            {
+                string path1 = $@"C:\Users\{s[1]}\Downloads";
+                string path2 = System.IO.Path.Combine(path1, "Everydaynik dowloads");
+                Directory.CreateDirectory(path2);
+            }
+            
+            
+            
+            
+            //"DESKTOP-R3QCPIV\\123"
+           
+
+
+            
 
         }
 
         private async void LoginClick(object sender, RoutedEventArgs e)
         {
-            var CurrentUser = await log1n();
+            var CurrentUser = App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Text.ToString()).FirstOrDefault();
             if (CurrentUser != null)
             {
                 MainWindow mainWindow = new MainWindow(CurrentUser);
@@ -59,12 +78,7 @@ namespace diplomish
 
         }
 
-        public async Task<user> log1n()
-        {
-            object CurrentUser = await App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Text.ToString()).FirstOrDefault();
-            return CurrentUser;
-
-        }
+        
 
 
         private void TextBoxPreviewKeyDown(object sender, KeyEventArgs e)
