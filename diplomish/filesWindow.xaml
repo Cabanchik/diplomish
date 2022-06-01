@@ -6,7 +6,7 @@ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:local="clr-namespace:diplomish" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 mc:Ignorable="d"
 Title="Добавление задачи" Height="300" Width="500" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
-    <Border CornerRadius="50" BorderThickness="3" BorderBrush="#3dccc7" Background="#9ceaef">
+    <Border  CornerRadius="50" BorderThickness="3" BorderBrush="#3dccc7" Background="#9ceaef">
         <Grid>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Margin="0,25,0,0">
                 <Label HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="title" FontSize="15"></Label>

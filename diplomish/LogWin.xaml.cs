@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+
 
 namespace diplomish
 {
@@ -20,16 +23,19 @@ namespace diplomish
     /// </summary>
     public partial class LogWin : Window
     {
+        bool ass = false;
+        DispatcherTimer timer { get; set; }
         public LogWin()
         {
-            InitializeComponent();
 
-            
+            InitializeComponent();
+            load.Visibility = Visibility.Collapsed;
+
         }
 
-        private void LoginClick(object sender, RoutedEventArgs e)
+        private async void LoginClick(object sender, RoutedEventArgs e)
         {
-            var CurrentUser = App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Text.ToString()).FirstOrDefault();
+            var CurrentUser = await log1n();
             if (CurrentUser != null)
             {
                 MainWindow mainWindow = new MainWindow(CurrentUser);
@@ -53,7 +59,13 @@ namespace diplomish
 
         }
 
-       
+        public async Task<user> log1n()
+        {
+            object CurrentUser = await App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Text.ToString()).FirstOrDefault();
+            return CurrentUser;
+
+        }
+
 
         private void TextBoxPreviewKeyDown(object sender, KeyEventArgs e)
         {

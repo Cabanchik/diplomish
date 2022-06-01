@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.IO;
 using System.Windows;
 using Microsoft.Win32;
+using System.Diagnostics;
+using System.Windows.Threading;
 
 namespace diplomish
 {
@@ -22,11 +24,15 @@ namespace diplomish
     /// </summary>
     public partial class filesWindow : Window
     {
+        DispatcherTimer timer { get; set; }
+        public bool ass { get; set; }
         List<file> files { get; set; }
         public task task1 { get; set; }
         public filesWindow(task task)
         {
+           
             InitializeComponent();
+            
 
             files = new List<file>();
             task1 = task;
@@ -42,10 +48,35 @@ namespace diplomish
                 title.Content = $"Прикреплено {x} файлов";
             }
             files.AddRange(task1.file.ToList());
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        }
+        int cal = 0;
+        //private void Timer_Tick(object sender, EventArgs e)
+        //{
+        //    loadingWin loadingWin = new loadingWin();
+        //    if (ass == false)
+        //    {
+        //        if (cal == 0)
+        //        {
+                    
+        //            loadingWin.ShowDialog();
+        //            cal++;
+        //        }
+
+
+        //    }
+        //    else if (cal == 1)
+        //    {
+        //        loadingWin.Close();
+        //        cal = 0;
+        //    }
+        //    Console.WriteLine(cal);
+
+        //}
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            ass = false;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             //openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt*;*.docx;*.pptx;*.csv;*.xlsx*";
             openFileDialog.Multiselect = true;
@@ -58,7 +89,7 @@ namespace diplomish
                     filess.Visibility = Visibility.Visible;
 
                     try
-                    { 
+                    {
 
                         //foreach (string filename in openFileDialog.FileNames)
                         //filess.Items.Add(Path.GetFileName(filename));
@@ -74,15 +105,7 @@ namespace diplomish
                             var name = Path.GetFileNameWithoutExtension(item);
                             //Read block of bytes from stream into the byte array
                             fs.Read(bytes, 0, System.Convert.ToInt32(fs.Length));
-                            string path = @"C:\Users\123\Documents\av\MyTest.png";
-                            using (FileStream fstream = new FileStream(path, FileMode.CreateNew))
-                            {
 
-                                byte[] info = bytes;
-                                // запись массива байт++ов в файл
-                                fstream.Write(info, 0, info.Length);
-                                fstream.Close();
-                            }
                             //Close the File Stream
                             fs.Close();
                             file file = new file()
@@ -104,7 +127,17 @@ namespace diplomish
                         }
                         filess.ItemsSource = null;
                         filess.ItemsSource = files;
-                        App.diplomchikEntities.SaveChanges();
+                        //timer = new DispatcherTimer();
+                        //timer.Interval = TimeSpan.FromSeconds(1);
+                        //timer.Tick += Timer_Tick;
+                        //timer.Start();
+                        int? a = await App.diplomchikEntities.SaveChangesAsync();
+                        if (a != null)
+                        {
+                            ass = true;
+
+                        }
+                        timer.Stop();
                         int x = task1.file.Count();
                         if (filess.ItemsSource == null)
                         {
@@ -115,10 +148,10 @@ namespace diplomish
                             title.Content = $"Прикреплено файлов: {x}";
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
 
-                        MessageBox.Show("Произошла ошибка");
+                        MessageBox.Show(ex.ToString());
                     }
                 }
 
@@ -163,19 +196,22 @@ namespace diplomish
         {
             this.Close();
         }
-        private void Image1_MouseDown(object sender, MouseButtonEventArgs e)
+
+
+        private async void Image1_MouseDown(object sender, MouseButtonEventArgs e)
         {
 
-            string path = @"C:\Users\123\Documents\av\MyTest.png";            
+            string path = @"C:\Users\123\Documents\av\MyTest.zip";
             using (FileStream fstream = new FileStream(path, FileMode.CreateNew))
             {
-
-                byte[] info = App.diplomchikEntities.file.Where(s => s.id == 711).Select(s => s.file1).FirstOrDefault().ToArray();
-                // запись массива байт++ов в файл
+                byte[] info = App.diplomchikEntities.file.Where(s => s.id == 5).Select(s => s.file1).FirstOrDefault().ToArray();
                 fstream.Write(info, 0, info.Length);
                 fstream.Close();
             }
 
         }
+
+
+
     }
 }
