@@ -38,7 +38,7 @@ Title="Добавление задачи" Height="600" Width="800" WindowStyle="
                         </TextBox.Resources>
                     </TextBox>
                     <Label VerticalContentAlignment="Center" Height="40" FontSize="20" Grid.Row="4" Grid.Column="0" Content="Время завершения" Margin="0,0,13,0"></Label>
-                    <xctk:DateTimePicker Height="35" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" x:Name="end" Grid.Row="4" VerticalContentAlignment="Center" FontSize="15" Grid.Column="1" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" ></xctk:DateTimePicker>
+                    <xctk:DateTimePicker Text="{Binding birth_date, ConverterCulture=en-GB}" Height="35" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" x:Name="end" Grid.Row="4" VerticalContentAlignment="Center" FontSize="15" Grid.Column="1" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" ></xctk:DateTimePicker>
                     <Label Height="40" VerticalContentAlignment="Center" FontSize="20" Grid.Row="2" Grid.Column="0" Content="Описание" Margin="0,0,13,0"></Label>
                     <TextBox Height="35" x:Name="annotation" Grid.Row="2" VerticalContentAlignment="Center" FontSize="15" Grid.Column="1" Background="#3dccc7" BorderBrush="Black" BorderThickness="2">
                         <TextBox.Resources>
@@ -48,7 +48,7 @@ Title="Добавление задачи" Height="600" Width="800" WindowStyle="
                         </TextBox.Resources>
                     </TextBox>
 
-                    <xctk:DateTimePicker Height="35" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" x:Name="start" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" />
+                    <xctk:DateTimePicker Text="{Binding birth_date, ConverterCulture=en-GB}" Height="35" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" x:Name="start" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" />
                     <Label x:Name="labl" Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Grid.Row="5" Grid.Column="0" Content="Сотрудник" Margin="0,0,13,0"></Label>
 
                     <ComboBox Height="35" x:Name="branch" Grid.Row="5" VerticalContentAlignment="Center" FontSize="15" Grid.Column="1" Background="#3dccc7" BorderBrush="Black" BorderThickness="2">

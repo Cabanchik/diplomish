@@ -32,7 +32,7 @@ namespace diplomish
             chel = user;
             this.DataContext = chel;
             InitializeComponent();
-            mainFrame.NavigationService.Navigate(new mineTasks());
+            mainFrame.NavigationService.Navigate(new mineTasks(chel));
             ourTaskLbl.Opacity = 0;
             nOurTaskLbl.Opacity = 0;
             settings.Opacity = 0;
@@ -130,7 +130,7 @@ namespace diplomish
         }
         private void tasksOnMePage(object sender, MouseButtonEventArgs e)
         {
-            mineTasks selectionPage = new mineTasks();
+            mineTasks selectionPage = new mineTasks(chel);
             mainFrame.NavigationService.Navigate(selectionPage);
             navLbl.Content = "Задачи на мне";
         }

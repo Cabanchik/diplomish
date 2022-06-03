@@ -96,7 +96,7 @@ namespace diplomish
                 password = pas.Text,
                 branch_id = Convert.ToInt32(br),
                 user_pic = mage,
-                company_id = App.company
+                company_id = App.user.company_id
             };
             App.diplomchikEntities.user.Add(user);
             App.diplomchikEntities.SaveChanges();

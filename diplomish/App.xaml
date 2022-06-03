@@ -21,6 +21,10 @@
                 <Setter Property="FontSize" Value="50"></Setter>
                 <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
             </Style>
+            <Style TargetType="ComboBox">
+                <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
+                <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            </Style>
             <!--<Style TargetType="TextBlock">
                 <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
                 <Setter Property="FontSize" Value="50"></Setter>

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
        Title="EditUser" Height="499.332" Width="538.369" AllowsTransparency="True" WindowStyle="None" Background="Transparent" >
     <Border CornerRadius="50" BorderThickness="3" BorderBrush="#3dccc7" Background="#9ceaef">
-        <Grid Background="#9ceaef" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
@@ -94,13 +94,13 @@
                         </TextBox.Resources>
                     </TextBox>
                     <DatePicker Text="{Binding birth_date, ConverterCulture=en-GB}" IsEnabled="False" x:Name="dr" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBox  Text="***" IsReadOnly="True" x:Name="pas" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
-                        <TextBox.Resources>
+                    <PasswordBox IsEnabled="False" x:Name="pas" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
+                        <PasswordBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>
                             </Style>
-                        </TextBox.Resources>
-                    </TextBox>
+                        </PasswordBox.Resources>
+                    </PasswordBox>
 
                     <TextBox IsReadOnly="True" Text="{Binding name}" x:Name="name"  Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2" >
                         <TextBox.Resources>
@@ -125,6 +125,7 @@
                     </Button>
                 </Grid>
             </StackPanel>
+            <Image Width="25" Height="25" Source="/diplomish;component/rez/cross.png" Margin="478,9,29,459" MouseDown="Image_MouseDown"/>
 
         </Grid>
     </Border>

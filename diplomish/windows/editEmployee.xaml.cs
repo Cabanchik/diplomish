@@ -40,7 +40,8 @@ namespace diplomish
             }
 
             brnch.ItemsSource = App.diplomchikEntities.branch.Select(s => s.title).ToList();
-            
+            pas.Password = user1.password;
+            brnch.Text = App.diplomchikEntities.branch.Where(s => s.id == user1.id).Select(s => s.title).FirstOrDefault().ToString();
         }
 
         private void surname_TextChanged(object sender, TextChangedEventArgs e)
@@ -94,9 +95,9 @@ namespace diplomish
             sex2.IsEnabled = true;
             dr.IsEnabled = true;
             log.IsReadOnly = false;
-            pas.IsReadOnly = false;
+            pas.IsEnabled = true;
             lbl.Visibility = Visibility.Visible;
-            pas.Text = Convert.ToString(user1.password);
+            pas.Password = Convert.ToString(user1.password);
             brnch.IsReadOnly = false;
             
         }
@@ -113,41 +114,56 @@ namespace diplomish
         {
             this.Close();
         }
-
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+        }
         private void sussy_Click(object sender, RoutedEventArgs e)
         {
-            pic.AllowDrop = false;
-            edit1.Visibility = Visibility.Visible;
-            sussy.Visibility = Visibility.Collapsed;
-
-            name.IsReadOnly = true;
-            surname.IsReadOnly = true;
-            sex.IsEnabled = false;
-            sex2.IsEnabled = false;
-            dr.IsEnabled = false;
-            log.IsReadOnly = true;
-            pas.IsReadOnly = true;
-            brnch.IsReadOnly = true;
-            lbl.Visibility = Visibility.Collapsed;
-
-            if (sex2.IsChecked == true)
+            
+            
+            
+            try
             {
-                user1.gender_id = 11;
-            }
-            else if (sex.IsChecked == true)
-            {
-                user1.gender_id = 1;
+                pic.AllowDrop = false;
+                edit1.Visibility = Visibility.Visible;
+                sussy.Visibility = Visibility.Collapsed;
 
+                name.IsReadOnly = true;
+                surname.IsReadOnly = true;
+                sex.IsEnabled = false;
+                sex2.IsEnabled = false;
+                dr.IsEnabled = false;
+                log.IsReadOnly = true;
+                pas.IsEnabled = false;
+                brnch.IsReadOnly = true;
+                lbl.Visibility = Visibility.Collapsed;
+
+                if (sex2.IsChecked == true)
+                {
+                    user1.gender_id = 11;
+                }
+                else if (sex.IsChecked == true)
+                {
+                    user1.gender_id = 1;
+
+                }
+                user1.name = name.Text.ToString();
+                user1.surname = surname.Text.ToString();
+                user1.birth_date = Convert.ToDateTime(dr.Text);
+                user1.login = log.Text.ToString();
+                user1.password = pas.Password.ToString();
+                var br = App.diplomchikEntities.branch.Where(s => s.title == brnch.SelectedItem.ToString()).Select(s => s.id).FirstOrDefault().ToString();
+                user1.branch_id = Convert.ToInt32(br);
+                App.diplomchikEntities.SaveChanges();
+             
             }
-            user1.name = name.Text.ToString();
-            user1.surname = surname.Text.ToString();
-            user1.birth_date = Convert.ToDateTime(dr.Text);
-            user1.login = log.Text.ToString();
-            user1.password = pas.Text.ToString();
-            var br = App.diplomchikEntities.branch.Where(s => s.title == brnch.SelectedItem.ToString()).Select(s => s.id).FirstOrDefault().ToString();
-            user1.branch_id = Convert.ToInt32(br);
-            App.diplomchikEntities.SaveChanges();
-            pas.Text = "***";
+            catch (Exception)
+            {
+                MessageBox.Show("Все поля должны быть закончены");
+            }
+            
+            
         }
     }
 }
