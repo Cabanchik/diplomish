@@ -52,7 +52,7 @@ namespace diplomish
                 }
                 files.AddRange(task1.file.ToList());
             }
-            catch (System.InvalidCastException)
+            catch (Exception)
             {
                 filess.ItemsSource = null;
                 int x = task1.file.Count();

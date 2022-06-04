@@ -19,7 +19,17 @@
             <Grid Background="#07beb8">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Horizontal" Grid.Row="0" >
-                        <Button Click="Button_Click" HorizontalAlignment="Left" Width="160" Height="50" BorderThickness="3" BorderBrush="Black" Content="Создать задачу" Margin="10,0,0,0" FontSize="20">
+                        <Button Visibility="Collapsed"  x:Name="createButton" Click="Button_Click" HorizontalAlignment="Left" Width="160" Height="50" BorderThickness="3" BorderBrush="Black" Content="Создать задачу" Margin="10,0,0,0" FontSize="20">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"></Setter>
+
+                                </Style>
+
+                            </Button.Resources>
+
+                        </Button>
+                        <Button x:Name="createSelfButton" Click="createSelfButton_Click" HorizontalAlignment="Left" Width="200" Height="50" BorderThickness="3" BorderBrush="Black" Content="Создать задачу себе" Margin="10,0,0,0" FontSize="20">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="10"></Setter>
@@ -63,7 +73,7 @@
             <StackPanel Background="#07beb8" x:Name="navStack" Width="70">
             
                 <Label x:Name="animLbl" Content=">" Margin="10" HorizontalAlignment="Center" MouseDown="Label_MouseDown"></Label>
-                <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="StackPanel_MouseDown_1">
+                <StackPanel x:Name="myStack" Orientation="Horizontal" Background="#07beb8" MouseDown="StackPanel_MouseDown_1">
                     <StackPanel.Resources>
                         <Style TargetType="StackPanel">
                             <Style.Triggers>
@@ -89,7 +99,7 @@
                     <Image Source="/rez/ico.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="ourTaskLbl" Content="Задачи от меня"></Label>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="tasksOnMePage">
+                <StackPanel x:Name="selfStack" Orientation="Horizontal" Background="#07beb8" MouseDown="tasksOnMePage">
                     <StackPanel.Resources>
                         <Style TargetType="StackPanel">
                             <Style.Triggers>
@@ -115,7 +125,7 @@
                     <Image Source="/rez/ico2.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="nOurTaskLbl" Content="Задачи на мне"></Label>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Background="#07beb8" MouseDown="StackPanel_MouseDown_3">
+                <StackPanel x:Name="settingStack"  Orientation="Horizontal" Background="#07beb8" MouseDown="StackPanel_MouseDown_3">
                     <StackPanel.Resources>
                         <Style TargetType="StackPanel">
                             <Style.Triggers>

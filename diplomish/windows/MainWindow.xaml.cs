@@ -43,7 +43,20 @@ namespace diplomish
             sss.Opacity = 0;
 
             sss.Visibility = Visibility.Collapsed;
+            if (App.user.role_id == 1)
+            {
+                settingStack.Visibility = Visibility.Collapsed;
 
+            }
+            else if (App.user.role_id == 2)
+            {
+                settingStack.Visibility = Visibility.Collapsed;
+                myStack.Visibility = Visibility.Collapsed;
+            }
+            else if (App.user.role_id == 3)
+            {
+                myStack.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void Label_MouseDown(object sender, MouseButtonEventArgs e)
@@ -86,14 +99,8 @@ namespace diplomish
                 sss.BeginAnimation(UIElement.OpacityProperty, opacityAnim1);
                 a = 0;
                 sss.Visibility = Visibility.Collapsed;
-                DispatcherTimer timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromSeconds(2);
-                timer.Tick += timer_Tick;
-                timer.Start();
-                if (sss.Visibility == Visibility.Collapsed)
-                {
-                    timer.Stop();
-                }
+                
+                
 
 
 
@@ -114,7 +121,7 @@ namespace diplomish
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var message = MessageBox.Show("Вы точно хотите выйти?", "аЛерт", MessageBoxButton.OKCancel);
+            var message = MessageBox.Show("Вы точно хотите выйти?", "Внимание", MessageBoxButton.OKCancel);
             if (message == MessageBoxResult.OK)
             {
                 this.Close();
@@ -130,9 +137,11 @@ namespace diplomish
         }
         private void tasksOnMePage(object sender, MouseButtonEventArgs e)
         {
-            mineTasks selectionPage = new mineTasks(chel);
-            mainFrame.NavigationService.Navigate(selectionPage);
+            mineTasks mineTasks = new mineTasks(chel);
+            mainFrame.NavigationService.Navigate(mineTasks);
             navLbl.Content = "Задачи на мне";
+            createButton.Visibility = Visibility.Collapsed;
+            createSelfButton.Visibility = Visibility.Visible;
         }
 
         private void StackPanel_MouseDown_1(object sender, MouseButtonEventArgs e)
@@ -140,6 +149,8 @@ namespace diplomish
             myTasks mineTasks = new myTasks();
             mainFrame.NavigationService.Navigate(mineTasks);
             navLbl.Content = "Задачи от меня";
+            createButton.Visibility = Visibility.Visible;
+            createSelfButton.Visibility = Visibility.Collapsed;
         }
 
         
@@ -159,6 +170,14 @@ namespace diplomish
         {
             admWin admWin = new admWin();
             admWin.ShowDialog();
+        }
+
+        private void createSelfButton_Click(object sender, RoutedEventArgs e)
+        {
+            selfTaskCreate selfTaskCreate = new selfTaskCreate(chel);
+            selfTaskCreate.ShowDialog();
+
+
         }
     }
 }

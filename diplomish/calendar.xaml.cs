@@ -38,50 +38,70 @@ namespace diplomish
           
             for (int i = 0; i < pisa.Count; i++)
             {
-                for (int sasun = 0; sasun < yo.Count; sasun++)
+                Label stas1 = new Label()
                 {
-                    if (pisa[i] != yo[sasun])
-                    {
-                        Label stas = new Label()
-                        {
-                            Content = pisa[i].ToString(),
-                            Width = 58,
-                            Height = 58,
-                            Background = (Brush)bc.ConvertFrom("#fc9003"),
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
-                            BorderBrush = (Brush)bc.ConvertFrom("#000000"),
-                            BorderThickness = new Thickness(1),
-                            FontSize = 38
+                    Content = pisa[i].ToString(),
+                    Width = 58,
+                    Height = 58,
+                    Background = (Brush)bc.ConvertFrom("#fc9003"),
+                    HorizontalContentAlignment = HorizontalAlignment.Center,
+                    VerticalContentAlignment = VerticalAlignment.Center,
+                    BorderBrush = (Brush)bc.ConvertFrom("#000000"),
+                    BorderThickness = new Thickness(1),
+                    FontSize = 38
 
-                        };
+                };
+                if (yo.Contains(pisa[i]))
+                {
+                    stas1.Background = (Brush)bc.ConvertFrom("#ff0022");
 
-                        wrap.Children.Add(stas);
-                    }
-                    else
-                    {
-                        Label stas1 = new Label()
-                        {
-                            Content = pisa[i].ToString(),
-                            Width = 58,
-                            Height = 58,
-                            Background = (Brush)bc.ConvertFrom("#ff0022"),
-                            HorizontalContentAlignment = HorizontalAlignment.Center,
-                            VerticalContentAlignment = VerticalAlignment.Center,
-                            BorderBrush = (Brush)bc.ConvertFrom("#000000"),
-                            BorderThickness = new Thickness(1),
-                            FontSize = 38
-
-                        };
-
-                        wrap.Children.Add(stas1);
-                    }
-                    
                 }
-               
-                
+                wrap.Children.Add(stas1);
+                //for (int sasun = 0; sasun < yo.Count; sasun++)
+                //{
+
+                //    //if (pisa[i] != yo[sasun])
+                //    //{
+                //    //    Label stas = new Label()
+                //    //    {
+                //    //        Content = pisa[i].ToString(),
+                //    //        Width = 58,
+                //    //        Height = 58,
+                //    //        Background = (Brush)bc.ConvertFrom("#fc9003"),
+                //    //        HorizontalContentAlignment = HorizontalAlignment.Center,
+                //    //        VerticalContentAlignment = VerticalAlignment.Center,
+                //    //        BorderBrush = (Brush)bc.ConvertFrom("#000000"),
+                //    //        BorderThickness = new Thickness(1),
+                //    //        FontSize = 38
+
+                //    //    };
+
+                //    //    wrap.Children.Add(stas);
+                //    //}
+                //    //else
+                //    //{
+                ////Label stas1 = new Label()
+                ////{
+                ////    Content = pisa[i].ToString(),
+                ////    Width = 58,
+                ////    Height = 58,
+                ////    Background = (Brush)bc.ConvertFrom("#ff0022"),
+                ////    HorizontalContentAlignment = HorizontalAlignment.Center,
+                ////    VerticalContentAlignment = VerticalAlignment.Center,
+                ////    BorderBrush = (Brush)bc.ConvertFrom("#000000"),
+                ////    BorderThickness = new Thickness(1),
+                ////    FontSize = 38
+
+                ////};
+
+                //    //    
+                //    //}
+
+                //}
+
+
             }
-            
+
         }
     }
 }

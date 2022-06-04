@@ -26,8 +26,9 @@ namespace diplomish
         {
             InitializeComponent();
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
             dispatcherTimer.Tick += DispatcherTimer_Tick;
+            dispatcherTimer.Start();
             user1 = user2;
             this.DataContext = user1;
             
@@ -197,10 +198,8 @@ namespace diplomish
 
         private void view_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var task123 = (sender as ListView).SelectedItem as task;
-
-            taskInfo editTask = new taskInfo(task123);
-            editTask.Show();
+            
+            
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -325,6 +324,17 @@ namespace diplomish
             {
                 view5.Visibility = Visibility.Collapsed;
                 null5.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void view_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var task123 = (sender as ListView).SelectedItem as task;
+
+            taskInfo editTask = new taskInfo(task123);
+            if (editTask != null)
+            {
+                editTask.ShowDialog();
             }
         }
     }

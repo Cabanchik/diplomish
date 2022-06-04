@@ -363,30 +363,50 @@ namespace diplomish
                     }
                     else if (bran == 0)
                     {
-
-                        task = new task()
+                        if (start.Text == null)
                         {
-                            title = tas.Text.ToString(),
-                            annotation = annotation.Text.ToString(),
-                            start_time = Convert.ToDateTime(start.Text),
-                            end_time = Convert.ToDateTime(end.Text),
-                            user_id = Convert.ToInt32(us),
-                            brach_id = null,
-                            initiator_id = user1.id,
-                            status_id = 5
-
-                        };
-                        try
+                            nullStart = true;
+                        }
+                        else
                         {
+                            nullStart = false;
+                        }
+                        if (end.Text == null)
+                        {
+                            nullEnd = true;
+                        }
+                        if (nullStart == true && nullEnd == true)
+                        {
+                            MessageBox.Show("Все даты должны быть запонены");
+                        }
+                        else if (nullStart == false && nullEnd == true)
+                        {
+                            MessageBox.Show("Не заполнена дата конца задачи");
+                        }
+                        else if (nullStart == true && nullEnd == false)
+                        {
+                            MessageBox.Show("Не заполнена дата начала задачи");
+                        }
+                        else
+                        {
+
+                            task = new task()
+                            {
+                                title = tas.Text.ToString(),
+                                annotation = annotation.Text.ToString(),
+                                start_time = Convert.ToDateTime(start.Text),
+                                end_time = Convert.ToDateTime(end.Text),
+                                user_id = Convert.ToInt32(us),
+                                brach_id = null,
+                                initiator_id = user1.id,
+                                status_id = 5,
+                                purpose_time = DateTime.Now
+
+                            };
                             App.diplomchikEntities.task.Add(task);
                             App.diplomchikEntities.SaveChanges();
                             MessageBox.Show("Задача создана!");
                             this.Close();
-                        }
-                        catch (Exception ex)
-                        {
-
-                            MessageBox.Show("Все поля должны быть запонены");
                         }
                     }
 

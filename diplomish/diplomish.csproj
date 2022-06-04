@@ -181,6 +181,9 @@
     <Compile Include="superviserFiles\taskEdit.xaml.cs">
       <DependentUpon>taskEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="selfTaskCreate.xaml.cs">
+      <DependentUpon>selfTaskCreate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="taskInfo.xaml.cs">
       <DependentUpon>taskInfo.xaml</DependentUpon>
     </Compile>
@@ -234,6 +237,10 @@
     <Page Include="superviserFiles\taskEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="selfTaskCreate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="taskInfo.xaml">
       <SubType>Designer</SubType>

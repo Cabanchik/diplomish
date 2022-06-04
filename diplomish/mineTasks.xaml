@@ -13,7 +13,7 @@
             <StackPanel Orientation="Vertical" >
                 <Label Content="Не принятые задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
 
-                <ListView x:Name="view" FontSize="18" Width="360" SelectionChanged="view_SelectionChanged" Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
+                <ListView x:Name="view" FontSize="18" MouseDoubleClick="view_MouseDoubleClick" Width="360" Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -64,7 +64,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
                 <Label Content="Начатые задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
-                <ListView SelectionChanged="view_SelectionChanged" x:Name="view2" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
+                <ListView MouseDoubleClick="view_MouseDoubleClick" x:Name="view2" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -114,7 +114,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
                 <Label Content="Скоро просрочатся" FontSize="30"  FontWeight="Bold" Foreground="#3D0600"></Label>
-                <ListView SelectionChanged="view_SelectionChanged" x:Name="view3" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
+                <ListView MouseDoubleClick="view_MouseDoubleClick" x:Name="view3" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -162,7 +162,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
                 <Label Content="Просроченные задачи" FontSize="30"  FontWeight="Bold" Foreground="#3D0600"></Label>
-                <ListView SelectionChanged="view_SelectionChanged" x:Name="view4" FontSize="18" Width="360"  Background="#FFCCCC" BorderThickness="3" BorderBrush="#A80A00">
+                <ListView MouseDoubleClick="view_MouseDoubleClick" x:Name="view4" FontSize="18" Width="360"  Background="#FFCCCC" BorderThickness="3" BorderBrush="#A80A00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -210,7 +210,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
                 <Label Content="Завершенные задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
-                <ListView SelectionChanged="view_SelectionChanged" x:Name="view5" FontSize="18" Width="360"  Background="#acf09a" BorderThickness="3" BorderBrush="#173D00">
+                <ListView MouseDoubleClick="view_MouseDoubleClick" x:Name="view5" FontSize="18" Width="360"  Background="#acf09a" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
