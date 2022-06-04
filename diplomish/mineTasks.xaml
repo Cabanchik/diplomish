@@ -8,12 +8,12 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="mineTasks">
 
-    <Grid>
+    <Grid Margin="0,0,-1063,0">
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="5,0">
             <StackPanel Orientation="Vertical" >
-                <Label Content="Начатые задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
+                <Label Content="Не принятые задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
 
-                <ListView x:Name="view" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
+                <ListView x:Name="view" FontSize="18" Width="360" SelectionChanged="view_SelectionChanged" Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -26,24 +26,27 @@
                         <DataTemplate>
                             <Grid >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="155"></ColumnDefinition>
-                                    <ColumnDefinition Width="107"></ColumnDefinition>
-                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                    <ColumnDefinition Width="90"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <TextBlock TextWrapping="Wrap" Text="{Binding title}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
-                                <Button Background="#acf09a" FontWeight="Bold" BorderThickness="3" Foreground="#173D00"  BorderBrush="#173D00" Content="Завершить" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Button Margin="5,0" Background="#acf09a" Click="Button_Click_3" FontWeight="Bold" BorderThickness="3" Foreground="#173D00"  BorderBrush="#173D00" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"></Setter>
 
                                         </Style>
                                     </Button.Resources>
+                                    <Button.Content>
+                                        <TextBlock HorizontalAlignment="Center" Text="Принять задачу" TextWrapping="Wrap"></TextBlock>
+                                    </Button.Content>
                                 </Button>
 
-                                <Button Background="#FF8080" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Button Background="#FF8080" FontSize="17" Width="90" Click="Button_Click_4" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Отклонить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -60,8 +63,8 @@
                 <TextBlock Visibility="Collapsed" Text="Задач нет!" FontWeight="Bold" FontSize="50" Name="null1" HorizontalAlignment="Center"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
-                <Label Content="Будующие задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
-                <ListView x:Name="view2" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
+                <Label Content="Начатые задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
+                <ListView SelectionChanged="view_SelectionChanged" x:Name="view2" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -92,7 +95,7 @@
                                     </Button.Resources>
                                 </Button>
 
-                                <Button Background="#FF8080" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Button Background="#FF8080" Click="Button_Click" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -111,7 +114,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
                 <Label Content="Скоро просрочатся" FontSize="30"  FontWeight="Bold" Foreground="#3D0600"></Label>
-                <ListView x:Name="view3" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
+                <ListView SelectionChanged="view_SelectionChanged" x:Name="view3" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -141,7 +144,7 @@
                                     </Button.Resources>
                                 </Button>
 
-                                <Button Background="#FF8080" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Button Background="#FF8080" Click="Button_Click" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -159,7 +162,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
                 <Label Content="Просроченные задачи" FontSize="30"  FontWeight="Bold" Foreground="#3D0600"></Label>
-                <ListView x:Name="view4" FontSize="18" Width="360"  Background="#FFCCCC" BorderThickness="3" BorderBrush="#A80A00">
+                <ListView SelectionChanged="view_SelectionChanged" x:Name="view4" FontSize="18" Width="360"  Background="#FFCCCC" BorderThickness="3" BorderBrush="#A80A00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -189,7 +192,7 @@
                                     </Button.Resources>
                                 </Button>-->
 
-                                <Button Background="#FF8080" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Button Background="#FF8080" Click="Button_Click" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -207,7 +210,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
                 <Label Content="Завершенные задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
-                <ListView x:Name="view5" FontSize="18" Width="360"  Background="#acf09a" BorderThickness="3" BorderBrush="#173D00">
+                <ListView SelectionChanged="view_SelectionChanged" x:Name="view5" FontSize="18" Width="360"  Background="#acf09a" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -237,7 +240,7 @@
                                     </Button.Resources>
                                 </Button>-->
 
-                                <Button Background="#FF8080" FontWeight="Bold" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Button Background="#FF8080" FontWeight="Bold" Click="Button_Click" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"></Setter>

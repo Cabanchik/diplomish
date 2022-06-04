@@ -77,6 +77,7 @@
           <Property Name="brach_id" Type="int" />
           <Property Name="initiator_id" Type="int" />
           <Property Name="is_deleted" Type="tinyint" />
+          <Property Name="reject_com" Type="text" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -376,7 +377,7 @@
           <Property Name="purpose_time" Type="DateTime" Precision="3" />
           <Property Name="start_time" Type="DateTime" Precision="3" />
           <Property Name="annotation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="end_time" Type="DateTime" />
+          <Property Name="end_time" Type="DateTime" Precision="3" />
           <Property Name="user_id" Type="Int32" />
           <Property Name="status_id" Type="Int32" />
           <Property Name="brach_id" Type="Int32" />
@@ -387,6 +388,7 @@
           <NavigationProperty Name="user" Relationship="Self.FK_task_user" FromRole="task" ToRole="user" />
           <NavigationProperty Name="user1" Relationship="Self.FK_task_user1" FromRole="task" ToRole="user" />
           <NavigationProperty Name="file" Relationship="Self.file_in_task" FromRole="task" ToRole="file" />
+          <Property Name="reject_com" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -629,6 +631,7 @@
           <EntitySetMapping Name="task">
             <EntityTypeMapping TypeName="diplomchikEntity.task">
               <MappingFragment StoreEntitySet="task">
+                <ScalarProperty Name="reject_com" ColumnName="reject_com" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="purpose_time" ColumnName="purpose_time" />

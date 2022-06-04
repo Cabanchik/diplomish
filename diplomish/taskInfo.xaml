@@ -1,12 +1,14 @@
-﻿<Window x:Class="diplomish.taskEdit"
+﻿<Window x:Class="diplomish.taskInfo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:diplomish"
         mc:Ignorable="d"
-        Title="EditTask" Height="500" Width="500" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+       Title="EditTask" Height="399.597" Width="500" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
 
 
@@ -38,7 +40,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label FontWeight="SemiBold" FontSize="15" Content="Название:" Grid.Column="0" VerticalAlignment="Center" Grid.Row="0"></Label>
-                <TextBox x:Name="title" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Grid.Column="1" Grid.Row="0" Height="30" >
+                <TextBox IsReadOnly="True" x:Name="title" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Grid.Column="1" Grid.Row="0" Height="30" >
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -48,7 +50,7 @@
                     </TextBox.Resources>
                 </TextBox>
                 <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Описание:" Grid.Column="0" Grid.Row="1"></Label>
-                <TextBox x:Name="anno" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,5" MinHeight="30" FontWeight="SemiBold" FontSize="15" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap">
+                <TextBox IsReadOnly="True" x:Name="anno" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,5" MinHeight="30" FontWeight="SemiBold" FontSize="15" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap">
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -58,32 +60,21 @@
                     </TextBox.Resources>
                 </TextBox>
                 <Label VerticalAlignment="Center" FontWeight="DemiBold" FontSize="15" Content="Дата создания:" Grid.Column="0" Grid.Row="2"></Label>
-                <xctk:DateTimePicker Text="{Binding birth_date, ConverterCulture=en-GB}" x:Name="start_time" Margin="0,5,0,5" Height="30" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2"></xctk:DateTimePicker>
+                <xctk:DateTimePicker IsReadOnly="True" x:Name="start_time" Margin="0,5,0,5" Height="30" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2"></xctk:DateTimePicker>
                 <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Дата окончания:" Grid.Column="0" Grid.Row="3"></Label>
-                <xctk:DateTimePicker Text="{Binding birth_date, ConverterCulture=en-GB}" x:Name="end_time" Margin="0,5,0,5" Height="30" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" Grid.Column="1" Grid.Row="3"></xctk:DateTimePicker>
-                <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Ответственный:" Grid.Column="0" Grid.Row="4"></Label>
-                <ComboBox x:Name="performer" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="4"></ComboBox>
+                <xctk:DateTimePicker IsReadOnly="True" x:Name="end_time" Margin="0,5,0,5" Height="30" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" Grid.Column="1" Grid.Row="3"></xctk:DateTimePicker>
                 <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Статус:" Grid.Column="0" Grid.Row="5"></Label>
-                <Label x:Name="statusBox" BorderBrush="Black" BorderThickness="2" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="5">
-                    <Label.Resources>
+                <TextBox IsReadOnly="true" x:Name="statusBox" BorderBrush="Black" BorderThickness="2" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="5">
+                    <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
 
                         </Style>
 
-                    </Label.Resources>
-                </Label>
+                    </TextBox.Resources>
+                </TextBox>
 
-                <Button VerticalAlignment="Center" Click="filesBtn_Click" x:Name="filesBtn" Content="Прикрепленные файлы" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="200" Grid.Column="0" Grid.Row="6">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"></Setter>
-
-                        </Style>
-
-                    </Button.Resources>
-                </Button>
-                <Button VerticalAlignment="Center" x:Name="taskEditBtn" Click="taskEditBtn_Click" Content="Изменить" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="100" Grid.Column="0" Grid.Row="7">
+                <Button VerticalAlignment="Center" x:Name="filesBtn" Content="Прикрепленные файлы" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="200" Grid.Column="0" Grid.Row="6" Click="filesBtn_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -94,13 +85,8 @@
                 </Button>
 
             </Grid>
-            <Image Source="/rez/cross.png" Width="25" Height="25" Margin="406,18,37,443" MouseDown="Image_MouseDown" RenderTransformOrigin="0.481,0.539"></Image>
+            <Image Source="/rez/cross.png" Width="25" Height="25" Margin="421,19,44,346" MouseDown="Image_MouseDown" RenderTransformOrigin="0.481,0.539"></Image>
 
         </Grid>
     </Border>
-
-
-
-
 </Window>
-

@@ -128,6 +128,7 @@
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="converters\countConverter.cs" />
+    <Compile Include="converters\cultureInfoConverter.cs" />
     <Compile Include="diplomchikModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,6 +159,9 @@
     <Compile Include="mineTasks.xaml.cs">
       <DependentUpon>mineTasks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="rejectTaskWindow.xaml.cs">
+      <DependentUpon>rejectTaskWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="superviserFiles\myTasks.xaml.cs">
       <DependentUpon>myTasks.xaml</DependentUpon>
     </Compile>
@@ -176,6 +180,9 @@
     </Compile>
     <Compile Include="superviserFiles\taskEdit.xaml.cs">
       <DependentUpon>taskEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="taskInfo.xaml.cs">
+      <DependentUpon>taskInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="user.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
@@ -216,11 +223,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="rejectTaskWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="superviserFiles\myTasks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="superviserFiles\taskEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="taskInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

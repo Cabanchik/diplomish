@@ -38,17 +38,35 @@ namespace diplomish
             files = new List<file>();
             task1 = task;
             this.DataContext = task1;
-            filess.ItemsSource = task1.file.ToList();
-            int x = task1.file.Count();
-            if (filess.ItemsSource == null)
+            try
             {
-                title.Content = "Файлы не прикреплены";
+                filess.ItemsSource = task1.file.ToList();
+                int x = task1.file.Count();
+                if (filess.ItemsSource == null)
+                {
+                    title.Content = "Файлы не прикреплены";
+                }
+                else
+                {
+                    title.Content = $"Прикреплено {x} файлов";
+                }
+                files.AddRange(task1.file.ToList());
             }
-            else
+            catch (System.InvalidCastException)
             {
-                title.Content = $"Прикреплено {x} файлов";
+                filess.ItemsSource = null;
+                int x = task1.file.Count();
+                if (filess.ItemsSource == null)
+                {
+                    title.Content = "Файлы не прикреплены";
+                }
+                else
+                {
+                    title.Content = $"Прикреплено {x} файлов";
+                }
+                files.AddRange(task1.file.ToList());
             }
-            files.AddRange(task1.file.ToList());
+            
 
         }
         
@@ -79,7 +97,7 @@ namespace diplomish
         {
           
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt*;*.docx;*.pptx;*.csv;*.xlsx*";
+            //openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt*;*.docx;*.pptx;*.csv;*.xlsx*;*.png;*.jpg;*.jpeg";
             openFileDialog.Multiselect = true;
             
             string filedata;

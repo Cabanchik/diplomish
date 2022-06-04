@@ -31,6 +31,7 @@ namespace diplomish
         public Nullable<int> brach_id { get; set; }
         public Nullable<int> initiator_id { get; set; }
         public Nullable<byte> is_deleted { get; set; }
+        public string reject_com { get; set; }
     
         public virtual branch branch { get; set; }
         public virtual status status { get; set; }
