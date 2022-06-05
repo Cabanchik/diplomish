@@ -43,17 +43,18 @@ namespace diplomish
             sss.Opacity = 0;
 
             sss.Visibility = Visibility.Collapsed;
-            if (App.user.role_id == 1)
+            if (staticUser.user.role_id == 1)
             {
                 settingStack.Visibility = Visibility.Collapsed;
 
             }
-            else if (App.user.role_id == 2)
+            else if (staticUser.user.role_id == 2)
             {
+                backStack.Visibility = Visibility.Collapsed;
                 settingStack.Visibility = Visibility.Collapsed;
                 myStack.Visibility = Visibility.Collapsed;
             }
-            else if (App.user.role_id == 3)
+            else if (staticUser.user.role_id == 3)
             {
                 myStack.Visibility = Visibility.Collapsed;
             }

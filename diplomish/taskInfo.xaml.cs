@@ -27,8 +27,8 @@ namespace diplomish
             task1 = task;
             title.Text = task.title;
             anno.Text = task.annotation;
-            start_time.Text = task.start_time.ToString();
-            end_time.Text = task.end_time.ToString();
+            start_time.Value = task.start_time;
+            end_time.Value = task.end_time;
             statusBox.Text = task.status.title.ToString();
             if (task.status_id == 1)
             {

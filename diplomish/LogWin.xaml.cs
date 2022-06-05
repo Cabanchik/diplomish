@@ -57,9 +57,10 @@ namespace diplomish
             var CurrentUser = App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Text.ToString()).FirstOrDefault();
             if (CurrentUser != null)
             {
+                staticUser.user = CurrentUser;
                 MainWindow mainWindow = new MainWindow(CurrentUser);
                 mainWindow.Show();
-                App.user = CurrentUser;
+                
                 this.Close();
             }
             else if (login.Text == "" || pas.Text == "")

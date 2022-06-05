@@ -58,9 +58,9 @@
                     </TextBox.Resources>
                 </TextBox>
                 <Label VerticalAlignment="Center" FontWeight="DemiBold" FontSize="15" Content="Дата создания:" Grid.Column="0" Grid.Row="2"></Label>
-                <xctk:DateTimePicker Text="{Binding birth_date, ConverterCulture=en-GB}" x:Name="start_time" Margin="0,5,0,5" Height="30" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2"></xctk:DateTimePicker>
+                <xctk:DateTimePicker x:Name="start_time" Margin="0,5,0,5" Height="30" Format="Custom" FormatString="dd/MM/yyyy HH:mm" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2"></xctk:DateTimePicker>
                 <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Дата окончания:" Grid.Column="0" Grid.Row="3"></Label>
-                <xctk:DateTimePicker Text="{Binding birth_date, ConverterCulture=en-GB}" x:Name="end_time" Margin="0,5,0,5" Height="30" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Format="Custom" FormatString="dd/MM/yyyy hh:mm tt" Grid.Column="1" Grid.Row="3"></xctk:DateTimePicker>
+                <xctk:DateTimePicker x:Name="end_time" Margin="0,5,0,5" Height="30" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Format="Custom" FormatString="dd/MM/yyyy HH:mm" Grid.Column="1" Grid.Row="3"></xctk:DateTimePicker>
                 <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Ответственный:" Grid.Column="0" Grid.Row="4"></Label>
                 <ComboBox x:Name="performer" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="4"></ComboBox>
                 <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Статус:" Grid.Column="0" Grid.Row="5"></Label>

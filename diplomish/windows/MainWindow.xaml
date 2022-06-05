@@ -151,7 +151,7 @@
                     <Image Source="/rez/settings.png" Margin="-10,0,0,0" Width="70"></Image>
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" x:Name="settings" Content="Настройки"></Label>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Background="#07beb8" ToolTipService.ToolTip="Back" MouseDown="backClick">
+                <StackPanel x:Name="backStack" Orientation="Horizontal" Background="#07beb8" ToolTipService.ToolTip="Back" MouseDown="backClick">
                     <StackPanel.Resources>
                         <Style TargetType="StackPanel">
                             <Style.Triggers>

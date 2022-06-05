@@ -31,37 +31,15 @@ namespace diplomish
             brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0).ToList();
             statuses.AddRange(App.diplomchikEntities.status.Select(s => s.title).ToList());
             statuses.Add("Все");
-            statusSort.ItemsSource = statuses;
-            statusSort.SelectedItem = statuses[5];
+            
         }
 
-        private void listx1111_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void listx1111_MouseDoubleClick_2(object sender, MouseButtonEventArgs e)
         {
             var task123 = (sender as ListView).SelectedItem as task;
 
             taskEdit editTask = new taskEdit(task123);
             editTask.Show();
-
-        }
-
-        private void userSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-            //brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0 && S.name.Contains(userSearch.Text.ToString())).ToList();
-        }
-
-        private void statusSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //if (statusSort.SelectedItem == statuses[5])
-            //{
-            //    brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0).ToList();
-            //}
-            //else if (statusSort.SelectedItem == statuses[0])
-            //{
-            //    var s = App.diplomchikEntities.task.Where(s1 => s1.status_id == 0).Select(s1 => s1.title).FirstOrDefault();
-            //    brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0 && s == statuses[1]).ToList();
-            //}
-
         }
     }
 }

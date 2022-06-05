@@ -9,15 +9,6 @@
       Title="myTasks">
 
     <Grid Background="#9ceaef">
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>-->
-        <!--<Border Grid.Row="0"  BorderThickness="1" BorderBrush="Black" Margin="0,0,0,5">
-            <StackPanel Grid.Row="0">
-                <Label Background="#3dccc7" Content="Мои Задачи"></Label>
-            </StackPanel>
-        </Border>-->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -31,88 +22,12 @@
             <Border Margin="-5,-2,0,0" Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="2">
                 <Label Content="Отделы:" Background="#83c5c9"></Label>
             </Border>
-                <ItemsControl Grid.Column="0" Grid.Row="1" Background="Red" x:Name="brancch" VerticalAlignment="Top" VerticalContentAlignment="Top">
+            <ItemsControl Grid.Column="0" Grid.Row="1" Background="Red" x:Name="brancch" VerticalAlignment="Top" VerticalContentAlignment="Top">
 
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel Orientation="Horizontal"></WrapPanel>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.Template>
-                        <ControlTemplate>
-                            <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Hidden" Padding="{TemplateBinding Padding}">
-                                <ItemsPresenter />
-                            </ScrollViewer>
-                        </ControlTemplate>
-                    </ItemsControl.Template>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel VerticalAlignment="Top" Margin="5,5">
-                                <Border CornerRadius="10" BorderBrush="Black" Margin="0,0,0,-15" VerticalAlignment="Top" Panel.ZIndex="2">
-                                    <Border.Background>
-                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF7E5D4E" Offset="0"/>
-                                            <GradientStop Color="#FF4A4027" Offset="1"/>
-                                        </LinearGradientBrush>
-                                    </Border.Background>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock  Margin="5,0,0,0" HorizontalAlignment="left" VerticalAlignment="Center" Foreground="#E1BB80" FontSize="40" TextWrapping="Wrap" Text="{Binding title}"/>
-                                        <Label x:Name="countLbl" Content="{Binding ., Converter={StaticResource countConverter}}" HorizontalAlignment="left" Foreground="#E1BB80" FontSize="40"></Label>
-                                    </StackPanel>
-
-                                </Border>
-                                <StackPanel>
-                                    <ListView Background="Wheat" SelectionChanged="listx1111_SelectionChanged" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
-                                        <ListView.Resources>
-                                            <Style TargetType="{x:Type Border}">
-                                                <Setter Property="CornerRadius" Value="10"/>
-                                                <Setter Property="BorderThickness" Value="3"/>
-                                            </Style>
-                                        </ListView.Resources>
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                            <StackPanel Margin="0,5,0,5">
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <Label Content="{Binding title}" FontSize="30"/>
-                                                        <Label Content="{Binding status.title}" Foreground="{Binding status, Converter={StaticResource statusConverter}}" FontSize="30"></Label>
-
-                                                    </StackPanel>
-                                                    <Rectangle Fill="#FFBF927E" 
-                                                               HorizontalAlignment="Stretch"
-                                                               VerticalAlignment="Bottom"
-                                                               Height="2"                                             
-                                                               />
-
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-                                </StackPanel>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-
-                </ItemsControl>
-
-            <Border Margin="-5,-2,0,0" Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="2">
-                <StackPanel Orientation="Horizontal" Background="#83c5c9">
-                    <Label Content="Сотрудники:" VerticalAlignment="Center" ></Label>
-                    <TextBox Visibility="Collapsed" x:Name="userSearch" TextChanged="userSearch_TextChanged" Width="200" Height="50" VerticalAlignment="Center" FontSize="20">
-                        <TextBox.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="10"></Setter>
-                            </Style>
-                        </TextBox.Resources>
-                    </TextBox>
-                    <ComboBox x:Name="statusSort" Margin="5,0" Width="250" Height="50" FontSize="25" SelectionChanged="statusSort_SelectionChanged"></ComboBox>
-                </StackPanel>
-                
-            </Border>
-            <ItemsControl Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" x:Name="brancch2" VerticalAlignment="Top" VerticalContentAlignment="Top" Background="#9ceaef">
                 <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"></WrapPanel>
-                </ItemsPanelTemplate>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"></WrapPanel>
+                    </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.Template>
                     <ControlTemplate>
@@ -122,62 +37,132 @@
                     </ControlTemplate>
                 </ItemsControl.Template>
                 <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel VerticalAlignment="Top" Margin="5,5">
-                        <Border CornerRadius="10" BorderBrush="Black" Margin="0,0,0,-15" VerticalAlignment="Top" Panel.ZIndex="2">
-                            <Border.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FF7E5D4E" Offset="0"/>
-                                    <GradientStop Color="#FF4A4027" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock  Margin="5,0,0,0" HorizontalAlignment="left" VerticalAlignment="Center" Foreground="#E1BB80" FontSize="40" TextWrapping="Wrap">
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} {1}">
-                                            <Binding Path="name"></Binding>
-                                            <Binding Path="surname"></Binding>
+                    <DataTemplate>
+                        <StackPanel VerticalAlignment="Top" Margin="5,5">
+                            <Border CornerRadius="10" BorderBrush="Black" Margin="0,0,0,-15" VerticalAlignment="Top" Panel.ZIndex="2">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF7E5D4E" Offset="0"/>
+                                        <GradientStop Color="#FF4A4027" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock  Margin="5,0,0,0" HorizontalAlignment="left" VerticalAlignment="Center" Foreground="#E1BB80" FontSize="40" TextWrapping="Wrap" Text="{Binding title}"/>
+                                    <Label x:Name="countLbl" Content="{Binding ., Converter={StaticResource countConverter}}" HorizontalAlignment="left" Foreground="#E1BB80" FontSize="40"></Label>
+                                </StackPanel>
 
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                                <Label x:Name="countLbl" Content="{Binding ., Converter={StaticResource userCountConverter}}" HorizontalAlignment="left" Foreground="#E1BB80" FontSize="40"></Label>
-                            </StackPanel>
+                            </Border>
+                            <StackPanel>
+                                <ListView Background="Wheat" MouseDoubleClick="listx1111_MouseDoubleClick_2"  ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
+                                    <ListView.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                            <Setter Property="BorderThickness" Value="3"/>
+                                        </Style>
+                                    </ListView.Resources>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Margin="0,5,0,5">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Content="{Binding title}" FontSize="30"/>
+                                                    <Label Content="{Binding status.title}" Foreground="{Binding status, Converter={StaticResource statusConverter}}" FontSize="30"></Label>
 
-                        </Border>
-                        <StackPanel>
-                            <ListView Background="Wheat" SelectionChanged="listx1111_SelectionChanged" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
-                                <ListView.Resources>
-                                    <Style TargetType="{x:Type Border}">
-                                        <Setter Property="CornerRadius" Value="10"/>
-                                        <Setter Property="BorderThickness" Value="3"/>
-                                    </Style>
-                                </ListView.Resources>
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
-                                                <Label Content="{Binding status.title}" Foreground="{Binding status, Converter={StaticResource userStatusConverter}}" FontSize="30"></Label>
+                                                </StackPanel>
+                                                <Rectangle Fill="#FFBF927E" 
+                                                               HorizontalAlignment="Stretch"
+                                                               VerticalAlignment="Bottom"
+                                                               Height="2"                                             
+                                                               />
 
                                             </StackPanel>
-                                            <Rectangle Fill="#FFBF927E" 
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+            </ItemsControl>
+
+            <Border Margin="-5,-2,0,0" Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="2">
+                <StackPanel Orientation="Horizontal" Background="#83c5c9">
+                    <Label Content="Сотрудники:" VerticalAlignment="Center" ></Label>
+                   
+                        
+                </StackPanel>
+
+            </Border>
+            <ItemsControl Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" x:Name="brancch2" VerticalAlignment="Top" VerticalContentAlignment="Top" Background="#9ceaef">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.Template>
+                    <ControlTemplate>
+                        <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Hidden" Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel VerticalAlignment="Top" Margin="5,5">
+                            <Border CornerRadius="10" BorderBrush="Black" Margin="0,0,0,-15" VerticalAlignment="Top" Panel.ZIndex="2">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FF7E5D4E" Offset="0"/>
+                                        <GradientStop Color="#FF4A4027" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock  Margin="5,0,0,0" HorizontalAlignment="left" VerticalAlignment="Center" Foreground="#E1BB80" FontSize="40" TextWrapping="Wrap">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding Path="name"></Binding>
+                                                <Binding Path="surname"></Binding>
+
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <Label x:Name="countLbl" Content="{Binding ., Converter={StaticResource userCountConverter}}" HorizontalAlignment="left" Foreground="#E1BB80" FontSize="40"></Label>
+                                </StackPanel>
+
+                            </Border>
+                            <StackPanel>
+                                <ListView Background="Wheat" MouseDoubleClick="listx1111_MouseDoubleClick_2" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
+                                    <ListView.Resources>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
+                                            <Setter Property="BorderThickness" Value="3"/>
+                                        </Style>
+                                    </ListView.Resources>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Content="{Binding title}" FontSize="30" Margin="0,0,0,0"/>
+                                                    <Label Content="{Binding status.title}" Foreground="{Binding status, Converter={StaticResource userStatusConverter}}" FontSize="30"></Label>
+
+                                                </StackPanel>
+                                                <Rectangle Fill="#FFBF927E" 
                                                            HorizontalAlignment="Stretch"
                                                            VerticalAlignment="Bottom"
                                                            Height="2"                                             
                                                            />
 
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
             </ItemsControl>
 
         </Grid>
-       
+
     </Grid>
 </Page>

@@ -127,8 +127,8 @@
     <Compile Include="company.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="converters\countConverter.cs" />
-    <Compile Include="converters\cultureInfoConverter.cs" />
+    <Compile Include="classes\countConverter.cs" />
+    <Compile Include="classes\cultureInfoConverter.cs" />
     <Compile Include="diplomchikModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,15 +153,13 @@
     <Compile Include="gender.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="loadingWin.xaml.cs">
-      <DependentUpon>loadingWin.xaml</DependentUpon>
-    </Compile>
     <Compile Include="mineTasks.xaml.cs">
       <DependentUpon>mineTasks.xaml</DependentUpon>
     </Compile>
     <Compile Include="rejectTaskWindow.xaml.cs">
       <DependentUpon>rejectTaskWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="classes\staticUser.cs" />
     <Compile Include="superviserFiles\myTasks.xaml.cs">
       <DependentUpon>myTasks.xaml</DependentUpon>
     </Compile>
@@ -174,7 +172,7 @@
     <Compile Include="status.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="converters\statusConverter.cs" />
+    <Compile Include="classes\statusConverter.cs" />
     <Compile Include="task.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
@@ -190,8 +188,8 @@
     <Compile Include="user.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="converters\userCountConverter.cs" />
-    <Compile Include="converters\userStatusConverter.cs" />
+    <Compile Include="classes\userCountConverter.cs" />
+    <Compile Include="classes\userStatusConverter.cs" />
     <Compile Include="windows\editEmployee.xaml.cs">
       <DependentUpon>editEmployee.xaml</DependentUpon>
     </Compile>
@@ -215,10 +213,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="filesWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="loadingWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -300,6 +294,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>diplomchikModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="diplomchikModel.edmx.diagram">
       <DependentUpon>diplomchikModel.edmx</DependentUpon>
     </None>
@@ -312,7 +307,7 @@
     <Resource Include="rez\edosz.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="windows\App.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -340,7 +335,6 @@
     <Content Include="diplomchikModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>diplomchikModel.edmx</DependentUpon>
-      <LastGenOutput>diplomchikModel.cs</LastGenOutput>
     </Content>
     <Resource Include="rez\download.png" />
     <Resource Include="rez\cross.png" />

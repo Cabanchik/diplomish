@@ -24,7 +24,7 @@ namespace diplomish
         {
             BrushConverter bc = new BrushConverter();
             var emil = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-            var yo = App.diplomchikEntities.task.Where(w => w.end_time.Value.Month == DateTime.Now.Month).Select(s => s.end_time.Value.Day).ToList();
+            var yo = App.diplomchikEntities.task.Where(w => w.end_time.Value.Month == DateTime.Now.Month && staticUser.user.id == w.user_id).Select(s => s.end_time.Value.Day).ToList();
             List<int> pisa = new List<int>();
             int a = 0;
             InitializeComponent();
@@ -57,47 +57,7 @@ namespace diplomish
 
                 }
                 wrap.Children.Add(stas1);
-                //for (int sasun = 0; sasun < yo.Count; sasun++)
-                //{
-
-                //    //if (pisa[i] != yo[sasun])
-                //    //{
-                //    //    Label stas = new Label()
-                //    //    {
-                //    //        Content = pisa[i].ToString(),
-                //    //        Width = 58,
-                //    //        Height = 58,
-                //    //        Background = (Brush)bc.ConvertFrom("#fc9003"),
-                //    //        HorizontalContentAlignment = HorizontalAlignment.Center,
-                //    //        VerticalContentAlignment = VerticalAlignment.Center,
-                //    //        BorderBrush = (Brush)bc.ConvertFrom("#000000"),
-                //    //        BorderThickness = new Thickness(1),
-                //    //        FontSize = 38
-
-                //    //    };
-
-                //    //    wrap.Children.Add(stas);
-                //    //}
-                //    //else
-                //    //{
-                ////Label stas1 = new Label()
-                ////{
-                ////    Content = pisa[i].ToString(),
-                ////    Width = 58,
-                ////    Height = 58,
-                ////    Background = (Brush)bc.ConvertFrom("#ff0022"),
-                ////    HorizontalContentAlignment = HorizontalAlignment.Center,
-                ////    VerticalContentAlignment = VerticalAlignment.Center,
-                ////    BorderBrush = (Brush)bc.ConvertFrom("#000000"),
-                ////    BorderThickness = new Thickness(1),
-                ////    FontSize = 38
-
-                ////};
-
-                //    //    
-                //    //}
-
-                //}
+                
 
 
             }

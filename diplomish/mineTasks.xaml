@@ -86,7 +86,7 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Row="0" Grid.Column="1" Visibility="Collapsed" Text="Задач нет!" FontSize="30"></TextBlock>
                                 <TextBlock TextWrapping="Wrap" Text="{Binding title}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
-                                <Button Background="#acf09a" FontWeight="Bold" BorderThickness="3" Foreground="#173D00"  BorderBrush="#173D00" Content="Завершить" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Button Background="#acf09a" Click="Button_Click_2" FontWeight="Bold" BorderThickness="3" Foreground="#173D00"  BorderBrush="#173D00" Content="Завершить" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="10"></Setter>

@@ -18,15 +18,13 @@ namespace diplomish
         public branch()
         {
             this.task = new HashSet<task>();
-            this.user = new HashSet<user>();
         }
     
         public int id { get; set; }
         public string title { get; set; }
     
+        public virtual user user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<task> task { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user> user { get; set; }
     }
 }
