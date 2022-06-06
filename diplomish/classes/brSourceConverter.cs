@@ -8,18 +8,18 @@ using System.Windows.Data;
 
 namespace diplomish
 {
-    class brItemsSourceConverter : IValueConverter
+    class brSourceConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value != null)
             {
 
-                var i = value as user;
+                var i = value as branch;
 
                 var sas = i.task.Where(s => s.is_deleted != 1 && s.initiator_id == staticUser.user.id).ToList();
-                
-                
+
+
                 return sas;
             }
             return 0;

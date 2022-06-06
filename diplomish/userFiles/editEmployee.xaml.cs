@@ -41,7 +41,7 @@ namespace diplomish
 
             brnch.ItemsSource = App.diplomchikEntities.branch.Select(s => s.title).ToList();
             pas.Password = user1.password;
-            brnch.SelectedItem = App.diplomchikEntities.branch.Where(s => s.id == user1.id).Select(s => s.title).FirstOrDefault().ToString();
+            brnch.SelectedItem = user1.branch.title;
         }
 
         private void surname_TextChanged(object sender, TextChangedEventArgs e)

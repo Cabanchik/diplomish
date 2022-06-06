@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:diplomish"
         mc:Ignorable="d"
-         Title="Напоминатель" WindowState="Maximized" ResizeMode="NoResize" Height="768" Width="1865.5">
+         Title="Напоминатель" WindowState="Maximized" MinHeight="768" MinWidth="1865.5">
     <Window.Resources>
 
     </Window.Resources>

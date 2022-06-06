@@ -41,8 +41,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>rez\notebook %281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
@@ -132,6 +131,12 @@
       <DependentUpon>admWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="branch.cs">
+      <DependentUpon>diplomchikModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="classes\brSourceConverter.cs" />
+    <Compile Include="diplomchikModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="otherFiles\calendar.xaml.cs">
@@ -362,6 +367,7 @@
     <Content Include="diplomchikModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>diplomchikModel.edmx</DependentUpon>
+      <LastGenOutput>diplomchikModel1.cs</LastGenOutput>
     </Content>
     <Resource Include="rez\download.png" />
     <Resource Include="rez\cross.png" />

@@ -23,13 +23,17 @@ namespace diplomish
         public calendar()
         {
             BrushConverter bc = new BrushConverter();
-            var emil = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-            var yo = App.diplomchikEntities.task.Where(w => (w.end_time.Value.Month == DateTime.Now.Month && w.end_time > DateTime.Now && w.status_id != 2 && w.status_id != 6 && staticUser.user.id == w.user_id && w.is_deleted !=1)||(w.end_time.Value.Month == DateTime.Now.Month && w.end_time > DateTime.Now && w.status_id != 2 && w.status_id != 6 && staticUser.user.branch_id == w.brach_id && w.is_deleted != 1)).Select(s => s.end_time.Value.Day).ToList();
+            var currentMonth = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
+            var yo = App.diplomchikEntities.task.Where(w => (w.end_time.Value.Month == DateTime.Now.Month 
+            && w.end_time > DateTime.Now && w.status_id != 2 && w.status_id != 6 
+            && staticUser.user.id == w.user_id && w.is_deleted !=1)||(w.end_time.Value.Month == DateTime.Now.Month 
+            && w.end_time > DateTime.Now && w.status_id != 2 && w.status_id != 6 
+            && staticUser.user.branch_id == w.brach_id && w.is_deleted != 1)).Select(s => s.end_time.Value.Day).ToList();
             List<int> pisa = new List<int>();
             int a = 0;
             InitializeComponent();
 
-            for (int i = 0; i < emil; i++)
+            for (int i = 0; i < currentMonth; i++)
             {
                 a++;
                 pisa.Add(a);
@@ -38,7 +42,7 @@ namespace diplomish
           
             for (int i = 0; i < pisa.Count; i++)
             {
-                Label stas1 = new Label()
+                Label numberLbl = new Label()
                 {
                     Content = pisa[i].ToString(),
                     Width = 58,
@@ -53,10 +57,10 @@ namespace diplomish
                 };
                 if (yo.Contains(pisa[i]))
                 {
-                    stas1.Background = (Brush)bc.ConvertFrom("#ff0022");
+                    numberLbl.Background = (Brush)bc.ConvertFrom("#ff0022");
 
                 }
-                wrap.Children.Add(stas1);
+                wrap.Children.Add(numberLbl);
                 
 
 

@@ -42,8 +42,9 @@
             </local:statusConverter>
             <local:countConverter x:Key="countConverter"></local:countConverter>
             <local:userCountConverter x:Key="userCountConverter"></local:userCountConverter>
-            <local:itemsSourceConverter x:Key="itemsSourceConverter"></local:itemsSourceConverter>
+            <local:brItemsSourceConverter x:Key="itemsSourceConverter"></local:brItemsSourceConverter>
             <local:userStatusConverter x:Key="userStatusConverter"></local:userStatusConverter>
+            <local:brSourceConverter x:Key="brSourceConverter"></local:brSourceConverter>
         </ResourceDictionary>
         
 

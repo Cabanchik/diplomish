@@ -53,7 +53,7 @@
 
                             </Border>
                             <StackPanel>
-                                <ListView Background="Wheat" MouseDoubleClick="listx1111_MouseDoubleClick_2"  ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
+                                <ListView Background="Wheat" MouseDoubleClick="listx1111_MouseDoubleClick_2"  ItemsSource="{Binding ., Converter={StaticResource brSourceConverter}}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
                                     <ListView.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10"/>

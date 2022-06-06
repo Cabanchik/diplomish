@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="diplomchikEntity.role" Width="1.5" PointX="0.75" PointY="8.875" />
         <EntityTypeShape EntityType="diplomchikEntity.status" Width="1.5" PointX="5.25" PointY="0.75" />
         <EntityTypeShape EntityType="diplomchikEntity.task" Width="1.5" PointX="7.5" PointY="4.375" />
-        <EntityTypeShape EntityType="diplomchikEntity.user" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="diplomchikEntity.user" Width="1.5" PointX="14.625" PointY="3.5" />
         <AssociationConnector Association="diplomchikEntity.FK_branch_user" />
         <AssociationConnector Association="diplomchikEntity.FK_task_branch" />
         <AssociationConnector Association="diplomchikEntity.FK_user_company" />
