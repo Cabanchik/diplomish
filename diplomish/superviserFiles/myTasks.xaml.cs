@@ -28,9 +28,11 @@ namespace diplomish
             //var p = App.diplomchikEntities.branch.Where(s=> s.task !=null).ToList();
 
             statuses = new List<string>();
-            brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0).ToList();
+            brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0 &&
+            S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0).ToList();
             //var l = staticUser.user.task1.ToList();
-            brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0 && S.task.Where(t=>t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0 && S.id != staticUser.user.id).ToList();
+            brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0 &&
+            S.task.Where(t=>t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0 && S.id != staticUser.user.id).ToList();
             statuses.AddRange(App.diplomchikEntities.status.Select(s => s.title).ToList());
             statuses.Add("Все");
             DispatcherTimer dispatcherTimer = new DispatcherTimer();

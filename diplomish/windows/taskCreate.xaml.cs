@@ -84,6 +84,7 @@ namespace diplomish
                     }
                     else if (nullStart == false && nullEnd == true)
                     {
+
                         task = new task()
                         {
                             title = tas.Text.ToString(),
@@ -123,7 +124,8 @@ namespace diplomish
                         this.Close();
                     }
                     else
-                    {
+                    {   
+
                         task = new task()
                         {
                             title = tas.Text.ToString(),

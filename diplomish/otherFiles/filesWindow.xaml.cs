@@ -112,16 +112,11 @@ namespace diplomish
 
                     try
                     {
-
-                        //foreach (string filename in openFileDialog.FileNames)
-                        //filess.Items.Add(Path.GetFileName(filename));
                         filedata = File.ReadAllText(openFileDialog.FileName);
                         foreach (var item in openFileDialog.FileNames)
                         {
-
                             FileStream fs = new FileStream(item, FileMode.Open, FileAccess.Read);
-                            //s.Add(Path.GetFileNameWithoutExtension(item));
-                            // Create a byte array of file stream length
+
                             byte[] bytes = System.IO.File.ReadAllBytes(item);
                             if (bytes.Length > 10485760)
                             {
@@ -242,13 +237,6 @@ namespace diplomish
                 fstream.Write(info, 0, info.Length);
                 fstream.Close();
             }
-
-
-
-
-
-
-
         }
 
 

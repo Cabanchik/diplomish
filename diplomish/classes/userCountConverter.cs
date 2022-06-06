@@ -18,7 +18,7 @@ namespace diplomish
                 var item = value as user;
                 if (item !=null)
                 {
-                    return $"- всего задач {item.task.Count()}";
+                    return $"- всего задач {item.task.Where(s => s.is_deleted != 1 && s.initiator_id == staticUser.user.id).Count()}";
                 }
                 return 0;
                 
