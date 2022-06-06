@@ -40,6 +40,10 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
@@ -341,7 +345,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="admFiles\cross.png" />
+    <Resource Include="notebook %281%29.ico" />
+    <Resource Include="rez\notebook %281%29.ico" />
     <Content Include="diplomchikModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>diplomchikModel.Context.cs</LastGenOutput>

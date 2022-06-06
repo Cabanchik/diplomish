@@ -21,7 +21,7 @@
                     <DataGridTemplateColumn Header="Удаление">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="cross.png" Height="10" Width="10" MouseDown="Image_MouseDown"/>
+                            <Image Source="/rez/cross.png" Height="10" Width="10" MouseDown="Image_MouseDown"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

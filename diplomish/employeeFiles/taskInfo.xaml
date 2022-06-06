@@ -8,7 +8,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:diplomish"
         mc:Ignorable="d"
-       Title="EditTask" Height="399.597" Width="500" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+       Title="EditTask" WindowStartupLocation="CenterScreen" Height="399.597" Width="500" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
 
 

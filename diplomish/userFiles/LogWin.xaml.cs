@@ -54,6 +54,11 @@ namespace diplomish
 
         private async void LoginClick(object sender, RoutedEventArgs e)
         {
+            if (pas.Password == "" || pas.Password == " ")
+            {
+                pas.Password = pas1.Text; 
+            }
+            
             var CurrentUser = App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Password.ToString()).FirstOrDefault();
             if (CurrentUser != null)
             {
@@ -106,14 +111,13 @@ namespace diplomish
         private void accept_Checked(object sender, RoutedEventArgs e)
         {
 
-            if (pas.Password != "")
-            {
+            
                 pas.Visibility = Visibility.Collapsed;
                 
                 pas1.Visibility = Visibility.Visible;
                 pas1.Text = pas.Password;
 
-            }
+            
 
 
 
@@ -122,13 +126,12 @@ namespace diplomish
 
         private void accept_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (pas.Password != "")
-            {
+            
                 
                 pas1.Visibility = Visibility.Collapsed;
                 pas.Visibility = Visibility.Visible;
                 pas.Password = pas1.Text;
-            }
+            
 
         }
     }

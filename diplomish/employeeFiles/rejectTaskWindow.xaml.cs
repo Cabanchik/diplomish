@@ -28,10 +28,18 @@ namespace diplomish
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            task1.status_id = 6;
-            task1.reject_com = rejectLine.Text.ToString();
-            MessageBox.Show("Задача отклонена");
-            this.Close();
+            if (rejectLine.Text == "" || rejectLine.Text ==  " ")
+            {
+                MessageBox.Show("Не заполнена причина отказа!");
+            }
+            else
+            {
+                task1.status_id = 6;
+                task1.reject_com = rejectLine.Text.ToString();
+                MessageBox.Show("Задача отклонена");
+                this.Close();
+            }
+            
         }
 
         private void dwnld_MouseDown(object sender, MouseButtonEventArgs e)

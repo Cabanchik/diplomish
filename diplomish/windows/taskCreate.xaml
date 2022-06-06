@@ -5,7 +5,7 @@ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 xmlns:local="clr-namespace:diplomish" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 mc:Ignorable="d"
-Title="Добавление задачи" Height="600" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+Title="Добавление задачи" WindowStartupLocation="CenterScreen" Height="600" Width="800" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Border CornerRadius="50" BorderThickness="3" BorderBrush="#3dccc7" Background="#9ceaef">
         <Grid>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">

@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:diplomish"
         mc:Ignorable="d"
-        Title="Логин" Height="900" Width="1100" WindowStyle="SingleBorderWindow">
+        Title="Логин" Height="900" Width="1100" WindowStartupLocation="CenterScreen"  WindowStyle="SingleBorderWindow">
     <Grid Background="#9ceaef">
         
         <StackPanel Orientation="Vertical"

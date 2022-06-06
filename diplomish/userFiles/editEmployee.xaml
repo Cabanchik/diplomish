@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:diplomish"
         mc:Ignorable="d"
-       Title="EditUser" Height="499.332" Width="538.369" AllowsTransparency="True" WindowStyle="None" Background="Transparent" >
+       Title="EditUser" WindowStartupLocation="CenterScreen" Height="499.332" Width="538.369" AllowsTransparency="True" WindowStyle="None" Background="Transparent" >
     <Border CornerRadius="50" BorderThickness="3" BorderBrush="#3dccc7" Background="#9ceaef">
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>

@@ -18,7 +18,7 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0,0,10,0">
                 <TextBlock x:Name="lbl" HorizontalAlignment="Center" Text="Перенесите желаемую картинку"></TextBlock>
                 <Border BorderBrush="Black" BorderThickness="5" CornerRadius="100">
-                    <Ellipse x:Name="pic" Width="200" Height="200" AllowDrop="False" Drop="Ellipse_Drop">
+                    <Ellipse x:Name="pic" Width="200" Height="200" AllowDrop="true" Drop="Ellipse_Drop">
                         <Ellipse.Fill>
                             <ImageBrush x:Name="dicpic" ImageSource="{Binding user_pic, TargetNullValue={StaticResource nullablePic}}" />
                         </Ellipse.Fill>

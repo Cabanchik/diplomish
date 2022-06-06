@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:diplomish"
         mc:Ignorable="d"
-        Title="rejectTaskWindow" Height="250" Width="400" AllowsTransparency="True" Background="Transparent" WindowStyle="None">
+        Title="rejectTaskWindow" WindowStartupLocation="CenterScreen" Height="250" Width="400" AllowsTransparency="True" Background="Transparent" WindowStyle="None">
     <Border BorderThickness="5" CornerRadius="100" Background="#9ceaef" BorderBrush="#3dccc7">
         <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">

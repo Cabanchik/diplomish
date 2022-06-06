@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="EditTask" Height="500" Width="500" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
-
+  
 
     <Border BorderThickness="5" CornerRadius="100" Background="#9ceaef" BorderBrush="#3dccc7">
         <Grid>
@@ -37,8 +37,8 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label FontWeight="SemiBold" FontSize="15" Content="Название:" Grid.Column="0" VerticalAlignment="Center" Grid.Row="0"></Label>
-                <TextBox x:Name="title" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Grid.Column="1" Grid.Row="0" Height="30" >
+                <Label FontWeight="SemiBold" FontSize="20" Content="Название:" Grid.Column="0" VerticalAlignment="Center" Grid.Row="0"></Label>
+                <TextBox x:Name="title" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="20" Grid.Column="1" Grid.Row="0" Height="40" >
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -47,8 +47,8 @@
 
                     </TextBox.Resources>
                 </TextBox>
-                <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Описание:" Grid.Column="0" Grid.Row="1"></Label>
-                <TextBox x:Name="anno" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,5" MinHeight="30" FontWeight="SemiBold" FontSize="15" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap">
+                <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="20" Content="Описание:" Grid.Column="0" Grid.Row="1"></Label>
+                <TextBox x:Name="anno" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,5" Height="40" FontWeight="SemiBold" FontSize="20" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap">
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -57,14 +57,14 @@
 
                     </TextBox.Resources>
                 </TextBox>
-                <Label VerticalAlignment="Center" FontWeight="DemiBold" FontSize="15" Content="Дата создания:" Grid.Column="0" Grid.Row="2"></Label>
-                <xctk:DateTimePicker x:Name="start_time" Margin="0,5,0,5" Height="30" Format="Custom" FormatString="dd/MM/yyyy HH:mm" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2"></xctk:DateTimePicker>
-                <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Дата окончания:" Grid.Column="0" Grid.Row="3"></Label>
-                <xctk:DateTimePicker x:Name="end_time" Margin="0,5,0,5" Height="30" VerticalContentAlignment="Center" FontSize="15" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Format="Custom" FormatString="dd/MM/yyyy HH:mm" Grid.Column="1" Grid.Row="3"></xctk:DateTimePicker>
-                <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Ответственный:" Grid.Column="0" Grid.Row="4"></Label>
-                <ComboBox x:Name="performer" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="4"></ComboBox>
-                <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Статус:" Grid.Column="0" Grid.Row="5"></Label>
-                <Label x:Name="statusBox" BorderBrush="Black" BorderThickness="2" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="5">
+                <TextBlock VerticalAlignment="Center" FontWeight="DemiBold" FontSize="20" TextWrapping="Wrap" Margin="0,-15,0,0" Text="Дата создания:" Grid.Column="0" Grid.Row="2"></TextBlock>
+                <xctk:DateTimePicker x:Name="start_time" Margin="0,5,0,5" Height="40" Format="Custom" FormatString="dd/MM/yyyy HH:mm" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" FontSize="20" Background="#3dccc7" BorderBrush="Black" BorderThickness="2"></xctk:DateTimePicker>
+                <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,-15,0,0" FontSize="20" Text="Дата окончания:" Grid.Column="0" Grid.Row="3"></TextBlock>
+                <xctk:DateTimePicker x:Name="end_time" Margin="0,5,0,5" Height="40" VerticalContentAlignment="Center" FontSize="20" Background="#3dccc7" BorderBrush="Black" BorderThickness="2" Format="Custom" FormatString="dd/MM/yyyy HH:mm" Grid.Column="1" Grid.Row="3"></xctk:DateTimePicker>
+                <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="20" Margin="-25,0,0,0" Content="Ответственный:" Grid.Column="0" Grid.Row="4"></Label>
+                <ComboBox x:Name="performer" VerticalAlignment="Center" Height="40" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="20" Background="#3dccc7" Grid.Column="1" Grid.Row="4"></ComboBox>
+                <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="20" Content="Статус:" Grid.Column="0" Grid.Row="5"></Label>
+                <Label x:Name="statusBox" BorderBrush="Black" BorderThickness="2" VerticalAlignment="Center" Height="40" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="20" Background="#3dccc7" Grid.Column="1" Grid.Row="5">
                     <Label.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -73,8 +73,17 @@
 
                     </Label.Resources>
                 </Label>
+                <TextBlock x:Name="rejectReasonLbl" Visibility="Collapsed" Margin="0,-15,0,0" VerticalAlignment="Center" TextWrapping="Wrap" FontWeight="SemiBold" FontSize="20" Text="Причина отказа:" Grid.Column="0" Grid.Row="6"></TextBlock>
+                <TextBox IsReadOnly="true" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,5,0,5" x:Name="rejectReason" Grid.Column="1" Grid.Row="6" BorderBrush="Black" BorderThickness="2" Height="40">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
 
-                <Button VerticalAlignment="Center" Click="filesBtn_Click" x:Name="filesBtn" Content="Прикрепленные файлы" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="200" Grid.Column="0" Grid.Row="6">
+                        </Style>
+
+                    </TextBox.Resources>
+                </TextBox>
+                <Button VerticalAlignment="Center" Click="filesBtn_Click" x:Name="filesBtn" Content="Прикрепленные файлы" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="40" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="20" Background="#3dccc7" Width="220" Grid.Column="0" Grid.Row="7">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -83,8 +92,8 @@
 
                     </Button.Resources>
                 </Button>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="7">
-                    <Button VerticalAlignment="Center" x:Name="taskEditBtn" Click="taskEditBtn_Click" Content="Изменить"  BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,5,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="100" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="8">
+                    <Button VerticalAlignment="Center" x:Name="taskEditBtn" Click="taskEditBtn_Click" Content="Изменить"  BorderBrush="Black" BorderThickness="2" Height="40" Margin="0,5,5,5" FontWeight="SemiBold" FontSize="20" Background="#3dccc7" Width="100" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>
@@ -93,7 +102,7 @@
 
                         </Button.Resources>
                     </Button>
-                    <Button VerticalAlignment="Center" x:Name="taskDeleteBtn" Click="taskDeleteBtn_Click" Content="Удалить"  BorderBrush="Black" BorderThickness="2" Height="30" Margin="5,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="100" >
+                    <Button VerticalAlignment="Center" x:Name="taskDeleteBtn" Click="taskDeleteBtn_Click" Content="Удалить"  BorderBrush="Black" BorderThickness="2" Height="40" Margin="5,5,0,5" FontWeight="SemiBold" FontSize="20" Background="#3dccc7" Width="100" >
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>

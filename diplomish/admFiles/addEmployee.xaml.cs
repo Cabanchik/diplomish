@@ -102,6 +102,8 @@ namespace diplomish
                 };
                 App.diplomchikEntities.user.Add(user);
                 App.diplomchikEntities.SaveChanges();
+                MessageBox.Show("Пользователь добавлен успешно");
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

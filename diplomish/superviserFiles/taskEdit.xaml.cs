@@ -26,6 +26,12 @@ namespace diplomish
             performers = new List<string>();
             InitializeComponent();
             task1 = task;
+            if (task1.status_id == 6)
+            {
+                rejectReason.Visibility = Visibility.Visible;
+                rejectReasonLbl.Visibility = Visibility.Visible;
+                rejectReason.Text = task1.reject_com.ToString();
+            }
             performers.AddRange(App.diplomchikEntities.branch.Select(s => s.title).ToList());
             performers.AddRange(App.diplomchikEntities.user.Select(s => s.surname + " " + s.name).ToList());
             performer.ItemsSource = performers;
