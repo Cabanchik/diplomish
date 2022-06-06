@@ -24,7 +24,7 @@ namespace diplomish
         {
             BrushConverter bc = new BrushConverter();
             var emil = DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month);
-            var yo = App.diplomchikEntities.task.Where(w => w.end_time.Value.Month == DateTime.Now.Month && staticUser.user.id == w.user_id && w.end_time > DateTime.Now && w.status_id != 2 && w.status_id != 6).Select(s => s.end_time.Value.Day).ToList();
+            var yo = App.diplomchikEntities.task.Where(w => (w.end_time.Value.Month == DateTime.Now.Month && w.end_time > DateTime.Now && w.status_id != 2 && w.status_id != 6 && staticUser.user.id == w.user_id && w.is_deleted !=1)||(w.end_time.Value.Month == DateTime.Now.Month && w.end_time > DateTime.Now && w.status_id != 2 && w.status_id != 6 && staticUser.user.branch_id == w.brach_id && w.is_deleted != 1)).Select(s => s.end_time.Value.Day).ToList();
             List<int> pisa = new List<int>();
             int a = 0;
             InitializeComponent();

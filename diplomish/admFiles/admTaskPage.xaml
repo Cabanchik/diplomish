@@ -1,4 +1,4 @@
-﻿<Page x:Class="diplomish.admFilesPage"
+﻿<Page x:Class="diplomish.admTaskPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,10 +14,11 @@
         <DataGrid x:Name="Imported" VerticalAlignment="Top" AutoGenerateColumns="False" CanUserResizeColumns="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Path=id}"/>
-                    <DataGridTextColumn Header="Название" Binding="{Binding Path=filename}"/>
-                    <DataGridTextColumn Header="Расширение" Binding="{Binding Path=extention}"/>
-                    <DataGridTextColumn Header="Дата загрузки" Binding="{Binding Path=upload_date}"/>
-                <DataGridTemplateColumn Header="Загрузчик">
+                    <DataGridTextColumn Header="Название" Binding="{Binding Path=title}"/>
+                    <DataGridTextColumn Header="Расширение" Binding="{Binding Path=purpose_time}"/>
+                    <DataGridTextColumn Header="Дата загрузки" Binding="{Binding Path=start_time}"/>
+                <DataGridTextColumn Header="Дата загрузки" Binding="{Binding Path=end_time}"/>                
+                <DataGridTemplateColumn Header="Исполнительный сотрудник">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock>
@@ -32,6 +33,24 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Исполнительный отдел" Binding="{Binding Path=branch.title}"/>
+                <DataGridTemplateColumn Header="Инициатор задачи">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="user1.name"></Binding>
+                                        <Binding Path="user1.surname"></Binding>
+
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Удален ли" Binding="{Binding Path=is_deleted}"/>
+                <DataGridTextColumn Header="Причина отклонения" Binding="{Binding Path=reject_com}"/>
                 <DataGridTemplateColumn Header="Удаление">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

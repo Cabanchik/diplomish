@@ -39,5 +39,10 @@ namespace diplomish.admFiles
         {
             this.NavigationService.Navigate(new admFilesPage());
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new admTaskPage());
+        }
     }
 }

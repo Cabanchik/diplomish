@@ -14,8 +14,17 @@ namespace diplomish
         {
             if (value != null)
             {
-                //var it = App.diplomchikEntities.file.Select(s=>s.user.name + " " + s.user.s).ToList();
-                //return it;
+
+                var i = value as user;
+
+                i.task.Where(s => s.is_deleted == 0).ToList();
+                
+                var it = App.diplomchikEntities.task.Where(s=>s.user_id == i.id && s.is_deleted != 1 && s.initiator_id == i.id).ToList();
+                if (it.Count == 0)
+                {
+                    
+                }
+                return it;
             }
             return 0;
         }

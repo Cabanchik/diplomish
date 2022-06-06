@@ -113,6 +113,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="admFiles\admTaskPage.xaml.cs">
+      <DependentUpon>admTaskPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="admFiles\admUsersPage.xaml.cs">
       <DependentUpon>admUsersPage.xaml</DependentUpon>
     </Compile>
@@ -206,6 +209,10 @@
     <Compile Include="windows\taskCreate.xaml.cs">
       <DependentUpon>taskCreate.xaml</DependentUpon>
     </Compile>
+    <Page Include="admFiles\admTaskPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="admFiles\admUsersPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
