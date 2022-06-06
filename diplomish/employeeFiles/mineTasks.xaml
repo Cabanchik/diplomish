@@ -11,9 +11,9 @@
     <Grid Margin="0,0,-1063,0">
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="5,0">
             <StackPanel Orientation="Vertical" >
-                <Label Content="Не принятые задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
+                <Label HorizontalAlignment="Center" Content="Не принятые задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
 
-                <ListView x:Name="view" FontSize="18" MouseDoubleClick="view_MouseDoubleClick" Width="360" Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
+                <ListView x:Name="view" FontSize="18" MouseDoubleClick="view_MouseDoubleClick" Width="360" Background="#fcae6a" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -60,10 +60,14 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <TextBlock Visibility="Collapsed" Text="Задач нет!" FontWeight="Bold" FontSize="50" Name="null1" HorizontalAlignment="Center"></TextBlock>
+                <Border CornerRadius="10" Visibility="Collapsed" x:Name="null1" Width="360" BorderThickness="3" BorderBrush="Black" Background="#fcae6a">
+                    <StackPanel HorizontalAlignment="Center">
+                        <Label Grid.Row="0" Grid.Column="1" Content="Задач нет!" FontWeight="Bold" FontSize="30"></Label>
+                    </StackPanel>
+                </Border>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
-                <Label Content="Начатые задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
+                <Label HorizontalAlignment="Center" Content="Начатые задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
                 <ListView MouseDoubleClick="view_MouseDoubleClick" x:Name="view2" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
@@ -84,7 +88,8 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <TextBlock Grid.Row="0" Grid.Column="1" Visibility="Collapsed" Text="Задач нет!" FontSize="30"></TextBlock>
+                                
+                                
                                 <TextBlock TextWrapping="Wrap" Text="{Binding title}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
                                 <Button Background="#acf09a" Click="Button_Click_2" FontWeight="Bold" BorderThickness="3" Foreground="#173D00"  BorderBrush="#173D00" Content="Завершить" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
@@ -109,11 +114,15 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <TextBlock Visibility="Collapsed" Text="Задач нет!" FontWeight="Bold" FontSize="50" Name="null2" HorizontalAlignment="Center"></TextBlock>
+                <Border CornerRadius="10" Visibility="Collapsed" x:Name="null2" Width="360" BorderThickness="3" BorderBrush="Black" Background="#FFFAAD">
+                    <StackPanel HorizontalAlignment="Center">
+                        <Label Grid.Row="0" Grid.Column="1" Content="Задач нет!" FontWeight="Bold" FontSize="30"></Label>
+                    </StackPanel>
+                </Border>
 
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
-                <Label Content="Скоро просрочатся" FontSize="30"  FontWeight="Bold" Foreground="#3D0600"></Label>
+                <Label HorizontalAlignment="Center" Content="Скоро просрочатся" FontSize="30"  FontWeight="Bold" Foreground="#3D0600"></Label>
                 <ListView MouseDoubleClick="view_MouseDoubleClick" x:Name="view3" FontSize="18" Width="360"  Background="#FFFAAD" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
                         <Style TargetType="Border">
@@ -158,10 +167,14 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <TextBlock Visibility="Collapsed" Text="Задач нет!" FontWeight="Bold" FontSize="50" Name="null3" HorizontalAlignment="Center"></TextBlock>
+                <Border CornerRadius="10" Visibility="Collapsed" x:Name="null3" Width="360" BorderThickness="3" BorderBrush="Black" Background="#FFFAAD">
+                    <StackPanel HorizontalAlignment="Center">
+                        <Label Grid.Row="0" Grid.Column="1" Content="Задач нет!" FontWeight="Bold" FontSize="30"></Label>
+                    </StackPanel>
+                </Border>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
-                <Label Content="Просроченные задачи" FontSize="30"  FontWeight="Bold" Foreground="#3D0600"></Label>
+                <Label HorizontalAlignment="Center" Content="Просроченные задачи" FontSize="30"  FontWeight="Bold" Foreground="#3D0600"></Label>
                 <ListView MouseDoubleClick="view_MouseDoubleClick" x:Name="view4" FontSize="18" Width="360"  Background="#FFCCCC" BorderThickness="3" BorderBrush="#A80A00">
                     <ListView.Resources>
                         <Style TargetType="Border">
@@ -206,15 +219,25 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <TextBlock Visibility="Collapsed" Text="Задач нет!" FontWeight="Bold" FontSize="50" Name="null4" HorizontalAlignment="Center"></TextBlock>
+                <Border CornerRadius="10" Visibility="Collapsed" x:Name="null4" Width="360" BorderThickness="3" BorderBrush="#A80A00" Background="#FFCCCC">
+                    <StackPanel HorizontalAlignment="Center">
+                        <Label Grid.Row="0" Grid.Column="1" Content="Задач нет!" FontWeight="Bold" FontSize="30"></Label>
+                    </StackPanel>
+                </Border>
+                
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="5,0" >
-                <Label Content="Завершенные задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
+                <Label HorizontalAlignment="Center" Content="Завершенные задачи" FontSize="30"  FontWeight="Bold" Foreground="#173D00"></Label>
+                <Border CornerRadius="10" Visibility="Collapsed" x:Name="null5" Width="360" BorderThickness="3" BorderBrush="#173D00" Background="#acf09a">
+                    <StackPanel HorizontalAlignment="Center">
+                        <Label Grid.Row="0" Grid.Column="1" Content="Задач нет!" FontWeight="Bold" FontSize="30"></Label>
+                    </StackPanel>
+                </Border>
                 <ListView MouseDoubleClick="view_MouseDoubleClick" x:Name="view5" FontSize="18" Width="360"  Background="#acf09a" BorderThickness="3" BorderBrush="#173D00">
                     <ListView.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"></Setter>
-                            <Setter Property="BorderThickness" Value="3"></Setter>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                            <Setter Property="BorderThickness" Value="3"/>
                         </Style>
 
                     </ListView.Resources>
@@ -223,14 +246,14 @@
                         <DataTemplate>
                             <Grid >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="155"></ColumnDefinition>
-                                    <ColumnDefinition Width="107"></ColumnDefinition>
-                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="155"/>
+                                    <ColumnDefinition Width="107"/>
+                                    <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding title}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding title}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                 <!--<Button Background="#acf09a" FontWeight="Bold" BorderThickness="3" Click="Button_Click_2" Foreground="#173D00"  BorderBrush="#173D00" Content="Завершить" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
                                         <Style TargetType="Border">
@@ -242,8 +265,8 @@
 
                                 <Button Background="#FF8080" FontWeight="Bold" Click="Button_Click" BorderThickness="3" Foreground="#A80A00"  BorderBrush="#A80A00" Content="Удалить" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right">
                                     <Button.Resources>
-                                        <Style TargetType="Border">
-                                            <Setter Property="CornerRadius" Value="10"></Setter>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="CornerRadius" Value="10"/>
 
                                         </Style>
                                     </Button.Resources>
@@ -254,7 +277,6 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <TextBlock Visibility="Collapsed" Text="Задач нет!" FontWeight="Bold" FontSize="50" Name="null5" HorizontalAlignment="Center"></TextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>

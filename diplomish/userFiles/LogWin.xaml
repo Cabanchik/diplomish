@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:diplomish"
         mc:Ignorable="d"
-        Title="Логин" Height="900" Width="1100">
+        Title="Логин" Height="900" Width="1100" WindowStyle="SingleBorderWindow">
     <Grid Background="#9ceaef">
         
         <StackPanel Orientation="Vertical"
@@ -77,17 +77,13 @@
 
                         <Label Content="Логин" HorizontalAlignment="Center" FontSize="30"/>
                         <TextBox x:Name="login"                               
-                                 
+                                 BorderBrush="Black" BorderThickness="2"
                                  HorizontalAlignment="Center"
                                  MaxLength="20"
+                                 Height="45"
                                  Width="300"
                                  Margin="0, 5"
-                                 FontSize="30">
-                            <TextBox.Resources>
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="5"></Setter>
-                                </Style>
-                            </TextBox.Resources>
+                                 FontSize="30">                           
                         </TextBox>
 
                     </StackPanel>
@@ -102,34 +98,19 @@
                         <Grid Width="300"
                               HorizontalAlignment="Center">
 
-                            <!-- Hidden Password -->
-                            <PasswordBox></PasswordBox>
-                            <!-- Visible Password -->
-                            <TextBox x:Name="pas"
-                                     
-                                     MaxLength="20"
-                                     FontFamily="Comic Sans MS"
-                                     
-                                     FontSize="30"
-                                     >
-                                <TextBox.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="5"></Setter>
-                                    </Style>
-                                </TextBox.Resources>
+                            <TextBox Visibility="Collapsed" x:Name="pas1" Height="45" MaxLength="20" FontSize="30" BorderBrush="Black" BorderThickness="2">
+                                
                             </TextBox>
+                            <PasswordBox x:Name="pas" MaxLength="20" FontSize="30" Height="45" Background="#3dccc7" BorderBrush="Black" BorderThickness="2">
+
+                            </PasswordBox>
                         </Grid>
 
                         <!-- Accept Toggle Button -->
-                        <ToggleButton x:Name="accept" 
-                                     
-                                      HorizontalAlignment="Left"
-                                      Margin="50, 10">
-                            <TextBlock Margin="10, 0"
-                                       Text="Показать пароль"
-                                       FontSize="16"
-                                       TextWrapping="Wrap"/>
-                        </ToggleButton>
+                        
+                        <CheckBox x:Name="accept" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50, 5" Content="Показать пароль" Unchecked="accept_Unchecked" Checked="accept_Checked">
+                            
+                        </CheckBox>
 
                     </StackPanel>
 

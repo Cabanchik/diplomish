@@ -83,15 +83,27 @@
 
                     </Button.Resources>
                 </Button>
-                <Button VerticalAlignment="Center" x:Name="taskEditBtn" Click="taskEditBtn_Click" Content="Изменить" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="100" Grid.Column="0" Grid.Row="7">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="10"></Setter>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="7">
+                    <Button VerticalAlignment="Center" x:Name="taskEditBtn" Click="taskEditBtn_Click" Content="Изменить"  BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,5,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="100" >
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
 
-                        </Style>
+                            </Style>
 
-                    </Button.Resources>
-                </Button>
+                        </Button.Resources>
+                    </Button>
+                    <Button VerticalAlignment="Center" x:Name="taskDeleteBtn" Click="taskDeleteBtn_Click" Content="Удалить"  BorderBrush="Black" BorderThickness="2" Height="30" Margin="5,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="100" >
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="10"></Setter>
+
+                            </Style>
+
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+                
 
             </Grid>
             <Image Source="/rez/cross.png" Width="25" Height="25" Margin="406,18,37,443" MouseDown="Image_MouseDown" RenderTransformOrigin="0.481,0.539"></Image>

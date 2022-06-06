@@ -40,30 +40,30 @@ namespace diplomish
                 string path2 = System.IO.Path.Combine(path1, "Everydaynik dowloads");
                 Directory.CreateDirectory(path2);
             }
-            
-            
-            
-            
+
+
+
+
             //"DESKTOP-R3QCPIV\\123"
-           
 
 
-            
+
+
 
         }
 
         private async void LoginClick(object sender, RoutedEventArgs e)
         {
-            var CurrentUser = App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Text.ToString()).FirstOrDefault();
+            var CurrentUser = App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Password.ToString()).FirstOrDefault();
             if (CurrentUser != null)
             {
                 staticUser.user = CurrentUser;
                 MainWindow mainWindow = new MainWindow(CurrentUser);
                 mainWindow.Show();
-                
+
                 this.Close();
             }
-            else if (login.Text == "" || pas.Text == "")
+            else if (login.Text == "" || pas.Password == "")
             {
                 errorMes.Text = "Все поля должны быть заполнены!";
             }
@@ -79,7 +79,7 @@ namespace diplomish
 
         }
 
-        
+
 
 
         private void TextBoxPreviewKeyDown(object sender, KeyEventArgs e)
@@ -102,5 +102,37 @@ namespace diplomish
                 e.Handled = true;
             }
         }
+
+        private void accept_Checked(object sender, RoutedEventArgs e)
+        {
+
+            if (pas.Password != "")
+            {
+                pas.Visibility = Visibility.Collapsed;
+                
+                pas1.Visibility = Visibility.Visible;
+                pas1.Text = pas.Password;
+
+            }
+
+
+
+
+        }
+
+        private void accept_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (pas.Password != "")
+            {
+                
+                pas1.Visibility = Visibility.Collapsed;
+                pas.Visibility = Visibility.Visible;
+                pas.Password = pas1.Text;
+            }
+
+        }
     }
+
+
 }
+

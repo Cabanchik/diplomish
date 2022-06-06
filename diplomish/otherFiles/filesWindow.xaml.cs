@@ -29,11 +29,14 @@ namespace diplomish
         public bool ass { get; set; }
         List<file> files { get; set; }
         public task task1 { get; set; }
+
+        string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+
         public filesWindow(task task)
         {
-           
+
             InitializeComponent();
-            
+            var s = userName.Split('\\');
 
             files = new List<file>();
             task1 = task;
@@ -66,10 +69,10 @@ namespace diplomish
                 }
                 files.AddRange(task1.file.ToList());
             }
-            
+
 
         }
-        
+
         //private void Timer_Tick(object sender, EventArgs e)
         //{
         //    loadingWin loadingWin = new loadingWin();
@@ -77,7 +80,7 @@ namespace diplomish
         //    {
         //        if (cal == 0)
         //        {
-                    
+
         //            loadingWin.ShowDialog();
         //            cal++;
         //        }
@@ -95,11 +98,11 @@ namespace diplomish
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-          
+            var s = userName.Split('\\');
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt*;*.docx;*.pptx;*.csv;*.xlsx*;*.png;*.jpg;*.jpeg";
+            openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt*;*.docx;*.pptx;*.csv;*.xlsx*;*.png;*.jpg;*.jpeg";
             openFileDialog.Multiselect = true;
-            
+
             string filedata;
             if (openFileDialog.ShowDialog() == true)
             {
@@ -120,46 +123,43 @@ namespace diplomish
                             //s.Add(Path.GetFileNameWithoutExtension(item));
                             // Create a byte array of file stream length
                             byte[] bytes = System.IO.File.ReadAllBytes(item);
-                            var ex = Path.GetExtension(item);
-                            var name = Path.GetFileNameWithoutExtension(item);
-                            //Read block of bytes from stream into the byte array
-                            fs.Read(bytes, 0, System.Convert.ToInt32(fs.Length));
-
-                            //Close the File Stream
-                            fs.Close();
-                            file file = new file()
+                            if (bytes.Length > 10485760)
                             {
-                                file1 = bytes,
-                                extention = ex,
-                                upload_date = DateTime.Now,
-                                filename = name,
-                                uploader_id = task1.initiator_id,
+                                MessageBox.Show("Размер файла не должен превышать 10 мб");
+                            }
+                            else
+                            {
+                                var ex = Path.GetExtension(item);
+                                var name = Path.GetFileNameWithoutExtension(item);
+                                //Read block of bytes from stream into the byte array
+                                fs.Read(bytes, 0, System.Convert.ToInt32(fs.Length));
+
+                                //Close the File Stream
+                                fs.Close();
+                                file file = new file()
+                                {
+                                    file1 = bytes,
+                                    extention = ex,
+                                    upload_date = DateTime.Now,
+                                    filename = name,
+                                    uploader_id = task1.initiator_id,
 
 
-                            };
-                            
-                            timer = file;
-                            task1.file.Add(file);
-                            files.Add(file);
-                            App.diplomchikEntities.file.Add(file);
+                                };
 
-
+                                timer = file;
+                                task1.file.Add(file);
+                                files.Add(file);
+                                App.diplomchikEntities.file.Add(file);
+                            }
 
                         }
                         filess.ItemsSource = null;
                         filess.ItemsSource = files;
-                        //timer = new DispatcherTimer();
-                        //timer.Interval = TimeSpan.FromSeconds(1);
-                        //timer.Tick += Timer_Tick;
-                        //timer.Start();
-                        //int? a = await 
-                        App.diplomchikEntities.SaveChanges();
-                        //if (a != null)
-                        //{
-                        //    ass = true;
 
-                        //}
-                        //timer.Stop();
+                        App.diplomchikEntities.SaveChanges();
+
+
                         int x = task1.file.Count();
                         if (filess.ItemsSource == null)
                         {
@@ -169,6 +169,7 @@ namespace diplomish
                         {
                             title.Content = $"Прикреплено файлов: {x}";
                         }
+
                     }
                     catch (Exception ex)
                     {
@@ -222,8 +223,6 @@ namespace diplomish
 
         private async void Image1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            
-            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             var s = userName.Split('\\');
             Image image = sender as Image;
             file file = image.DataContext as file;
@@ -235,15 +234,20 @@ namespace diplomish
                 string path2 = System.IO.Path.Combine(path1, "Everydaynik dowloads");
                 Directory.CreateDirectory(path2);
             }
-            string path3 = $@"C:\Users\{s[1]}\Downloads\Everydaynik dowloads\{file.filename}.{file.extention}";            
+            string path3 = $@"C:\Users\{s[1]}\Downloads\Everydaynik dowloads\{file.filename}.{file.extention}";
+
             using (FileStream fstream = new FileStream(path3, FileMode.CreateNew))
             {
                 byte[] info = App.diplomchikEntities.file.Where(sm => sm.id == file.id).Select(sm => sm.file1).FirstOrDefault().ToArray();
                 fstream.Write(info, 0, info.Length);
                 fstream.Close();
             }
-            
-            
+
+
+
+
+
+
 
         }
 

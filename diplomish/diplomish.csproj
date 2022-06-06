@@ -109,6 +109,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="admFiles\admUsersPage.xaml.cs">
+      <DependentUpon>admUsersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="admFiles\admFilesPage.xaml.cs">
+      <DependentUpon>admFilesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="admFiles\addEmployee.xaml.cs">
       <DependentUpon>addEmployee.xaml</DependentUpon>
     </Compile>
@@ -121,14 +127,13 @@
     <Compile Include="branch.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="calendar.xaml.cs">
+    <Compile Include="otherFiles\calendar.xaml.cs">
       <DependentUpon>calendar.xaml</DependentUpon>
     </Compile>
     <Compile Include="company.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\countConverter.cs" />
-    <Compile Include="classes\cultureInfoConverter.cs" />
     <Compile Include="diplomchikModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -147,16 +152,17 @@
     <Compile Include="file.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="filesWindow.xaml.cs">
+    <Compile Include="otherFiles\filesWindow.xaml.cs">
       <DependentUpon>filesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="gender.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="mineTasks.xaml.cs">
+    <Compile Include="classes\itemsSourceConverter.cs" />
+    <Compile Include="employeeFiles\mineTasks.xaml.cs">
       <DependentUpon>mineTasks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="rejectTaskWindow.xaml.cs">
+    <Compile Include="employeeFiles\rejectTaskWindow.xaml.cs">
       <DependentUpon>rejectTaskWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="classes\staticUser.cs" />
@@ -166,7 +172,7 @@
     <Compile Include="role.cs">
       <DependentUpon>diplomchikModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SelectionPage.xaml.cs">
+    <Compile Include="otherFiles\SelectionPage.xaml.cs">
       <DependentUpon>SelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="status.cs">
@@ -179,10 +185,10 @@
     <Compile Include="superviserFiles\taskEdit.xaml.cs">
       <DependentUpon>taskEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="selfTaskCreate.xaml.cs">
+    <Compile Include="superviserFiles\selfTaskCreate.xaml.cs">
       <DependentUpon>selfTaskCreate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="taskInfo.xaml.cs">
+    <Compile Include="employeeFiles\taskInfo.xaml.cs">
       <DependentUpon>taskInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="user.cs">
@@ -190,12 +196,20 @@
     </Compile>
     <Compile Include="classes\userCountConverter.cs" />
     <Compile Include="classes\userStatusConverter.cs" />
-    <Compile Include="windows\editEmployee.xaml.cs">
+    <Compile Include="userFiles\editEmployee.xaml.cs">
       <DependentUpon>editEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\taskCreate.xaml.cs">
       <DependentUpon>taskCreate.xaml</DependentUpon>
     </Compile>
+    <Page Include="admFiles\admUsersPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="admFiles\admFilesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="admFiles\addEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -208,19 +222,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="calendar.xaml">
+    <Page Include="otherFiles\calendar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="filesWindow.xaml">
+    <Page Include="otherFiles\filesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LogWin.xaml">
+    <Page Include="userFiles\LogWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="rejectTaskWindow.xaml">
+    <Page Include="employeeFiles\rejectTaskWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,15 +246,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="selfTaskCreate.xaml">
+    <Page Include="superviserFiles\selfTaskCreate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="taskInfo.xaml">
+    <Page Include="employeeFiles\taskInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="windows\editEmployee.xaml">
+    <Page Include="userFiles\editEmployee.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -252,18 +266,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LogWin.xaml.cs">
+    <Compile Include="userFiles\LogWin.xaml.cs">
       <DependentUpon>LogWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="mineTasks.xaml">
+    <Page Include="employeeFiles\mineTasks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SelectionPage.xaml">
+    <Page Include="otherFiles\SelectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -327,6 +341,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="admFiles\cross.png" />
     <Content Include="diplomchikModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>diplomchikModel.Context.cs</LastGenOutput>

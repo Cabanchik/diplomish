@@ -74,32 +74,41 @@ namespace diplomish
 
         private void saveClick(object sender, RoutedEventArgs e)
         {
-            int s;
+            try
+            {
+                int s;
 
-            if (sex2.IsChecked == true)
-            {
-                s = 11;
-            }
-            else
-            {
-                s = 1;
-            }
-            var br = App.diplomchikEntities.branch.Where(s1 => s1.title == brnch.SelectedItem.ToString()).Select(s1 => s1.id).FirstOrDefault().ToString();
+                if (sex2.IsChecked == true)
+                {
+                    s = 2;
+                }
+                else
+                {
+                    s = 1;
+                }
+                var br = App.diplomchikEntities.branch.Where(s1 => s1.title == brnch.SelectedItem.ToString()).Select(s1 => s1.id).FirstOrDefault().ToString();
 
-            user user = new user()
+                user user = new user()
+                {
+                    name = name.Text,
+                    surname = surname.Text,
+                    gender_id = s,
+                    birth_date = dr.SelectedDate,
+                    login = log.Text,
+                    password = pas.Text,
+                    branch_id = Convert.ToInt32(br),
+                    user_pic = mage,
+                    company_id = staticUser.user.company_id
+                };
+                App.diplomchikEntities.user.Add(user);
+                App.diplomchikEntities.SaveChanges();
+            }
+            catch (Exception)
             {
-                name = name.Text,
-                surname = surname.Text,
-                gender_id = s,
-                birth_date = dr.SelectedDate,
-                login = log.Text,
-                password = pas.Text,
-                branch_id = Convert.ToInt32(br),
-                user_pic = mage,
-                company_id = staticUser.user.company_id
-            };
-            App.diplomchikEntities.user.Add(user);
-            App.diplomchikEntities.SaveChanges();
+
+                MessageBox.Show("Все поля должны быть заполнены");
+            }
+            
         }
         private void sex2_Checked(object sender, RoutedEventArgs e)
         {

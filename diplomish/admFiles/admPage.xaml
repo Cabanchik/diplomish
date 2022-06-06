@@ -19,7 +19,17 @@
                 </Button.Resources>
 
             </Button>
-            <Button HorizontalAlignment="Left" Width="198" Height="50" BorderThickness="3" BorderBrush="Black" Content="Чето еще" Margin="0,0,0,5" FontSize="20">
+            <Button HorizontalAlignment="Left" Width="198" Height="50" BorderThickness="3" BorderBrush="Black" Content="Файлы" Margin="0,0,0,5" FontSize="20" Click="Button_Click_1">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"></Setter>
+
+                    </Style>
+
+                </Button.Resources>
+
+            </Button>
+            <Button HorizontalAlignment="Left" Width="198" Height="50" BorderThickness="3" BorderBrush="Black" Content="Чето еще" Margin="0,0,0,5" FontSize="20" Click="Button_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"></Setter>

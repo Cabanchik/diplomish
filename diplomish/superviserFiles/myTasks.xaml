@@ -38,7 +38,7 @@
                 </ItemsControl.Template>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel VerticalAlignment="Top" Margin="5,5">
+                        <StackPanel VerticalAlignment="Top" Margin="5,5" >
                             <Border CornerRadius="10" BorderBrush="Black" Margin="0,0,0,-15" VerticalAlignment="Top" Panel.ZIndex="2">
                                 <Border.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -46,9 +46,9 @@
                                         <GradientStop Color="#FF4A4027" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Border.Background>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <TextBlock  Margin="5,0,0,0" HorizontalAlignment="left" VerticalAlignment="Center" Foreground="#E1BB80" FontSize="40" TextWrapping="Wrap" Text="{Binding title}"/>
-                                    <Label x:Name="countLbl" Content="{Binding ., Converter={StaticResource countConverter}}" HorizontalAlignment="left" Foreground="#E1BB80" FontSize="40"></Label>
+                                    <Label x:Name="countLbl" Content="{Binding ., Converter={StaticResource countConverter}}" HorizontalAlignment="Center" Foreground="#E1BB80" FontSize="40"></Label>
                                 </StackPanel>
 
                             </Border>
@@ -131,7 +131,7 @@
 
                             </Border>
                             <StackPanel>
-                                <ListView Background="Wheat" MouseDoubleClick="listx1111_MouseDoubleClick_2" ItemsSource="{Binding task}" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
+                                <ListView Background="Wheat" MouseDoubleClick="listx1111_MouseDoubleClick_2" ItemsSource="{Binding task, Converter={StaticResource itemsSourceConverter} }" x:Name="listx1111" Margin="0,0,0,0" HorizontalContentAlignment="Stretch">
                                     <ListView.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10"/>

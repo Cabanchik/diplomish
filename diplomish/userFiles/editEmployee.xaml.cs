@@ -41,7 +41,7 @@ namespace diplomish
 
             brnch.ItemsSource = App.diplomchikEntities.branch.Select(s => s.title).ToList();
             pas.Password = user1.password;
-            brnch.Text = App.diplomchikEntities.branch.Where(s => s.id == user1.id).Select(s => s.title).FirstOrDefault().ToString();
+            brnch.SelectedItem = App.diplomchikEntities.branch.Where(s => s.id == user1.id).Select(s => s.title).FirstOrDefault().ToString();
         }
 
         private void surname_TextChanged(object sender, TextChangedEventArgs e)
@@ -98,7 +98,7 @@ namespace diplomish
             pas.IsEnabled = true;
             lbl.Visibility = Visibility.Visible;
             pas.Password = Convert.ToString(user1.password);
-            brnch.IsReadOnly = false;
+            brnch.IsEnabled = true;
             
         }
         private void sex2_Checked(object sender, RoutedEventArgs e)
@@ -136,12 +136,12 @@ namespace diplomish
                 dr.IsEnabled = false;
                 log.IsReadOnly = true;
                 pas.IsEnabled = false;
-                brnch.IsReadOnly = true;
+                brnch.IsEnabled = false;
                 lbl.Visibility = Visibility.Collapsed;
 
                 if (sex2.IsChecked == true)
                 {
-                    user1.gender_id = 11;
+                    user1.gender_id = 2;
                 }
                 else if (sex.IsChecked == true)
                 {
