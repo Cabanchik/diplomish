@@ -20,29 +20,37 @@ namespace diplomish.admFiles
     /// </summary>
     public partial class admPage : Page
     {
+        
         public admPage()
         {
             InitializeComponent();
+            
+
+
         }
 
         private void addEmployee_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new addEmployee());
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new admUsersPage());
+            MainWindow.Instance.mainFrame.Content = new admUsersPage();
+            admWin.Instance.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new admFilesPage());
+            MainWindow.Instance.mainFrame.Content = new admFilesPage();
+            admWin.Instance.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new admTaskPage());
+            MainWindow.Instance.mainFrame.Content = new admTaskPage();
+            admWin.Instance.Close();
         }
     }
 }

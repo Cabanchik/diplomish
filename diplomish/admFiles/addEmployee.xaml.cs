@@ -50,7 +50,7 @@ namespace diplomish
 
         private void Ellipse_Drop(object sender, DragEventArgs e)
         {
-            
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
 
@@ -58,9 +58,9 @@ namespace diplomish
 
                 string fin = System.IO.Path.GetFullPath(files[0]);
 
-                dicpic.ImageSource = new BitmapImage(new Uri(fin));                
+                dicpic.ImageSource = new BitmapImage(new Uri(fin));
                 mage = ImageToByte(new BitmapImage(new Uri(fin)));
-                
+
             }
         }
         public static byte[] ImageToByte(BitmapImage image)
@@ -103,14 +103,14 @@ namespace diplomish
                 App.diplomchikEntities.user.Add(user);
                 App.diplomchikEntities.SaveChanges();
                 MessageBox.Show("Пользователь добавлен успешно");
-                this.NavigationService.GoBack();
+                edit1.IsEnabled = false;
             }
             catch (Exception)
             {
 
                 MessageBox.Show("Все поля должны быть заполнены");
             }
-            
+
         }
         private void sex2_Checked(object sender, RoutedEventArgs e)
         {
@@ -121,11 +121,11 @@ namespace diplomish
             }
         }
 
-        
+
 
         private void sussy_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

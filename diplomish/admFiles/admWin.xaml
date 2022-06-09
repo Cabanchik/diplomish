@@ -8,12 +8,50 @@
         Title="admwin" WindowStartupLocation="CenterScreen" Height="499.332" Width="538.369" AllowsTransparency="True" WindowStyle="None" Background="Transparent" >
     <Border CornerRadius="50" BorderThickness="3" BorderBrush="#3dccc7" Background="#9ceaef">
         <Grid>
-            <Image Source="/rez/back.png" Margin="19,4,463,456" MouseDown="Image_MouseDown_1"></Image>
-            <Image Width="25" Height="25" Source="/rez/cross.png" Margin="478,9,29,459" MouseDown="Image_MouseDown"></Image>
-            <Frame x:Name="sa" Margin="0,50,0,50" NavigationUIVisibility="Hidden">
-                
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="stack">
+                <Button Click="addEmployee_Click" HorizontalAlignment="Left" Width="198" Height="50" BorderThickness="3" BorderBrush="Black" Content="Добавить сотрудника" Margin="0,0,0,5" FontSize="20">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
 
-            </Frame>
+                        </Style>
+
+                    </Button.Resources>
+
+                </Button>
+                <Button HorizontalAlignment="Left" Width="198" Height="50" BorderThickness="3" BorderBrush="Black" Content="Файлы" Margin="0,0,0,5" FontSize="20" Click="Button_Click_1">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+
+                        </Style>
+
+                    </Button.Resources>
+
+                </Button>
+                <Button HorizontalAlignment="Left" Width="198" Height="50" BorderThickness="3" BorderBrush="Black" Content="Пользователи" Margin="0,0,0,5" FontSize="20" Click="Button_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+
+                        </Style>
+
+                    </Button.Resources>
+
+                </Button>
+                <Button HorizontalAlignment="Left" Width="198" Height="50" BorderThickness="3" BorderBrush="Black" Content="Задачи" Margin="0,0,0,5" FontSize="20" Click="Button_Click_2">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
+
+                        </Style>
+
+                    </Button.Resources>
+
+                </Button>
+            </StackPanel>
+            <Frame HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" x:Name="frame"></Frame>
+            <Image Source="/rez/cross.png" Width="25" Height="25" Margin="477,14,30,454" MouseDown="Image_MouseDown" RenderTransformOrigin="0.481,0.539"></Image>
         </Grid>
     </Border>
 </Window>

@@ -119,6 +119,7 @@ namespace diplomish
             {
                 task1.is_deleted = 1;
                 App.diplomchikEntities.SaveChanges();
+                this.Close();
             }
         }
                

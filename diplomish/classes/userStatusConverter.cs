@@ -34,7 +34,7 @@ namespace diplomish
                     }
                     else if (item.id == 4)
                     {
-                        return (Brush)bc.ConvertFrom("#450303");
+                        return (Brush)bc.ConvertFrom("#fc1100");
                     }
                     else if (item.id == 5)
                     {
@@ -42,7 +42,7 @@ namespace diplomish
                     }
                     else if (item.id == 6)
                     {
-                        return (Brush)bc.ConvertFrom("#fc0303");
+                        return (Brush)bc.ConvertFrom("#fc1100");
                     }
                 }
                 return value;

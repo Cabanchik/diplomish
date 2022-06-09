@@ -31,31 +31,46 @@ namespace diplomish
 
         }
 
-        
+
         task task = new task();
 
 
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            DateTime nw = DateTime.Now + TimeSpan.FromMinutes(1);
             try
             {
-                task = new task()
+                if (start.Value >= end.Value)
                 {
-                    title = tas.Text.ToString(),
-                    annotation = annotation.Text.ToString(),
-                    start_time = Convert.ToDateTime(start.Text),
-                    end_time = Convert.ToDateTime(end.Text),
-                    user_id = user1.id,
-                    initiator_id = user1.id,
-                    status_id = 1,
-                    purpose_time = DateTime.Now
+                    MessageBox.Show("Дата завершения задачи должна быть позже даты старта");
+                }
+                else if (end.Value < DateTime.Now)
+                {
+                    MessageBox.Show("Дата завершения не может быть раньше текущего времени");
+                }
+                else
+                {
+                    task = new task()
+                    {
+                        title = tas.Text.ToString(),
+                        annotation = annotation.Text.ToString(),
+                        start_time = Convert.ToDateTime(start.Text),
+                        end_time = Convert.ToDateTime(end.Text),
+                        user_id = user1.id,
+                        initiator_id = user1.id,
+                        status = App.diplomchikEntities.status.Where(s => s.id == 1).FirstOrDefault(),
+                        purpose_time = DateTime.Now
 
-                };
-                App.diplomchikEntities.task.Add(task);
-                App.diplomchikEntities.SaveChanges();
-                MessageBox.Show("Задача создана успешно!");
-                this.Close();
+                    };
+                    App.diplomchikEntities.task.Add(task);
+                    App.diplomchikEntities.SaveChanges();
+                    MessageBox.Show("Задача создана успешно!");
+                    this.Close();
+
+                }
+
+
             }
             catch (Exception)
             {

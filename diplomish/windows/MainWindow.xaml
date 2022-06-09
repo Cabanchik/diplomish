@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:diplomish"
         mc:Ignorable="d"
-         Title="Напоминатель" WindowState="Maximized" MinHeight="768" MinWidth="1865.5">
+         Title="EveryDayник" WindowState="Maximized" MinHeight="768" MinWidth="1865.5">
     <Window.Resources>
 
     </Window.Resources>
-    <Grid x:Name="mainGrid" Background="#9ceaef">
+    <Grid x:Name="mainGrid" Background="#9ceaef" Margin="0,0,0,-250">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="80" ></RowDefinition>
@@ -232,7 +232,7 @@
                     <Label HorizontalAlignment="Center" Margin="-7,0,0,0" HorizontalContentAlignment="Center" x:Name="call" Content="Календарь:"></Label>
 
                 </StackPanel>
-                <Frame x:Name="sss" Margin="5" MinWidth="420" MouseDoubleClick="sss_MouseDoubleClick"></Frame>
+                <Frame NavigationUIVisibility="Hidden" x:Name="sss" Margin="5" MinWidth="420" MouseDoubleClick="sss_MouseDoubleClick"></Frame>
 
 
             </StackPanel>

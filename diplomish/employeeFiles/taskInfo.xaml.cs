@@ -25,34 +25,38 @@ namespace diplomish
             BrushConverter bc = new BrushConverter();
             InitializeComponent();
             task1 = task;
-            title.Text = task.title;
-            anno.Text = task.annotation;
-            start_time.Value = task.start_time;
-            end_time.Value = task.end_time;
-            statusBox.Text = task.status.title.ToString();
-            if (task.status_id == 1)
+            title.Text = task1.title;
+            anno.Text = task1.annotation;
+            start_time.Value = task1.start_time;
+            end_time.Value = task1.end_time;
+            statusBox.Text = task1.status.title.ToString();
+            if (task1.user_id == task1.initiator_id)
+            {
+                filesBtn.Visibility = Visibility.Collapsed;
+            }
+            if (task1.status_id == 1)
             {
                 statusBox.Foreground = (Brush)bc.ConvertFrom("#49a303");
             }
-            else if (task.status_id == 2)
+            else if (task1.status_id == 2)
             {
                 statusBox.Foreground = (Brush)bc.ConvertFrom("#007d00");
             }
-            else if (task.status_id == 3)
+            else if (task1.status_id == 3)
             {
                 statusBox.Foreground = (Brush)bc.ConvertFrom("#7d0000");
             }
-            else if (task.status_id == 4)
+            else if (task1.status_id == 4)
             {
-                statusBox.Foreground = (Brush)bc.ConvertFrom("#450303");
+                statusBox.Foreground = (Brush)bc.ConvertFrom("#fc1100");
             }
-            else if (task.status_id == 5)
+            else if (task1.status_id == 5)
             {
                 statusBox.Foreground = (Brush)bc.ConvertFrom("#ff9d00");
             }
-            else if (task.status_id == 6)
+            else if (task1.status_id == 6)
             {
-                statusBox.Foreground = (Brush)bc.ConvertFrom("#49a303");
+                statusBox.Foreground = (Brush)bc.ConvertFrom("#fc1100");
             }
         }
 

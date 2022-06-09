@@ -26,9 +26,10 @@ namespace diplomish
         private static System.Windows.Threading.DispatcherTimer readDataTimer = new System.Windows.Threading.DispatcherTimer();
         public int a = 0;
         public user chel { get; set; }
+        public static MainWindow Instance { get; private set; }
         public MainWindow(user user)
         {
-
+            Instance = this;
             chel = user;
             this.DataContext = chel;
             InitializeComponent();
@@ -65,6 +66,8 @@ namespace diplomish
 
             if (a == 0)
             {
+                calendar calendar = new calendar();
+                sss.Content = calendar;
                 DoubleAnimation checkBoxAnim = new DoubleAnimation(420, App.openCloseDuraion);
                 border.BeginAnimation(WidthProperty, checkBoxAnim);
                 navStack.BeginAnimation(WidthProperty, checkBoxAnim);
@@ -84,6 +87,8 @@ namespace diplomish
             }
             else if (a == 1)
             {
+                calendar calendar = new calendar();
+                sss.Content = calendar;
                 DoubleAnimation checkBoxAnim = new DoubleAnimation(70, App.openCloseDuraion);
                 border.BeginAnimation(WidthProperty, checkBoxAnim);
                 navStack.BeginAnimation(WidthProperty, checkBoxAnim);
@@ -170,7 +175,7 @@ namespace diplomish
         private void StackPanel_MouseDown_3(object sender, MouseButtonEventArgs e)
         {
             admWin admWin = new admWin();
-            admWin.ShowDialog();
+            admWin.Show();
         }
 
         private void createSelfButton_Click(object sender, RoutedEventArgs e)

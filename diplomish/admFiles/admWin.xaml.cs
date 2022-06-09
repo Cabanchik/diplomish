@@ -19,30 +19,43 @@ namespace diplomish
     /// </summary>
     public partial class admWin : Window
     {
+        public static admWin Instance { get; private set; }
         public admWin()
         {
             InitializeComponent();
-            admFiles.admPage addEmployee = new admFiles.admPage();
-            sa.Content = addEmployee;
+            
+        }
+
+        private void addEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            stack.Visibility = Visibility.Collapsed;
+            frame.Visibility = Visibility.Visible;
+            frame.NavigationService.Navigate(new addEmployee());
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow.Instance.mainFrame.Content = new admUsersPage();
+            this.Close();
+        }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.mainFrame.Content = new admFilesPage();
+            this.Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.mainFrame.Content = new admTaskPage();
+            this.Close();
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.Close();
         }
-
-        private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
-        {
-            if (sa.CanGoBack == true)
-            {
-                sa.GoBack();
-
-            }
-        }
+               
     }
 }

@@ -27,17 +27,17 @@ namespace diplomish
         {
             
             InitializeComponent();           
-            sasun();
+            load();
             
         }
-        public async void sasun()
+        public async void load()
         {
-            var s = Task.Run(() => sasun2());
+            var s = Task.Run(() => load2());
             t = await s;
             Imported.ItemsSource = t;
             
         }
-        public List<file> sasun2()
+        public List<file> load2()
         {
             var t = App.diplomchikEntities.file.ToList();
             return t;
@@ -57,7 +57,7 @@ namespace diplomish
                     App.diplomchikEntities.SaveChanges();
                 }
                 Imported.ItemsSource = null;
-                sasun();
+                load();
             }
             catch (Exception)
             {

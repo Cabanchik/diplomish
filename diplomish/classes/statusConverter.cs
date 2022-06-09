@@ -30,13 +30,13 @@ namespace diplomish
                     return (Brush)bc.ConvertFrom("#7d0000");
                 }else if (item.id == 4)
                 {
-                    return (Brush)bc.ConvertFrom("#450303");
+                    return (Brush)bc.ConvertFrom("#fc1100");
                 }else if (item.id == 5)
                 {
                     return (Brush)bc.ConvertFrom("#ff9d00");
                 }else if (item.id == 6)
                 {
-                    return (Brush)bc.ConvertFrom("#fc0303");
+                    return (Brush)bc.ConvertFrom("#fc1100");
                 }
             }
             return value;
