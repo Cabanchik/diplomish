@@ -40,7 +40,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label FontWeight="SemiBold" FontSize="15" Content="Название:" Grid.Column="0" VerticalAlignment="Center" Grid.Row="0"></Label>
-                <TextBox IsReadOnly="True" x:Name="title" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Grid.Column="1" Grid.Row="0" Height="30" >
+                <TextBox IsReadOnly="True" x:Name="title" BorderBrush="Black" BorderThickness="2" Margin="0,5,0,0" FontWeight="SemiBold" FontSize="15" Grid.Column="1" Grid.Row="0" Height="38" >
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>
@@ -73,8 +73,24 @@
 
                     </TextBox.Resources>
                 </TextBox>
+                <Label VerticalAlignment="Center" FontWeight="SemiBold" FontSize="15" Content="Инициатор:" Grid.Column="0" Grid.Row="6"></Label>
+                <TextBox IsReadOnly="true" x:Name="init" BorderBrush="Black" BorderThickness="2" VerticalAlignment="Center" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Grid.Column="1" Grid.Row="6">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"></Setter>
 
-                <Button VerticalAlignment="Center" x:Name="filesBtn" Content="Прикрепленные файлы" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="200" Grid.Column="0" Grid.Row="6" Click="filesBtn_Click">
+                        </Style>
+
+                    </TextBox.Resources>
+                    <TextBox.Text>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding Path="user1.name"></Binding>
+                            <Binding Path="user1.surname"></Binding>
+
+                        </MultiBinding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button VerticalAlignment="Center" x:Name="filesBtn" Content="Прикрепленные файлы" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="2" Height="30" Margin="0,5,0,5" FontWeight="SemiBold" FontSize="15" Background="#3dccc7" Width="200" Grid.Column="0" Grid.Row="7" Click="filesBtn_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="10"></Setter>

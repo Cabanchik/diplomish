@@ -25,6 +25,7 @@ namespace diplomish
             BrushConverter bc = new BrushConverter();
             InitializeComponent();
             task1 = task;
+            init.DataContext = task1;
             title.Text = task1.title;
             anno.Text = task1.annotation;
             start_time.Value = task1.start_time;

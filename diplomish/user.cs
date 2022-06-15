@@ -44,7 +44,5 @@ namespace diplomish
         public virtual ICollection<task> task { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<task> task1 { get; set; }
-        public virtual user user1 { get; set; }
-        public virtual user user2 { get; set; }
     }
 }

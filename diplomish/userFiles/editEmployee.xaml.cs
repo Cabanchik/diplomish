@@ -41,7 +41,31 @@ namespace diplomish
 
             brnch.ItemsSource = App.diplomchikEntities.branch.Select(s => s.title).ToList();
             pas.Password = user1.password;
-            brnch.SelectedItem = user1.branch.title;
+            
+            if (user1.branch == null)
+            {
+                brnch.SelectedItem = null;
+            }
+            else
+            {
+                brnch.SelectedItem = user1.branch.title;
+            }
+            if (staticUser.user.role.id == 3 || staticUser.user.role.id == 4)
+            {
+                role.Visibility = Visibility.Visible;
+                roleLbl.Visibility = Visibility.Visible;
+                role.ItemsSource = App.diplomchikEntities.role.Select(s => s.title).ToList();
+                if (user1.role == null)
+                {
+                    role.SelectedItem = null;
+                }
+                else
+                {
+                    role.SelectedItem = user1.role.title;
+                }
+                
+            }
+            
         }
 
         private void surname_TextChanged(object sender, TextChangedEventArgs e)
@@ -88,7 +112,7 @@ namespace diplomish
             pic.AllowDrop = true;
             edit1.Visibility = Visibility.Collapsed;
             sussy.Visibility = Visibility.Visible;
-
+            role.IsEnabled = true;
             name.IsReadOnly = false;
             surname.IsReadOnly = false;
             sex.IsEnabled = true;
@@ -120,11 +144,11 @@ namespace diplomish
         }
         private void sussy_Click(object sender, RoutedEventArgs e)
         {
-            
-            
-            
-            try
-            {
+
+
+
+            //try
+            //{
                 pic.AllowDrop = false;
                 edit1.Visibility = Visibility.Visible;
                 sussy.Visibility = Visibility.Collapsed;
@@ -137,6 +161,7 @@ namespace diplomish
                 log.IsReadOnly = true;
                 pas.IsEnabled = false;
                 brnch.IsEnabled = false;
+                role.IsEnabled = false;
                 lbl.Visibility = Visibility.Collapsed;
 
                 if (sex2.IsChecked == true)
@@ -153,17 +178,20 @@ namespace diplomish
                 user1.birth_date = Convert.ToDateTime(dr.Text);
                 user1.login = log.Text.ToString();
                 user1.password = pas.Password.ToString();
-                var br = App.diplomchikEntities.branch.Where(s => s.title == brnch.SelectedItem.ToString()).Select(s => s.id).FirstOrDefault().ToString();
-                user1.branch_id = Convert.ToInt32(br);
+                var br = App.diplomchikEntities.branch.Where(s => s.title == brnch.SelectedItem.ToString()).Select(s=>s.id).FirstOrDefault();
+                var f = App.diplomchikEntities.role.Where(s => s.title == role.SelectedItem).Select(s => s.id).FirstOrDefault();
+                user1.role_id = Convert.ToInt32(f); 
+
+                user1.branch_id = br;
                 App.diplomchikEntities.SaveChanges();
-             
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Все поля должны быть закончены");
-            }
-            
-            
-        }
+
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Все поля должны быть закончены");
+            //}
+
+
+}
     }
 }

@@ -45,14 +45,33 @@ namespace diplomish
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var message = MessageBox.Show("Вы точно хотите удалить фаил?", "Внимание", MessageBoxButton.OKCancel);
-            if (message == MessageBoxResult.OK)
+            Image delete = sender as Image;
+            user deltask = delete.DataContext as user;
+            if (deltask != null)
             {
-                Image delete = sender as Image;
-                user deltask = delete.DataContext as user;
-                App.diplomchikEntities.user.Remove(deltask);
-                App.diplomchikEntities.SaveChanges();
+                var message = MessageBox.Show("Вы точно хотите удалить пользователя?", "Внимание", MessageBoxButton.OKCancel);
+                if (message == MessageBoxResult.OK)
+                {
+
+
+                    App.diplomchikEntities.user.Remove(deltask);
+                    App.diplomchikEntities.SaveChanges();
+
+
+
+                }
             }
+            
+
+        }
+
+       
+
+        private void Imported_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var user1 = (sender as DataGrid).SelectedItem as user;
+            editEmployee editEmployee = new editEmployee(user1);
+            editEmployee.ShowDialog();
         }
     }
 }

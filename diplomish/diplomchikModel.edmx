@@ -95,18 +95,6 @@
           <Property Name="branch_id" Type="int" />
           <Property Name="company_id" Type="int" />
         </EntityType>
-        <Association Name="FK_branch_user">
-          <End Role="user" Type="Self.user" Multiplicity="1" />
-          <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="branch">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_file_in_task_file">
           <End Role="file" Type="Self.file" Multiplicity="1" />
           <End Role="file_in_task" Type="Self.file_in_task" Multiplicity="*" />
@@ -191,6 +179,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_user_branch">
+          <End Role="branch" Type="Self.branch" Multiplicity="0..1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="branch_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_user_company">
           <End Role="company" Type="Self.company" Multiplicity="0..1" />
           <End Role="user" Type="Self.user" Multiplicity="*" />
@@ -227,18 +227,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_user_user">
-          <End Role="user" Type="Self.user" Multiplicity="1" />
-          <End Role="user1" Type="Self.user" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="user1">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище diplomchikEntityContainer">
           <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
@@ -249,10 +237,6 @@
           <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="task" EntityType="Self.task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_branch_user" Association="Self.FK_branch_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="branch" EntitySet="branch" />
-          </AssociationSet>
           <AssociationSet Name="FK_file_in_task_file" Association="Self.FK_file_in_task_file">
             <End Role="file" EntitySet="file" />
             <End Role="file_in_task" EntitySet="file_in_task" />
@@ -281,6 +265,10 @@
             <End Role="user" EntitySet="user" />
             <End Role="task" EntitySet="task" />
           </AssociationSet>
+          <AssociationSet Name="FK_user_branch" Association="Self.FK_user_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
           <AssociationSet Name="FK_user_company" Association="Self.FK_user_company">
             <End Role="company" EntitySet="company" />
             <End Role="user" EntitySet="user" />
@@ -292,10 +280,6 @@
           <AssociationSet Name="FK_user_role" Association="Self.FK_user_role">
             <End Role="role" EntitySet="role" />
             <End Role="user" EntitySet="user" />
-          </AssociationSet>
-          <AssociationSet Name="FK_user_user" Association="Self.FK_user_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="user1" EntitySet="user" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -311,13 +295,13 @@
           <EntitySet Name="status" EntityType="diplomchikEntity.status" />
           <EntitySet Name="task" EntityType="diplomchikEntity.task" />
           <EntitySet Name="user" EntityType="diplomchikEntity.user" />
-          <AssociationSet Name="FK_branch_user" Association="diplomchikEntity.FK_branch_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="branch" EntitySet="branch" />
-          </AssociationSet>
           <AssociationSet Name="FK_task_branch" Association="diplomchikEntity.FK_task_branch">
             <End Role="branch" EntitySet="branch" />
             <End Role="task" EntitySet="task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_branch" Association="diplomchikEntity.FK_user_branch">
+            <End Role="branch" EntitySet="branch" />
+            <End Role="user" EntitySet="user" />
           </AssociationSet>
           <AssociationSet Name="FK_user_company" Association="diplomchikEntity.FK_user_company">
             <End Role="company" EntitySet="company" />
@@ -347,10 +331,6 @@
             <End Role="user" EntitySet="user" />
             <End Role="task" EntitySet="task" />
           </AssociationSet>
-          <AssociationSet Name="FK_user_user" Association="diplomchikEntity.FK_user_user">
-            <End Role="user" EntitySet="user" />
-            <End Role="user1" EntitySet="user" />
-          </AssociationSet>
           <AssociationSet Name="file_in_task" Association="diplomchikEntity.file_in_task">
             <End Role="file" EntitySet="file" />
             <End Role="task" EntitySet="task" />
@@ -362,8 +342,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user" Relationship="diplomchikEntity.FK_branch_user" FromRole="branch" ToRole="user" />
           <NavigationProperty Name="task" Relationship="diplomchikEntity.FK_task_branch" FromRole="branch" ToRole="task" />
+          <NavigationProperty Name="user" Relationship="diplomchikEntity.FK_user_branch" FromRole="branch" ToRole="user" />
         </EntityType>
         <EntityType Name="company">
           <Key>
@@ -450,28 +430,14 @@
           <Property Name="role_id" Type="Int32" />
           <Property Name="branch_id" Type="Int32" />
           <Property Name="company_id" Type="Int32" />
-          <NavigationProperty Name="branch" Relationship="diplomchikEntity.FK_branch_user" FromRole="user" ToRole="branch" />
+          <NavigationProperty Name="branch" Relationship="diplomchikEntity.FK_user_branch" FromRole="user" ToRole="branch" />
           <NavigationProperty Name="company" Relationship="diplomchikEntity.FK_user_company" FromRole="user" ToRole="company" />
           <NavigationProperty Name="file" Relationship="diplomchikEntity.FK_file_user" FromRole="user" ToRole="file" />
           <NavigationProperty Name="gender" Relationship="diplomchikEntity.FK_user_gender" FromRole="user" ToRole="gender" />
           <NavigationProperty Name="role" Relationship="diplomchikEntity.FK_user_role" FromRole="user" ToRole="role" />
           <NavigationProperty Name="task" Relationship="diplomchikEntity.FK_task_user" FromRole="user" ToRole="task" />
           <NavigationProperty Name="task1" Relationship="diplomchikEntity.FK_task_user1" FromRole="user" ToRole="task" />
-          <NavigationProperty Name="user1" Relationship="diplomchikEntity.FK_user_user" FromRole="user" ToRole="user1" />
-          <NavigationProperty Name="user2" Relationship="diplomchikEntity.FK_user_user" FromRole="user1" ToRole="user" />
         </EntityType>
-        <Association Name="FK_branch_user">
-          <End Type="diplomchikEntity.user" Role="user" Multiplicity="1" />
-          <End Type="diplomchikEntity.branch" Role="branch" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="branch">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_task_branch">
           <End Type="diplomchikEntity.branch" Role="branch" Multiplicity="0..1" />
           <End Type="diplomchikEntity.task" Role="task" Multiplicity="*" />
@@ -481,6 +447,18 @@
             </Principal>
             <Dependent Role="task">
               <PropertyRef Name="brach_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_branch">
+          <End Type="diplomchikEntity.branch" Role="branch" Multiplicity="0..1" />
+          <End Type="diplomchikEntity.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="branch">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="branch_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -568,23 +546,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_user_user">
-          <End Type="diplomchikEntity.user" Role="user" Multiplicity="1" />
-          <End Type="diplomchikEntity.user" Role="user1" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="user">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="user1">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="file_in_task">
           <End Type="diplomchikEntity.file" Role="file" Multiplicity="*" />
           <End Type="diplomchikEntity.task" Role="task" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

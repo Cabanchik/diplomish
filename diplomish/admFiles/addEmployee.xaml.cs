@@ -28,7 +28,9 @@ namespace diplomish
         {
             InitializeComponent();
             brnch.ItemsSource = App.diplomchikEntities.branch.Select(s => s.title).ToList();
-
+            role.Visibility = Visibility.Visible;
+            roleLbl.Visibility = Visibility.Visible;
+            role.ItemsSource = App.diplomchikEntities.role.Select(s => s.title).ToList();
 
 
         }
@@ -98,8 +100,9 @@ namespace diplomish
                     password = pas.Text,
                     branch_id = Convert.ToInt32(br),
                     user_pic = mage,
-                    company_id = staticUser.user.company_id
-                };
+                    company_id = staticUser.user.company_id,
+                    role_id = Convert.ToInt32(App.diplomchikEntities.role.Where(ss => ss.title == role.SelectedItem).Select(ss => ss.id).FirstOrDefault())
+            };
                 App.diplomchikEntities.user.Add(user);
                 App.diplomchikEntities.SaveChanges();
                 MessageBox.Show("Пользователь добавлен успешно");

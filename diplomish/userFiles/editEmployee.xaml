@@ -43,6 +43,7 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
 
 
                     </Grid.RowDefinitions>
@@ -55,9 +56,11 @@
                     <Label FontSize="20" Grid.Row="5" Grid.Column="0" Content="Логин"></Label>
                     <Label FontSize="20" Grid.Row="6" Grid.Column="0" Content="Пароль"></Label>
                     <Label FontSize="20" Grid.Row="7" Grid.Column="0" Content="Отдел"></Label>
-                    <ComboBox IsEnabled="False" FontSize="25" Height="40" Margin="0,5" Grid.Row="7" Grid.Column="1" x:Name="brnch"></ComboBox>
+                    <Label Visibility="Collapsed" x:Name="roleLbl" FontSize="20" Grid.Row="8" Grid.Column="0" Content="Роль"></Label>
+                    <ComboBox Visibility="Collapsed" IsEnabled="False" FontSize="20" Height="40" Margin="0,5" Grid.Row="8" Grid.Column="1" x:Name="role"></ComboBox>
+                    <ComboBox  IsEnabled="False" FontSize="20" Height="40" Margin="0,5" Grid.Row="7" Grid.Column="1" x:Name="brnch"></ComboBox>
 
-                    <TextBox Text="{Binding surname}" Height="40" Margin="0,5" IsReadOnly="True" x:Name="surname" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2">
+                    <TextBox Text="{Binding surname}" Height="40" Margin="0,3" IsReadOnly="True" x:Name="surname" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2">
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>
@@ -89,7 +92,7 @@
                         </CheckBox>
                     </StackPanel>
 
-                    <TextBox Height="40" Margin="0,5" Text="{Binding login}" IsReadOnly="True" x:Name="log" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
+                    <TextBox Height="40" Margin="0,3" Text="{Binding login}" IsReadOnly="True" x:Name="log" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>
@@ -97,7 +100,7 @@
                         </TextBox.Resources>
                     </TextBox>
                     <DatePicker  Text="{Binding birth_date, ConverterCulture=en-GB}" IsEnabled="False" x:Name="dr" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <PasswordBox Height="40" Margin="0,5" IsEnabled="False" x:Name="pas" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
+                    <PasswordBox Height="40" Margin="0,3" IsEnabled="False" x:Name="pas" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2"  >
                         <PasswordBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>
@@ -105,21 +108,21 @@
                         </PasswordBox.Resources>
                     </PasswordBox>
 
-                    <TextBox IsReadOnly="True" Height="40" Margin="0,5" Text="{Binding name}" x:Name="name"  Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2" >
+                    <TextBox IsReadOnly="True" Height="40" Margin="0,3" Text="{Binding name}" x:Name="name"  Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="2" >
                         <TextBox.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <Button Background="Transparent" BorderThickness="2" BorderBrush="Black" Click="sussy_Click" Visibility="Collapsed" x:Name="sussy" Width="100" Grid.ColumnSpan="2" Content="Сохранить" Grid.Row="8" Grid.Column="0" Height="40" Margin="0,5,0,0">
+                    <Button BorderThickness="2" BorderBrush="Black" Click="sussy_Click" Visibility="Collapsed" x:Name="sussy" Width="100" Grid.ColumnSpan="2" Content="Сохранить" Grid.Row="9" Grid.Column="0" Height="40" Margin="0,5,0,0">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button BorderThickness="2" FontSize="20" BorderBrush="Black" Visibility="Visible" x:Name="edit1" Width="100" Grid.ColumnSpan="2" Content="Изменить" Grid.Row="8" Grid.Column="0" Height="40" Margin="0,5,0,0" Click="edit1_Click">
+                    <Button BorderThickness="2" FontSize="20" BorderBrush="Black" Visibility="Visible" x:Name="edit1" Width="100" Grid.ColumnSpan="2" Content="Изменить" Grid.Row="9" Grid.Column="0" Height="40" Margin="0,5,0,0" Click="edit1_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="10"></Setter>

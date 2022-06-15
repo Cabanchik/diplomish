@@ -66,9 +66,9 @@
 
             </Grid>
         </Border>
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1" Height="940" VerticalAlignment="Top" >
 
-            <Frame Grid.Row="1" x:Name="mainFrame" Margin="70,0,0,0" NavigationUIVisibility="Hidden"></Frame>
+            <Frame x:Name="mainFrame" Margin="70,0,0,0" NavigationUIVisibility="Hidden"/>
         </Grid>
         <Border HorizontalAlignment="Left" x:Name="border" Grid.Row="1" BorderThickness="3" BorderBrush="Black" Width="70" Background="#07beb8" Margin="0,-3,0,0">
             <StackPanel Background="#07beb8" x:Name="navStack" Width="70">
