@@ -33,13 +33,7 @@
                 <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
                 <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
             </Style>
-            <!--<Style TargetType="TextBlock">
-                <Setter Property="FontFamily" Value="/diplomish;component/rez/#Leto Text Sans Defect"></Setter>
-                <Setter Property="FontSize" Value="50"></Setter>
-            </Style>-->
-            <local:statusConverter x:Key="statusConverter">
-                
-            </local:statusConverter>
+            <local:statusConverter x:Key="statusConverter"></local:statusConverter>
             <local:countConverter x:Key="countConverter"></local:countConverter>
             <local:userCountConverter x:Key="userCountConverter"></local:userCountConverter>
             <local:brItemsSourceConverter x:Key="itemsSourceConverter"></local:brItemsSourceConverter>

@@ -41,7 +41,7 @@ namespace diplomish
 
             brnch.ItemsSource = App.diplomchikEntities.branch.Select(s => s.title).ToList();
             pas.Password = user1.password;
-            
+
             if (user1.branch == null)
             {
                 brnch.SelectedItem = null;
@@ -63,9 +63,9 @@ namespace diplomish
                 {
                     role.SelectedItem = user1.role.title;
                 }
-                
+
             }
-            
+
         }
 
         private void surname_TextChanged(object sender, TextChangedEventArgs e)
@@ -85,7 +85,7 @@ namespace diplomish
 
         private void Ellipse_Drop(object sender, DragEventArgs e)
         {
-            
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
 
@@ -93,7 +93,7 @@ namespace diplomish
 
                 string fin = System.IO.Path.GetFullPath(files[0]);
 
-                dicpic.ImageSource = new BitmapImage(new Uri(fin));                
+                dicpic.ImageSource = new BitmapImage(new Uri(fin));
                 user1.user_pic = ImageToByte(new BitmapImage(new Uri(fin)));
                 App.diplomchikEntities.SaveChanges();
             }
@@ -123,7 +123,7 @@ namespace diplomish
             lbl.Visibility = Visibility.Visible;
             pas.Password = Convert.ToString(user1.password);
             brnch.IsEnabled = true;
-            
+
         }
         private void sex2_Checked(object sender, RoutedEventArgs e)
         {
@@ -147,8 +147,8 @@ namespace diplomish
 
 
 
-            //try
-            //{
+            try
+            {
                 pic.AllowDrop = false;
                 edit1.Visibility = Visibility.Visible;
                 sussy.Visibility = Visibility.Collapsed;
@@ -178,20 +178,20 @@ namespace diplomish
                 user1.birth_date = Convert.ToDateTime(dr.Text);
                 user1.login = log.Text.ToString();
                 user1.password = pas.Password.ToString();
-                var br = App.diplomchikEntities.branch.Where(s => s.title == brnch.SelectedItem.ToString()).Select(s=>s.id).FirstOrDefault();
+                var br = App.diplomchikEntities.branch.Where(s => s.title == brnch.SelectedItem.ToString()).Select(s => s.id).FirstOrDefault();
                 var f = App.diplomchikEntities.role.Where(s => s.title == role.SelectedItem).Select(s => s.id).FirstOrDefault();
-                user1.role_id = Convert.ToInt32(f); 
+                user1.role_id = Convert.ToInt32(f);
 
                 user1.branch_id = br;
                 App.diplomchikEntities.SaveChanges();
 
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Все поля должны быть закончены");
-            //}
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Все поля должны быть закончены");
+            }
 
 
-}
+        }
     }
 }

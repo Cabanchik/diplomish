@@ -34,7 +34,7 @@ namespace diplomish
             statuses.AddRange(App.diplomchikEntities.status.Select(s => s.title).ToList());
             statuses.Add("Все");
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Start();
             
@@ -52,6 +52,9 @@ namespace diplomish
 
             taskEdit editTask = new taskEdit(task123);
             editTask.Show();
+            brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0).ToList();
+            brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0 && S.id != staticUser.user.id).ToList();
+
         }
     }
 }

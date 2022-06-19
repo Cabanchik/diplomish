@@ -61,7 +61,16 @@ namespace diplomish
                     {
                         nullEnd = true;
                     }
+                    //if (start.Value >= end.Value)
+                    //{
+                    //    MessageBox.Show("Дата завершения задачи должна быть позже даты старта");
+                    //}
+                    //else if (end.Value < DateTime.Now)
+                    //{
+                    //    MessageBox.Show("Дата завершения не может быть раньше текущего времени");
 
+                    //}
+                    //else
                     if (nullStart == true && nullEnd == true)
                     {
                         task = new task()
@@ -121,7 +130,7 @@ namespace diplomish
                         isAdded = true;
                         App.diplomchikEntities.task.Add(task);
                         App.diplomchikEntities.SaveChanges();
-                        this.Close();
+                        
                     }
                     else
                     {   
@@ -142,7 +151,6 @@ namespace diplomish
                         isAdded = true;
                         App.diplomchikEntities.task.Add(task);
                         App.diplomchikEntities.SaveChanges();
-                        this.Close();
                     }
 
 
@@ -158,6 +166,15 @@ namespace diplomish
                     {
                         nullEnd = true;
                     }
+                    //if (start.Value >= end.Value)
+                    //{
+                    //    MessageBox.Show("Дата завершения задачи должна быть позже даты старта");
+                    //}
+                    //else if (end.Value < DateTime.Now)
+                    //{
+                    //    MessageBox.Show("Дата завершения не может быть раньше текущего времени");
+                    //}
+                    //else
                     if (nullStart == true && nullEnd == true)
                     {
                         task = new task()
@@ -261,6 +278,15 @@ namespace diplomish
                 {
                     nullEnd = false;
                 }
+                //if (start.Value >= end.Value)
+                //{
+                //    MessageBox.Show("Дата завершения задачи должна быть позже даты старта");
+                //}
+                //else if (end.Value < DateTime.Now)
+                //{
+                //    MessageBox.Show("Дата завершения не может быть раньше текущего времени");
+                //}
+                //else
                 if (nullStart == true && nullEnd == true)
                 {
                     task = new task()
@@ -373,6 +399,14 @@ namespace diplomish
                         {
                             MessageBox.Show("Не заполнена дата начала задачи");
                         }
+                        else if (start.Value >= end.Value)
+                        {
+                            MessageBox.Show("Дата завершения задачи должна быть позже даты старта");
+                        }
+                        else if (end.Value < DateTime.Now)
+                        {
+                            MessageBox.Show("Дата завершения не может быть раньше текущего времени");
+                        }
                         else
                         {
 
@@ -425,6 +459,13 @@ namespace diplomish
                         else if (nullStart == true && nullEnd == false)
                         {
                             MessageBox.Show("Не заполнена дата начала задачи");
+                        }else if (start.Value >= end.Value)
+                        {
+                            MessageBox.Show("Дата завершения задачи должна быть позже даты старта");
+                        }
+                        else if (end.Value < DateTime.Now)
+                        {
+                            MessageBox.Show("Дата завершения не может быть раньше текущего времени");
                         }
                         else
                         {
@@ -460,27 +501,41 @@ namespace diplomish
             {
                 try
                 {
-                    task.annotation = annotation.Text.ToString();
-                    task.title = tas.Text.ToString();
-                    task.status_id = 5;
-                    task.purpose_time = DateTime.Now;
-                    task.initiator_id = staticUser.user.id;
-                    var pr = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == branch.SelectedItem).Select(s => s.id).FirstOrDefault();
-                    if (pr == 0)
+                    if (start.Value >= end.Value)
                     {
-                        task.brach_id = App.diplomchikEntities.branch.Where(s => s.title == branch.SelectedItem).Select(s => s.id).FirstOrDefault();
-                        task.user_id = null;
+                        MessageBox.Show("Дата завершения задачи должна быть позже даты старта");
+                    }
+                    else if (end.Value < DateTime.Now)
+                    {
+                        MessageBox.Show("Дата завершения не может быть раньше текущего времени");
                     }
                     else
                     {
-                        task.user_id = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == branch.SelectedItem).Select(s => s.id).FirstOrDefault();
-                        task.brach_id = null;
+                        task.annotation = annotation.Text.ToString();
+                        task.title = tas.Text.ToString();
+                        task.status_id = 5;
+                        task.end_time = end.Value;
+                        task.start_time = start.Value;
+                        task.purpose_time = DateTime.Now;
+                        task.initiator_id = staticUser.user.id;
+                        var pr = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == branch.SelectedItem).Select(s => s.id).FirstOrDefault();
+                        if (pr == 0)
+                        {
+                            task.brach_id = App.diplomchikEntities.branch.Where(s => s.title == branch.SelectedItem).Select(s => s.id).FirstOrDefault();
+                            task.user_id = null;
+                        }
+                        else
+                        {
+                            task.user_id = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == branch.SelectedItem).Select(s => s.id).FirstOrDefault();
+                            task.brach_id = null;
+                        }
+
+
+                        App.diplomchikEntities.SaveChanges();
+                        MessageBox.Show("Задача создана");
+                        this.Close();
                     }
-
-
-                    App.diplomchikEntities.SaveChanges();
-                    MessageBox.Show("Задача создана");
-                    this.Close();
+                    
                 }
                 catch (Exception)
                 {

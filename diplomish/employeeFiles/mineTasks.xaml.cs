@@ -48,35 +48,68 @@ namespace diplomish
             App.diplomchikEntities.SaveChanges();
             DateTime endSoon = DateTime.Now.AddDays(1);
             DateTime nowPlus3 = DateTime.Now.AddDays(3);
-            view.ItemsSource = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 5 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 5 && t.is_deleted != 1)).ToList();
-            if (view.Items.Count == 0)
+            var v1 = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 5 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 5 && t.is_deleted != 1)).ToList();
+            if (v1.Count == 0)
             {
                 view.Visibility = Visibility.Collapsed;
                 null1.Visibility = Visibility.Visible;
             }
-            view2.ItemsSource = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 1 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 1 && t.is_deleted != 1)).ToList();
-            if (view2.Items.Count == 0)
+            else
+            {
+                view.ItemsSource = v1;
+                view.Visibility = Visibility.Visible;
+                null1.Visibility = Visibility.Collapsed;
+            }
+            var v2 = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 1 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 1 && t.is_deleted != 1)).ToList();
+            if (v2.Count == 0)
             {
                 view2.Visibility = Visibility.Collapsed;
                 null2.Visibility = Visibility.Visible;
             }
-            view3.ItemsSource = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 1 && t.end_time <= endSoon && t.end_time >= DateTime.Now && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.end_time <= endSoon && t.end_time >= DateTime.Now && t.status_id == 1 && t.is_deleted != 1)).ToList();
-            if (view3.Items.Count == 0)
+            else
+            {
+                view2.ItemsSource = v2;
+                view2.Visibility = Visibility.Visible;
+                null2.Visibility = Visibility.Collapsed;
+            }
+            var v3 = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 1 && t.end_time <= endSoon && t.end_time >= DateTime.Now && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.end_time <= endSoon && t.end_time >= DateTime.Now && t.status_id == 1 && t.is_deleted != 1)).ToList();
+            if (v3.Count == 0)
             {
                 view3.Visibility = Visibility.Collapsed;
                 null3.Visibility = Visibility.Visible;
             }
-            view4.ItemsSource = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 4 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 4 && t.is_deleted != 1)).ToList();
-            if (view4.Items.Count == 0)
+            else
+            {
+                view3.ItemsSource = v3;
+                view3.Visibility = Visibility.Visible;
+                null3.Visibility = Visibility.Collapsed;
+            }
+                      
+            
+            var v4 = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 4 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 4 && t.is_deleted != 1)).ToList();
+            if (v4.Count == 0)
             {
                 view4.Visibility = Visibility.Collapsed;
                 null4.Visibility = Visibility.Visible;
             }
-            view5.ItemsSource = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 2 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 2 && t.is_deleted != 1 && t.end_time == nowPlus3)).ToList();
-            if (view5.Items.Count == 0)
+            else
+            {
+                view4.ItemsSource = v4;
+                view4.Visibility = Visibility.Visible;
+                null4.Visibility = Visibility.Collapsed;
+            }
+            var v5 = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 2 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 2 && t.is_deleted != 1 && t.end_time == nowPlus3)).ToList();
+            
+            if (v5.Count == 0)
             {
                 view5.Visibility = Visibility.Collapsed;
                 null5.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                view5.ItemsSource = v5;
+                view5.Visibility = Visibility.Visible;
+                null5.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -118,12 +151,12 @@ namespace diplomish
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var s = MessageBox.Show("Вы точно хотите переместить задачу в выполненные?", "Внимание", MessageBoxButton.OKCancel);
+            var s = MessageBox.Show("Вы точно хотите завершить задачу?", "Внимание", MessageBoxButton.OKCancel);
             if (s == MessageBoxResult.OK)
             {
                 Button cont = sender as Button;
                 task curr = cont.DataContext as task;
-                curr.status_id = 2;
+                curr.status = App.diplomchikEntities.status.Where(s3 => s3.id == 2).FirstOrDefault();
                 curr.end_time = DateTime.Now;
                 App.diplomchikEntities.SaveChanges();
             }
@@ -137,7 +170,7 @@ namespace diplomish
             {
                 Button cont = sender as Button;
                 task curr = cont.DataContext as task;
-                curr.status_id = 1;
+                curr.status = App.diplomchikEntities.status.Where(s3 => s3.id == 1).FirstOrDefault();
                 App.diplomchikEntities.SaveChanges();
             }
             updateLayouts();
