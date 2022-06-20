@@ -26,7 +26,7 @@ namespace diplomish
         {
             InitializeComponent();
             //var p = App.diplomchikEntities.branch.Where(s=> s.task !=null).ToList();
-
+            App.diplomchikEntities = new diplomkchikEntities();
             statuses = new List<string>();
             brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0).ToList();
             //var l = staticUser.user.task1.ToList();
@@ -42,6 +42,9 @@ namespace diplomish
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
+            App.diplomchikEntities = new diplomkchikEntities();
+            brancch.ItemsSource = null;
+            brancch2.ItemsSource = null;
             brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0).ToList();
             brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0 && S.id != staticUser.user.id).ToList();
         }
