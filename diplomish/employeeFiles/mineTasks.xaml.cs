@@ -152,8 +152,8 @@ namespace diplomish
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 var s = MessageBox.Show("Вы точно хотите завершить задачу?", "Внимание", MessageBoxButton.OKCancel);
                 if (s == MessageBoxResult.OK)
                 {
@@ -164,19 +164,19 @@ namespace diplomish
                     App.diplomchikEntities.SaveChanges();
                 }
                 updateLayouts();
-            //}
-            //catch (Exception)
-            //{
+            }
+            catch (Exception)
+            {
 
-            //    MessageBox.Show("Произошла ошибка");
-            //}
-            
+                MessageBox.Show("Произошла ошибка");
+            }
+
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 var s = MessageBox.Show("Вы точно хотите принять задачу?", "Внимание", MessageBoxButton.OKCancel);
                 if (s == MessageBoxResult.OK)
                 {
@@ -186,37 +186,37 @@ namespace diplomish
                     App.diplomchikEntities.SaveChanges();
                 }
                 updateLayouts();
-            //}
-            //catch (Exception)
-            //{
+            }
+            catch (Exception)
+            {
 
-            //    MessageBox.Show("Произошла ошибка");
-            //}
-            
+                MessageBox.Show("Произошла ошибка");
+            }
+
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 Button cont = sender as Button;
                 task curr = cont.DataContext as task;
                 rejectTaskWindow rejectTaskWindow = new rejectTaskWindow(curr);
                 rejectTaskWindow.ShowDialog();
                 updateLayouts();
-            //}
-            //catch (Exception)
-            //{
+            }
+            catch (Exception)
+            {
 
-            //    MessageBox.Show("Произошла ошибка");
-            //}
-           
+                MessageBox.Show("Произошла ошибка");
+            }
+
         }
 
         private void view_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 var task123 = (sender as ListView).SelectedItem as task;
 
                 taskInfo editTask = new taskInfo(task123);
@@ -224,13 +224,13 @@ namespace diplomish
                 {
                     editTask.ShowDialog();
                 }
-            //}
-            //catch (Exception)
-            //{
+            }
+            catch (Exception)
+            {
 
-            //    MessageBox.Show("Произошла ошибка");
-            //}
-            
+                MessageBox.Show("Произошла ошибка");
+            }
+
         }
     }
 }

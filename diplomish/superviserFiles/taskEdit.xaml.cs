@@ -19,7 +19,7 @@ namespace diplomish
     /// </summary>
     public partial class taskEdit : Window
     {
-        List<string> performers {get;set;}
+        List<string> performers { get; set; }
         public task task1 { get; set; }
         bool nullStart = false;
         bool nullEnd = false;
@@ -39,15 +39,15 @@ namespace diplomish
             performer.ItemsSource = performers;
             if (task1.user_id == null)
             {
-                
+
                 performer.SelectedItem = task1.branch.title;
             }
             else
             {
-                
+
                 performer.SelectedItem = App.diplomchikEntities.user.Where(s => s.id == task1.user_id).Select(s => s.surname + " " + s.name).FirstOrDefault().ToString();
             }
-            
+
             title.Text = task1.title;
             anno.Text = task1.annotation;
             start_time.Value = task1.start_time;
@@ -70,7 +70,8 @@ namespace diplomish
         {
             try
             {
-                
+
+                App.diplomchikEntities = new diplomkchikEntities();
                 if (start_time.Text == "")
                 {
                     MessageBox.Show("Дата старта должна быть заполнена");
@@ -93,46 +94,47 @@ namespace diplomish
                     else
                     {
                         if (task1.status_id == 4 || task1.status_id == 6)
-                        {
-                            task1.status_id = 5;
-                        }
-                        task1.title = title.Text.ToString();
-                        task1.annotation = anno.Text.ToString();
-                        task1.start_time = start_time.Value;
-                        task1.end_time = end_time.Value;
-                        var pr = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == performer.SelectedItem).Select(s => s.id).FirstOrDefault();
-                        if (pr == 0)
-                        {
-                            task1.brach_id = App.diplomchikEntities.branch.Where(s => s.title == performer.SelectedItem).Select(s => s.id).FirstOrDefault();
-                            task1.user_id = null;
-                        }
-                        else
-                        {
-                            task1.user_id = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == performer.SelectedItem).Select(s => s.id).FirstOrDefault();
-                            task1.brach_id = null;
-                        }
-                        App.diplomchikEntities.SaveChanges();
-                        MessageBox.Show("Изменения внесены успешно");
-                        this.Close();
+                    {
+                        task1.status_id = 5;
                     }
+                    App.diplomchikEntities.task.First(s => s.id == task1.id).title = title.Text.ToString();
+                    //task1.title = title.Text.ToString();
+                    App.diplomchikEntities.task.First(s => s.id == task1.id).annotation = anno.Text.ToString();
+                    App.diplomchikEntities.task.First(s => s.id == task1.id).start_time = start_time.Value;
+                    App.diplomchikEntities.task.First(s => s.id == task1.id).end_time = end_time.Value;
+                    var pr = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == performer.SelectedItem).Select(s => s.id).FirstOrDefault();
+                    if (pr == 0)
+                    {
+                        App.diplomchikEntities.task.First(s => s.id == task1.id).brach_id = App.diplomchikEntities.branch.Where(s => s.title == performer.SelectedItem).Select(s => s.id).FirstOrDefault();
+                        task1.user_id = null;
+                    }
+                    else
+                    {
+                        App.diplomchikEntities.task.First(s => s.id == task1.id).user_id = App.diplomchikEntities.user.Where(s => s.surname + " " + s.name == performer.SelectedItem).Select(s => s.id).FirstOrDefault();
+                        task1.brach_id = null;
+                    }
+                    App.diplomchikEntities.SaveChanges();
+                    MessageBox.Show("Изменения внесены успешно");
+                    this.Close();
                 }
-                
-                
+            }
 
 
-                
+
+
+
             }
             catch (Exception)
             {
 
                 MessageBox.Show("Изменения не были внесены");
             }
-            
+
 
         }
 
         private void taskDeleteBtn_Click(object sender, RoutedEventArgs e)
-        {                                                           
+        {
             var message = MessageBox.Show("Вы точно хотите удалить задачу?", "Внимание", MessageBoxButton.OKCancel);
             if (message == MessageBoxResult.OK)
             {
@@ -142,6 +144,6 @@ namespace diplomish
                 this.Close();
             }
         }
-               
+
     }
 }
