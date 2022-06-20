@@ -31,7 +31,7 @@ namespace diplomish
             //var br = App.diplomchikEntities.branch.Select(s => s.title).ToList();
             //branch.ItemsSource = br;
             user1 = user;
-            branch.ItemsSource = App.diplomchikEntities.user.Select(s => s.surname + " " + s.name).ToList();
+            branch.ItemsSource = App.diplomchikEntities.user.OrderBy(s=>s.surname).Select(s => s.surname + " " + s.name).ToList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

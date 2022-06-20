@@ -57,6 +57,7 @@ namespace diplomish
                 }
                 Imported.ItemsSource = null;
                 sasun();
+
             }
             catch (Exception)
             {

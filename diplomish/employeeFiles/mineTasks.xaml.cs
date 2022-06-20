@@ -26,7 +26,7 @@ namespace diplomish
         {
             InitializeComponent();
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Start();
             user1 = user2;
@@ -151,49 +151,85 @@ namespace diplomish
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var s = MessageBox.Show("Вы точно хотите завершить задачу?", "Внимание", MessageBoxButton.OKCancel);
-            if (s == MessageBoxResult.OK)
+            try
             {
-                Button cont = sender as Button;
-                task curr = cont.DataContext as task;
-                curr.status = App.diplomchikEntities.status.Where(s3 => s3.id == 2).FirstOrDefault();
-                curr.end_time = DateTime.Now;
-                App.diplomchikEntities.SaveChanges();
+                var s = MessageBox.Show("Вы точно хотите завершить задачу?", "Внимание", MessageBoxButton.OKCancel);
+                if (s == MessageBoxResult.OK)
+                {
+                    Button cont = sender as Button;
+                    task curr = cont.DataContext as task;
+                    curr.status = App.diplomchikEntities.status.Where(s3 => s3.id == 2).FirstOrDefault();
+                    curr.end_time = DateTime.Now;
+                    App.diplomchikEntities.SaveChanges();
+                }
+                updateLayouts();
             }
-            updateLayouts();
+            catch (Exception)
+            {
+
+                MessageBox.Show("Произошла ошибка");
+            }
+            
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            var s = MessageBox.Show("Вы точно хотите принять задачу?", "Внимание", MessageBoxButton.OKCancel);
-            if (s == MessageBoxResult.OK)
+            try
             {
-                Button cont = sender as Button;
-                task curr = cont.DataContext as task;
-                curr.status = App.diplomchikEntities.status.Where(s3 => s3.id == 1).FirstOrDefault();
-                App.diplomchikEntities.SaveChanges();
+                var s = MessageBox.Show("Вы точно хотите принять задачу?", "Внимание", MessageBoxButton.OKCancel);
+                if (s == MessageBoxResult.OK)
+                {
+                    Button cont = sender as Button;
+                    task curr = cont.DataContext as task;
+                    curr.status = App.diplomchikEntities.status.Where(s3 => s3.id == 1).FirstOrDefault();
+                    App.diplomchikEntities.SaveChanges();
+                }
+                updateLayouts();
             }
-            updateLayouts();
+            catch (Exception)
+            {
+
+                MessageBox.Show("Произошла ошибка");
+            }
+            
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            Button cont = sender as Button;
-            task curr = cont.DataContext as task;
-            rejectTaskWindow rejectTaskWindow = new rejectTaskWindow(curr);
-            rejectTaskWindow.ShowDialog();
-            updateLayouts();
+            try
+            {
+                Button cont = sender as Button;
+                task curr = cont.DataContext as task;
+                rejectTaskWindow rejectTaskWindow = new rejectTaskWindow(curr);
+                rejectTaskWindow.ShowDialog();
+                updateLayouts();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Произошла ошибка");
+            }
+           
         }
 
         private void view_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var task123 = (sender as ListView).SelectedItem as task;
-
-            taskInfo editTask = new taskInfo(task123);
-            if (editTask != null)
+            try
             {
-                editTask.ShowDialog();
+                var task123 = (sender as ListView).SelectedItem as task;
+
+                taskInfo editTask = new taskInfo(task123);
+                if (editTask != null)
+                {
+                    editTask.ShowDialog();
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Произошла ошибка");
+            }
+            
         }
     }
 }

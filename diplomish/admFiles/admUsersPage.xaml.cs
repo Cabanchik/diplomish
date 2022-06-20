@@ -61,7 +61,7 @@ namespace diplomish
 
                 }
             }
-            
+            Imported.ItemsSource = App.diplomchikEntities.user.ToList();
 
         }
 

@@ -35,7 +35,7 @@ namespace diplomish
                 rejectReason.Text = task1.reject_com.ToString();
             }
             performers.AddRange(App.diplomchikEntities.branch.Select(s => s.title).ToList());
-            performers.AddRange(App.diplomchikEntities.user.Select(s => s.surname + " " + s.name).ToList());
+            performers.AddRange(App.diplomchikEntities.user.OrderBy(s => s.surname).Select(s => s.surname + " " + s.name).ToList());
             performer.ItemsSource = performers;
             if (task1.user_id == null)
             {
