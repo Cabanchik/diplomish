@@ -26,7 +26,7 @@ namespace diplomish
         {
             InitializeComponent();
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 3);
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Start();
             user1 = user2;
@@ -115,7 +115,7 @@ namespace diplomish
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            App.diplomchikEntities.SaveChanges();
+            
             updateLayouts();
         }
 

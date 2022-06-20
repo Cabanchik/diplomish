@@ -34,7 +34,7 @@ namespace diplomish
             statuses.AddRange(App.diplomchikEntities.status.Select(s => s.title).ToList());
             statuses.Add("Все");
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 3);
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Start();
             
@@ -51,6 +51,7 @@ namespace diplomish
 
         private void listx1111_MouseDoubleClick_2(object sender, MouseButtonEventArgs e)
         {
+            App.diplomchikEntities = new diplomkchikEntities();
             var task123 = (sender as ListView).SelectedItem as task;
 
             taskEdit editTask = new taskEdit(task123);

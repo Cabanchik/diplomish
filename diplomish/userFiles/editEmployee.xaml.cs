@@ -180,7 +180,11 @@ namespace diplomish
                 user1.password = pas.Password.ToString();
                 var br = App.diplomchikEntities.branch.Where(s => s.title == brnch.SelectedItem.ToString()).Select(s => s.id).FirstOrDefault();
                 var f = App.diplomchikEntities.role.Where(s => s.title == role.SelectedItem).Select(s => s.id).FirstOrDefault();
-                user1.role_id = Convert.ToInt32(f);
+                if (f != 0)
+                {
+                    user1.role_id = Convert.ToInt32(f);
+                }
+                
 
                 user1.branch_id = br;
                 App.diplomchikEntities.SaveChanges();

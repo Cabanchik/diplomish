@@ -58,29 +58,37 @@ namespace diplomish
             {
                 pas.Password = pas1.Text; 
             }
-            
-            var CurrentUser = App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Password.ToString()).FirstOrDefault();
-            if (CurrentUser != null)
+            try
             {
-                staticUser.user = CurrentUser;
-                MainWindow mainWindow = new MainWindow(CurrentUser);
-                mainWindow.Show();
+                var CurrentUser = App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Password.ToString()).FirstOrDefault();
+                if (CurrentUser != null)
+                {
+                    staticUser.user = CurrentUser;
+                    MainWindow mainWindow = new MainWindow(CurrentUser);
+                    mainWindow.Show();
 
-                this.Close();
-            }
-            else if (login.Text == "" || pas.Password == "")
-            {
-                errorMes.Text = "Все поля должны быть заполнены!";
-            }
-            else if (App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString()).FirstOrDefault() != null)
-            {
-                MessageBox.Show("Неверный пароль!");
+                    this.Close();
+                }
+                else if (login.Text == "" || pas.Password == "")
+                {
+                    errorMes.Text = "Все поля должны быть заполнены!";
+                }
+                else if (App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString()).FirstOrDefault() != null)
+                {
+                    MessageBox.Show("Неверный пароль!");
 
+                }
+                else
+                {
+                    MessageBox.Show("Неверный логин!");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Неверный логин!");
+
+                MessageBox.Show("Произошла ошибка");
             }
+           
 
         }
 

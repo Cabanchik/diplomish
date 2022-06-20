@@ -132,11 +132,12 @@ namespace diplomish
         }
 
         private void taskDeleteBtn_Click(object sender, RoutedEventArgs e)
-        {
+        {                                                           
             var message = MessageBox.Show("Вы точно хотите удалить задачу?", "Внимание", MessageBoxButton.OKCancel);
             if (message == MessageBoxResult.OK)
             {
-                task1.is_deleted = 1;
+                //task1.is_deleted = 1;
+                App.diplomchikEntities.task.First(s => s.id == task1.id).is_deleted = 1;
                 App.diplomchikEntities.SaveChanges();
                 this.Close();
             }
