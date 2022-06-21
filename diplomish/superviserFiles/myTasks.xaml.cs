@@ -53,9 +53,12 @@ namespace diplomish
         {
             App.diplomchikEntities = new diplomkchikEntities();
             var task123 = (sender as ListView).SelectedItem as task;
-
-            taskEdit editTask = new taskEdit(task123);
-            editTask.Show();
+            if (task123 !=null)
+            {
+                taskEdit editTask = new taskEdit(task123);
+                editTask.Show();
+            }
+            
             brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0).ToList();
             brancch2.ItemsSource = App.diplomchikEntities.user.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0 && S.id != staticUser.user.id).ToList();
 

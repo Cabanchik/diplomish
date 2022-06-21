@@ -15,5 +15,10 @@ namespace diplomish
     {
         public static readonly Duration openCloseDuraion = new Duration(TimeSpan.FromSeconds(0.5));
         public static diplomkchikEntities diplomchikEntities = new diplomkchikEntities();
+
+        private void Application_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        {
+            diplomchikEntities = new diplomkchikEntities();
+        }
     }
 }

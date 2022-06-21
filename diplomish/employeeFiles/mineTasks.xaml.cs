@@ -30,13 +30,13 @@ namespace diplomish
             dispatcherTimer.Tick += DispatcherTimer_Tick;
             dispatcherTimer.Start();
             user1 = user2;
-            DateTime nw = DateTime.Now + TimeSpan.FromMinutes(3); 
+            DateTime nw = DateTime.Now + TimeSpan.FromMinutes(3);
             this.DataContext = user1;
 
             updateLayouts();
 
         }
-        public void updateLayouts() 
+        public void updateLayouts()
         {
             foreach (var item in App.diplomchikEntities.task)
             {
@@ -84,8 +84,8 @@ namespace diplomish
                 view3.Visibility = Visibility.Visible;
                 null3.Visibility = Visibility.Collapsed;
             }
-                      
-            
+
+
             var v4 = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 4 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 4 && t.is_deleted != 1)).ToList();
             if (v4.Count == 0)
             {
@@ -99,7 +99,7 @@ namespace diplomish
                 null4.Visibility = Visibility.Collapsed;
             }
             var v5 = App.diplomchikEntities.task.Where(t => (t.user_id == user1.id && t.status_id == 2 && t.is_deleted != 1) || (t.brach_id == user1.branch_id && t.status_id == 2 && t.is_deleted != 1 && t.end_time == nowPlus3)).ToList();
-            
+
             if (v5.Count == 0)
             {
                 view5.Visibility = Visibility.Collapsed;
@@ -115,7 +115,7 @@ namespace diplomish
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            
+
             updateLayouts();
         }
 
@@ -133,103 +133,101 @@ namespace diplomish
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var message = MessageBox.Show("Вы точно хотите удалить задачу?", "Внимание", MessageBoxButton.OKCancel);
-            if (message == MessageBoxResult.OK)
+            Button delete = sender as Button;
+            task deltask = delete.DataContext as task;
+            if (deltask != null)
             {
-                Button delete = sender as Button;
-                task deltask = delete.DataContext as task;
-                deltask.is_deleted = 1;
-                App.diplomchikEntities.SaveChanges();
+                var message = MessageBox.Show("Вы точно хотите удалить задачу?", "Внимание", MessageBoxButton.OKCancel);
+                if (message == MessageBoxResult.OK)
+                {
+
+                    deltask.is_deleted = 1;
+                    App.diplomchikEntities.SaveChanges();
+                }
+                updateLayouts();
             }
-            updateLayouts();
+
+
         }
 
         private void view_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            
+
+
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            try
+            Button cont = sender as Button;
+            task curr = cont.DataContext as task;
+            if (curr != null)
             {
                 var s = MessageBox.Show("Вы точно хотите завершить задачу?", "Внимание", MessageBoxButton.OKCancel);
                 if (s == MessageBoxResult.OK)
                 {
-                    Button cont = sender as Button;
-                    task curr = cont.DataContext as task;
+
                     curr.status = App.diplomchikEntities.status.Where(s3 => s3.id == 2).FirstOrDefault();
                     curr.end_time = DateTime.Now;
                     App.diplomchikEntities.SaveChanges();
                 }
                 updateLayouts();
             }
-            catch (Exception)
-            {
 
-                MessageBox.Show("Произошла ошибка");
-            }
+
+
 
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            try
+            Button cont = sender as Button;
+            task curr = cont.DataContext as task;
+            if (curr != null)
             {
                 var s = MessageBox.Show("Вы точно хотите принять задачу?", "Внимание", MessageBoxButton.OKCancel);
                 if (s == MessageBoxResult.OK)
                 {
-                    Button cont = sender as Button;
-                    task curr = cont.DataContext as task;
+
                     curr.status = App.diplomchikEntities.status.Where(s3 => s3.id == 1).FirstOrDefault();
                     App.diplomchikEntities.SaveChanges();
                 }
                 updateLayouts();
             }
-            catch (Exception)
-            {
 
-                MessageBox.Show("Произошла ошибка");
-            }
+
 
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            try
+
+            Button cont = sender as Button;
+            task curr = cont.DataContext as task;
+            if (curr != null)
             {
-                Button cont = sender as Button;
-                task curr = cont.DataContext as task;
                 rejectTaskWindow rejectTaskWindow = new rejectTaskWindow(curr);
                 rejectTaskWindow.ShowDialog();
                 updateLayouts();
             }
-            catch (Exception)
-            {
 
-                MessageBox.Show("Произошла ошибка");
-            }
+
 
         }
 
         private void view_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            try
-            {
-                var task123 = (sender as ListView).SelectedItem as task;
 
+            var task123 = (sender as ListView).SelectedItem as task;
+            if (task123 != null)
+            {
                 taskInfo editTask = new taskInfo(task123);
                 if (editTask != null)
                 {
                     editTask.ShowDialog();
                 }
             }
-            catch (Exception)
-            {
 
-                MessageBox.Show("Произошла ошибка");
-            }
+
 
         }
     }

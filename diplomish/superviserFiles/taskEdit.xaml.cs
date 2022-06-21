@@ -28,7 +28,7 @@ namespace diplomish
             performers = new List<string>();
             InitializeComponent();
             task1 = task;
-            if (task1.status_id == 6)
+            if (task1.status.id == 6)
             {
                 rejectReason.Visibility = Visibility.Visible;
                 rejectReasonLbl.Visibility = Visibility.Visible;
@@ -58,7 +58,7 @@ namespace diplomish
 
         private void filesBtn_Click(object sender, RoutedEventArgs e)
         {
-            filesWindow filesWindow = new filesWindow(task1);
+            filesWindow filesWindow = new filesWindow(App.diplomchikEntities.task.First(s=>s.id == task1.id));
             filesWindow.ShowDialog();
         }
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)

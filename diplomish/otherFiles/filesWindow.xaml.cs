@@ -51,7 +51,7 @@ namespace diplomish
                 }
                 else
                 {
-                    title.Content = $"Прикреплено {x} файлов";
+                    title.Content = $"Прикреплено файлов: {x} ";
                 }
                 files.AddRange(task1.file.ToList());
             }
@@ -65,7 +65,7 @@ namespace diplomish
                 }
                 else
                 {
-                    title.Content = $"Прикреплено {x} файлов";
+                    title.Content = $"Прикреплено файлов: {x} ";
                 }
                 files.AddRange(task1.file.ToList());
             }
@@ -73,28 +73,7 @@ namespace diplomish
 
         }
 
-        //private void Timer_Tick(object sender, EventArgs e)
-        //{
-        //    loadingWin loadingWin = new loadingWin();
-        //    if (ass == false)
-        //    {
-        //        if (cal == 0)
-        //        {
 
-        //            loadingWin.ShowDialog();
-        //            cal++;
-        //        }
-
-
-        //    }
-        //    else if (cal == 1)
-        //    {
-        //        loadingWin.Close();
-        //        cal = 0;
-        //    }
-        //    Console.WriteLine(cal);
-
-        //}
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -142,8 +121,8 @@ namespace diplomish
 
                                 };
 
-                                timer = file;
-                                task1.file.Add(file);
+                                App.diplomchikEntities.task.First(s2 => s2.id == task1.id).file.Add(file);
+                                //task1.file.Add(file);
                                 files.Add(file);
                                 App.diplomchikEntities.file.Add(file);
                             }
@@ -155,14 +134,14 @@ namespace diplomish
                         App.diplomchikEntities.SaveChanges();
 
 
-                        int x = task1.file.Count();
+                        int x = files.Count;
                         if (filess.ItemsSource == null)
                         {
                             title.Content = "Файлы не прикреплены";
                         }
                         else
                         {
-                            title.Content = $"Прикреплено файлов: {x}";
+                            title.Content = $"Прикреплено файлов: {x} ";
                         }
 
                     }
@@ -178,35 +157,39 @@ namespace diplomish
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 var message = MessageBox.Show("Вы точно хотите удалить фаил?", "Внимание", MessageBoxButton.OKCancel);
                 if (message == MessageBoxResult.OK)
                 {
                     Button delete = sender as Button;
                     file deltask = delete.DataContext as file;
-                    App.diplomchikEntities.file.Remove(deltask);
+                    App.diplomchikEntities.task.First(s => s.id == task1.id).file.Remove(deltask);
+                    var ssd = App.diplomchikEntities.file.First(s => s.id == deltask.id);
+                    App.diplomchikEntities.file.Remove(ssd);
                     files.Remove(deltask);
                     App.diplomchikEntities.SaveChanges();
-                    int x = task1.file.Count();
+
+                    filess.ItemsSource = null;
+                    filess.ItemsSource = files;
+                    int x = files.Count;
                     if (filess.ItemsSource == null)
                     {
                         title.Content = "Файлы не прикреплены";
                     }
                     else
                     {
-                        title.Content = $"Прикреплено {x} файлов";
+                        title.Content = $"Прикреплено файлов: {x} ";
                     }
+                    MessageBox.Show("Фаил был удален успешно");
                 }
-                filess.ItemsSource = null;
-                filess.ItemsSource = files;
-                MessageBox.Show("Фаил был удален успешно");
-            }
-            catch (Exception)
-            {
 
-                MessageBox.Show("Фаил не был удален");
-            }
+            //}
+            //catch (Exception)
+            //{
+
+            //    MessageBox.Show("Фаил не был удален");
+            //}
 
         }
 
