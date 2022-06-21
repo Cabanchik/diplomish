@@ -357,6 +357,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="dp.txt" />
     <Resource Include="notebook %281%29.ico" />
     <Resource Include="rez\notebook %281%29.ico" />
     <Content Include="diplomchikModel.Context.tt">

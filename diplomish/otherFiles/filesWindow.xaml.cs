@@ -157,8 +157,8 @@ namespace diplomish
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 var message = MessageBox.Show("Вы точно хотите удалить фаил?", "Внимание", MessageBoxButton.OKCancel);
                 if (message == MessageBoxResult.OK)
                 {
@@ -184,12 +184,12 @@ namespace diplomish
                     MessageBox.Show("Фаил был удален успешно");
                 }
 
-            //}
-            //catch (Exception)
-            //{
+            }
+            catch (Exception)
+            {
 
-            //    MessageBox.Show("Фаил не был удален");
-            //}
+                MessageBox.Show("Фаил не был удален");
+            }
 
         }
 
@@ -213,13 +213,21 @@ namespace diplomish
                 Directory.CreateDirectory(path2);
             }
             string path3 = $@"C:\Users\{s[1]}\Downloads\Everydaynik dowloads\{file.filename}.{file.extention}";
-
-            using (FileStream fstream = new FileStream(path3, FileMode.CreateNew))
+            try
             {
-                byte[] info = App.diplomchikEntities.file.Where(sm => sm.id == file.id).Select(sm => sm.file1).FirstOrDefault().ToArray();
-                fstream.Write(info, 0, info.Length);
-                fstream.Close();
+                using (FileStream fstream = new FileStream(path3, FileMode.CreateNew))
+                {
+                    byte[] info = App.diplomchikEntities.file.Where(sm => sm.id == file.id).Select(sm => sm.file1).FirstOrDefault().ToArray();
+                    fstream.Write(info, 0, info.Length);
+                    fstream.Close();
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Данный фаил уже загружен");
+            }
+            
         }
 
 
