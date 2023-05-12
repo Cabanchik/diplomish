@@ -22,7 +22,6 @@ namespace diplomish
     
         public int id { get; set; }
         public string title { get; set; }
-        public string country { get; set; }
         public string inn { get; set; }
         public string contact_info { get; set; }
     

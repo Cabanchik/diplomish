@@ -13,10 +13,10 @@ namespace diplomish
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class diplomkchikEntities : DbContext
+    public partial class diplomchEntities : DbContext
     {
-        public diplomkchikEntities()
-            : base("name=diplomkchikEntities")
+        public diplomchEntities()
+            : base("name=diplomchEntities")
         {
         }
     
@@ -31,6 +31,7 @@ namespace diplomish
         public virtual DbSet<gender> gender { get; set; }
         public virtual DbSet<role> role { get; set; }
         public virtual DbSet<status> status { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<task> task { get; set; }
         public virtual DbSet<user> user { get; set; }
     }

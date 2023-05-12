@@ -14,11 +14,12 @@ namespace diplomish
     public partial class App : Application
     {
         public static readonly Duration openCloseDuraion = new Duration(TimeSpan.FromSeconds(0.5));
-        public static diplomkchikEntities diplomchikEntities = new diplomkchikEntities();
+
+        public static diplomchEntities diplomchikEntities = new diplomchEntities();
 
         private void Application_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            diplomchikEntities = new diplomkchikEntities();
+            diplomchikEntities = new diplomchEntities();
         }
     }
 }

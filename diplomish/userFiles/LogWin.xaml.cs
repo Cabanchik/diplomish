@@ -58,8 +58,8 @@ namespace diplomish
             {
                 pas.Password = pas1.Text; 
             }
-            try
-            {
+            //try
+            //{
                 var CurrentUser = App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString() && u.password == pas.Password.ToString()).FirstOrDefault();
                 if (CurrentUser != null)
                 {
@@ -69,25 +69,25 @@ namespace diplomish
 
                     this.Close();
                 }
-                else if (login.Text == "" || pas.Password == "")
-                {
-                    errorMes.Text = "Все поля должны быть заполнены!";
-                }
-                else if (App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString()).FirstOrDefault() != null)
-                {
-                    MessageBox.Show("Неверный пароль!");
+                //else if (login.Text == "" || pas.Password == "")
+                //{
+                //    errorMes.Text = "Все поля должны быть заполнены!";
+                //}
+                //else if (App.diplomchikEntities.user.Where(u => u.login == login.Text.ToString()).FirstOrDefault() != null)
+                //{
+                //    MessageBox.Show("Неверный пароль!");
 
-                }
-                else
-                {
-                    MessageBox.Show("Неверный логин!");
-                }
-            }
-            catch (Exception)
-            {
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Неверный логин!");
+                //}
+            //}
+            //catch (Exception)
+            //{
 
-                MessageBox.Show("Произошла ошибка");
-            }
+            //    MessageBox.Show("Произошла ошибка");
+            //}
            
 
         }

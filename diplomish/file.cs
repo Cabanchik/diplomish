@@ -18,6 +18,7 @@ namespace diplomish
         public file()
         {
             this.task = new HashSet<task>();
+            this.task1 = new HashSet<task>();
         }
     
         public int id { get; set; }
@@ -30,5 +31,7 @@ namespace diplomish
         public virtual user user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<task> task { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<task> task1 { get; set; }
     }
 }

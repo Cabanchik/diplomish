@@ -130,45 +130,40 @@
     <Compile Include="admFiles\admWin.xaml.cs">
       <DependentUpon>admWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="branch.cs">
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="classes\brSourceConverter.cs" />
-    <Compile Include="diplomchikModel1.cs">
+    <Compile Include="bazed.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
+      <DependentUpon>bazed.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="bazed.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bazed.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bazed.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bazed.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="branch.cs">
+      <DependentUpon>bazed.tt</DependentUpon>
+    </Compile>
+    <Compile Include="classes\brSourceConverter.cs" />
     <Compile Include="otherFiles\calendar.xaml.cs">
       <DependentUpon>calendar.xaml</DependentUpon>
     </Compile>
     <Compile Include="company.cs">
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
+      <DependentUpon>bazed.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\countConverter.cs" />
-    <Compile Include="diplomchikModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>diplomchikModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="diplomchikModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="diplomchikModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>diplomchikModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="file.cs">
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
+      <DependentUpon>bazed.tt</DependentUpon>
     </Compile>
     <Compile Include="otherFiles\filesWindow.xaml.cs">
       <DependentUpon>filesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="gender.cs">
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
+      <DependentUpon>bazed.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\itemsSourceConverter.cs" />
     <Compile Include="employeeFiles\mineTasks.xaml.cs">
@@ -182,17 +177,20 @@
       <DependentUpon>myTasks.xaml</DependentUpon>
     </Compile>
     <Compile Include="role.cs">
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
+      <DependentUpon>bazed.tt</DependentUpon>
     </Compile>
     <Compile Include="otherFiles\SelectionPage.xaml.cs">
       <DependentUpon>SelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="status.cs">
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
+      <DependentUpon>bazed.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\statusConverter.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>bazed.tt</DependentUpon>
+    </Compile>
     <Compile Include="task.cs">
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
+      <DependentUpon>bazed.tt</DependentUpon>
     </Compile>
     <Compile Include="superviserFiles\taskEdit.xaml.cs">
       <DependentUpon>taskEdit.xaml</DependentUpon>
@@ -204,7 +202,7 @@
       <DependentUpon>taskInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="user.cs">
-      <DependentUpon>diplomchikModel.tt</DependentUpon>
+      <DependentUpon>bazed.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\userCountConverter.cs" />
     <Compile Include="classes\userStatusConverter.cs" />
@@ -320,13 +318,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="diplomchikModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>diplomchikModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="App.Config" />
-    <None Include="diplomchikModel.edmx.diagram">
-      <DependentUpon>diplomchikModel.edmx</DependentUpon>
+    <EntityDeploy Include="bazed.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>bazed.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="bazed.edmx.diagram">
+      <DependentUpon>bazed.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -360,15 +358,15 @@
     <Resource Include="dp.txt" />
     <Resource Include="notebook %281%29.ico" />
     <Resource Include="rez\notebook %281%29.ico" />
-    <Content Include="diplomchikModel.Context.tt">
+    <Content Include="bazed.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>diplomchikModel.Context.cs</LastGenOutput>
-      <DependentUpon>diplomchikModel.edmx</DependentUpon>
+      <LastGenOutput>bazed.Context.cs</LastGenOutput>
+      <DependentUpon>bazed.edmx</DependentUpon>
     </Content>
-    <Content Include="diplomchikModel.tt">
+    <Content Include="bazed.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>diplomchikModel.edmx</DependentUpon>
-      <LastGenOutput>diplomchikModel1.cs</LastGenOutput>
+      <DependentUpon>bazed.edmx</DependentUpon>
+      <LastGenOutput>bazed.cs</LastGenOutput>
     </Content>
     <Resource Include="rez\download.png" />
     <Resource Include="rez\cross.png" />
