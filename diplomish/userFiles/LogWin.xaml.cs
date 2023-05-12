@@ -69,7 +69,7 @@ namespace diplomish
 
                     this.Close();
                 }
-                //else if (login.Text == "" || pas.Password == "")
+                //else if (login.Text == "" || pas.Password == "")123
                 //{
                 //    errorMes.Text = "Все поля должны быть заполнены!";
                 //}
