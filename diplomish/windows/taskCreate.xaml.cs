@@ -602,7 +602,7 @@ namespace diplomish
                 var message = MessageBox.Show("Вы точно хотите удалить задачу?", "Внимание", MessageBoxButton.OKCancel);
                 if (message == MessageBoxResult.OK)
                 {
-                    task.file.Clear();
+                    task.file1.Clear();
                     App.diplomchikEntities.task.Remove(task);
                     App.diplomchikEntities.SaveChanges();
                 }

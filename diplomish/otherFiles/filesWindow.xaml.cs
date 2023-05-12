@@ -43,8 +43,8 @@ namespace diplomish
             this.DataContext = task1;
             try
             {
-                filess.ItemsSource = task1.file.ToList();
-                int x = task1.file.Count();
+                filess.ItemsSource = task1.file1.ToList();
+                int x = task1.file1.Count();
                 if (filess.ItemsSource == null)
                 {
                     title.Content = "Файлы не прикреплены";
@@ -53,12 +53,12 @@ namespace diplomish
                 {
                     title.Content = $"Прикреплено файлов: {x} ";
                 }
-                files.AddRange(task1.file.ToList());
+                files.AddRange(task1.file1.ToList());
             }
             catch (Exception)
             {
                 filess.ItemsSource = null;
-                int x = task1.file.Count();
+                int x = task1.file1.Count();
                 if (filess.ItemsSource == null)
                 {
                     title.Content = "Файлы не прикреплены";
@@ -67,7 +67,7 @@ namespace diplomish
                 {
                     title.Content = $"Прикреплено файлов: {x} ";
                 }
-                files.AddRange(task1.file.ToList());
+                files.AddRange(task1.file1.ToList());
             }
 
 
@@ -121,7 +121,7 @@ namespace diplomish
 
                                 };
 
-                                App.diplomchikEntities.task.First(s2 => s2.id == task1.id).file.Add(file);
+                                App.diplomchikEntities.task.First(s2 => s2.id == task1.id).file1.Add(file);
                                 //task1.file.Add(file);
                                 files.Add(file);
                                 App.diplomchikEntities.file.Add(file);
@@ -164,7 +164,7 @@ namespace diplomish
                 {
                     Button delete = sender as Button;
                     file deltask = delete.DataContext as file;
-                    App.diplomchikEntities.task.First(s => s.id == task1.id).file.Remove(deltask);
+                    App.diplomchikEntities.task.First(s => s.id == task1.id).file1.Remove(deltask);
                     var ssd = App.diplomchikEntities.file.First(s => s.id == deltask.id);
                     App.diplomchikEntities.file.Remove(ssd);
                     files.Remove(deltask);

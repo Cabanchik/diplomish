@@ -70,8 +70,8 @@ namespace diplomish
         {
             try
             {
-
-                App.diplomchikEntities = new diplomkchikEntities();
+                
+                App.diplomchikEntities = new bazedEntities1();
                 if (start_time.Text == "")
                 {
                     MessageBox.Show("Дата старта должна быть заполнена");

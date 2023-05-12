@@ -27,9 +27,12 @@ namespace diplomish
         public Nullable<byte> is_deleted { get; set; }
         public Nullable<int> user_id { get; set; }
         public Nullable<int> status_id { get; set; }
-        public Nullable<int> branch_id { get; set; }
+        public Nullable<int> brach_id { get; set; }
         public Nullable<int> file_id { get; set; }
         public Nullable<int> initiator_id { get; set; }
+        public Nullable<System.DateTime> end_time { get; set; }
+        public string title { get; set; }
+        public string reject_com { get; set; }
     
         public virtual branch branch { get; set; }
         public virtual file file { get; set; }

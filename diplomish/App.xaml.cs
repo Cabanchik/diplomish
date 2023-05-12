@@ -15,11 +15,11 @@ namespace diplomish
     {
         public static readonly Duration openCloseDuraion = new Duration(TimeSpan.FromSeconds(0.5));
 
-        public static diplomchEntities diplomchikEntities = new diplomchEntities();
+        public static bazedEntities1 diplomchikEntities = new bazedEntities1();
 
         private void Application_LoadCompleted(object sender, System.Windows.Navigation.NavigationEventArgs e)
         {
-            diplomchikEntities = new diplomchEntities();
+            diplomchikEntities = new bazedEntities1();
         }
     }
 }

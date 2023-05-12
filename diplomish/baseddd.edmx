@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище diplomchModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище diplomchModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="branch">
           <Key>
             <PropertyRef Name="id" />
@@ -82,9 +82,12 @@
           <Property Name="is_deleted" Type="tinyint" />
           <Property Name="user_id" Type="int" />
           <Property Name="status_id" Type="int" />
-          <Property Name="branch_id" Type="int" />
+          <Property Name="brach_id" Type="int" />
           <Property Name="file_id" Type="int" />
           <Property Name="initiator_id" Type="int" />
+          <Property Name="end_time" Type="datetime" />
+          <Property Name="title" Type="nvarchar" MaxLength="500" />
+          <Property Name="reject_com" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -146,7 +149,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="task">
-              <PropertyRef Name="branch_id" />
+              <PropertyRef Name="brach_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -246,7 +249,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище diplomchModelContainer">
+        <EntityContainer Name="Хранилище diplomchModel1Container">
           <EntitySet Name="branch" EntityType="Self.branch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="file" EntityType="Self.file" Schema="dbo" store:Type="Tables" />
@@ -310,7 +313,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="diplomchModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="diplomchModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="branch">
           <Key>
             <PropertyRef Name="id" />
@@ -389,9 +392,12 @@
           <Property Name="is_deleted" Type="Byte" />
           <Property Name="user_id" Type="Int32" />
           <Property Name="status_id" Type="Int32" />
-          <Property Name="branch_id" Type="Int32" />
+          <Property Name="brach_id" Type="Int32" />
           <Property Name="file_id" Type="Int32" />
           <Property Name="initiator_id" Type="Int32" />
+          <Property Name="end_time" Type="DateTime" Precision="3" />
+          <Property Name="title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="reject_com" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="branch" Relationship="Self.FK_task_branch" FromRole="task" ToRole="branch" />
           <NavigationProperty Name="file" Relationship="Self.FK_task_file" FromRole="task" ToRole="file" />
           <NavigationProperty Name="status" Relationship="Self.FK_task_status" FromRole="task" ToRole="status" />
@@ -430,7 +436,7 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="task">
-              <PropertyRef Name="branch_id" />
+              <PropertyRef Name="brach_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -546,7 +552,7 @@
           <End Role="file" Type="Self.file" Multiplicity="*" />
           <End Role="task" Type="Self.task" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="diplomchEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="bazedEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="branch" EntityType="Self.branch" />
           <EntitySet Name="company" EntityType="Self.company" />
           <EntitySet Name="file" EntityType="Self.file" />
@@ -606,9 +612,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище diplomchModelContainer" CdmEntityContainer="diplomchEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище diplomchModel1Container" CdmEntityContainer="bazedEntities1">
           <EntitySetMapping Name="branch">
-            <EntityTypeMapping TypeName="diplomchModel.branch">
+            <EntityTypeMapping TypeName="diplomchModel1.branch">
               <MappingFragment StoreEntitySet="branch">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -616,7 +622,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="company">
-            <EntityTypeMapping TypeName="diplomchModel.company">
+            <EntityTypeMapping TypeName="diplomchModel1.company">
               <MappingFragment StoreEntitySet="company">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -626,7 +632,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="file">
-            <EntityTypeMapping TypeName="diplomchModel.file">
+            <EntityTypeMapping TypeName="diplomchModel1.file">
               <MappingFragment StoreEntitySet="file">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="file1" ColumnName="file" />
@@ -638,7 +644,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="gender">
-            <EntityTypeMapping TypeName="diplomchModel.gender">
+            <EntityTypeMapping TypeName="diplomchModel1.gender">
               <MappingFragment StoreEntitySet="gender">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -646,7 +652,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="role">
-            <EntityTypeMapping TypeName="diplomchModel.role">
+            <EntityTypeMapping TypeName="diplomchModel1.role">
               <MappingFragment StoreEntitySet="role">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -654,7 +660,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="status">
-            <EntityTypeMapping TypeName="diplomchModel.status">
+            <EntityTypeMapping TypeName="diplomchModel1.status">
               <MappingFragment StoreEntitySet="status">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -662,7 +668,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="diplomchModel.sysdiagrams">
+            <EntityTypeMapping TypeName="diplomchModel1.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -673,7 +679,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="task">
-            <EntityTypeMapping TypeName="diplomchModel.task">
+            <EntityTypeMapping TypeName="diplomchModel1.task">
               <MappingFragment StoreEntitySet="task">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="purpose_time" ColumnName="purpose_time" />
@@ -682,14 +688,17 @@
                 <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="status_id" ColumnName="status_id" />
-                <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+                <ScalarProperty Name="brach_id" ColumnName="brach_id" />
                 <ScalarProperty Name="file_id" ColumnName="file_id" />
                 <ScalarProperty Name="initiator_id" ColumnName="initiator_id" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="reject_com" ColumnName="reject_com" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="user">
-            <EntityTypeMapping TypeName="diplomchModel.user">
+            <EntityTypeMapping TypeName="diplomchModel1.user">
               <MappingFragment StoreEntitySet="user">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -705,7 +714,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="files_in_tasks" TypeName="diplomchModel.files_in_tasks" StoreEntitySet="files_in_tasks">
+          <AssociationSetMapping Name="files_in_tasks" TypeName="diplomchModel1.files_in_tasks" StoreEntitySet="files_in_tasks">
             <EndProperty Name="file">
               <ScalarProperty Name="id" ColumnName="file_id" />
             </EndProperty>

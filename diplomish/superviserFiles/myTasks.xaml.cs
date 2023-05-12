@@ -26,7 +26,7 @@ namespace diplomish
         {
             InitializeComponent();
             //var p = App.diplomchikEntities.branch.Where(s=> s.task !=null).ToList();
-            App.diplomchikEntities = new diplomkchikEntities();
+            App.diplomchikEntities = new bazedEntities1();
             statuses = new List<string>();
             brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0).ToList();
             //var l = staticUser.user.task1.ToList();
@@ -42,7 +42,7 @@ namespace diplomish
 
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            App.diplomchikEntities = new diplomkchikEntities();
+            App.diplomchikEntities = new bazedEntities1();
             brancch.ItemsSource = null;
             brancch2.ItemsSource = null;
             brancch.ItemsSource = App.diplomchikEntities.branch.Where(S => S.task.Count != 0 && S.task.Where(t => t.initiator_id == staticUser.user.id && t.is_deleted != 1).Count() > 0).ToList();
@@ -51,7 +51,7 @@ namespace diplomish
 
         private void listx1111_MouseDoubleClick_2(object sender, MouseButtonEventArgs e)
         {
-            App.diplomchikEntities = new diplomkchikEntities();
+            App.diplomchikEntities = new bazedEntities1();
             var task123 = (sender as ListView).SelectedItem as task;
             if (task123 !=null)
             {

@@ -130,40 +130,40 @@
     <Compile Include="admFiles\admWin.xaml.cs">
       <DependentUpon>admWin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="bazed.Context.cs">
+    <Compile Include="baseddd.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bazed.Context.tt</DependentUpon>
+      <DependentUpon>baseddd.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="bazed.cs">
+    <Compile Include="baseddd.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
-    <Compile Include="bazed.Designer.cs">
+    <Compile Include="baseddd.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>bazed.edmx</DependentUpon>
+      <DependentUpon>baseddd.edmx</DependentUpon>
     </Compile>
     <Compile Include="branch.cs">
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\brSourceConverter.cs" />
     <Compile Include="otherFiles\calendar.xaml.cs">
       <DependentUpon>calendar.xaml</DependentUpon>
     </Compile>
     <Compile Include="company.cs">
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\countConverter.cs" />
     <Compile Include="file.cs">
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
     <Compile Include="otherFiles\filesWindow.xaml.cs">
       <DependentUpon>filesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="gender.cs">
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\itemsSourceConverter.cs" />
     <Compile Include="employeeFiles\mineTasks.xaml.cs">
@@ -177,20 +177,20 @@
       <DependentUpon>myTasks.xaml</DependentUpon>
     </Compile>
     <Compile Include="role.cs">
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
     <Compile Include="otherFiles\SelectionPage.xaml.cs">
       <DependentUpon>SelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="status.cs">
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\statusConverter.cs" />
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
     <Compile Include="task.cs">
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
     <Compile Include="superviserFiles\taskEdit.xaml.cs">
       <DependentUpon>taskEdit.xaml</DependentUpon>
@@ -202,7 +202,7 @@
       <DependentUpon>taskInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="user.cs">
-      <DependentUpon>bazed.tt</DependentUpon>
+      <DependentUpon>baseddd.tt</DependentUpon>
     </Compile>
     <Compile Include="classes\userCountConverter.cs" />
     <Compile Include="classes\userStatusConverter.cs" />
@@ -319,12 +319,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.Config" />
-    <EntityDeploy Include="bazed.edmx">
+    <EntityDeploy Include="baseddd.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>bazed.Designer.cs</LastGenOutput>
+      <LastGenOutput>baseddd.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="bazed.edmx.diagram">
-      <DependentUpon>bazed.edmx</DependentUpon>
+    <None Include="baseddd.edmx.diagram">
+      <DependentUpon>baseddd.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -358,15 +358,15 @@
     <Resource Include="dp.txt" />
     <Resource Include="notebook %281%29.ico" />
     <Resource Include="rez\notebook %281%29.ico" />
-    <Content Include="bazed.Context.tt">
+    <Content Include="baseddd.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>bazed.Context.cs</LastGenOutput>
-      <DependentUpon>bazed.edmx</DependentUpon>
+      <DependentUpon>baseddd.edmx</DependentUpon>
+      <LastGenOutput>baseddd.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="bazed.tt">
+    <Content Include="baseddd.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>bazed.edmx</DependentUpon>
-      <LastGenOutput>bazed.cs</LastGenOutput>
+      <DependentUpon>baseddd.edmx</DependentUpon>
+      <LastGenOutput>baseddd.cs</LastGenOutput>
     </Content>
     <Resource Include="rez\download.png" />
     <Resource Include="rez\cross.png" />
